@@ -1,7 +1,1 @@
 permalink: pretty
-
-defaults:
-  - scope:
-      path: ""
-    values:
-      permissions-policy: "interest-cohort=()"
