@@ -20,14 +20,14 @@
 /* === Variáveis de Cores (Modo Escuro) === */
 [data-theme="dark"] {
     --bg-color: #121212;
-    --heading-color: #8ab4f8; /* Um azul mais vibrante para destacar no fundo escuro */
+    --heading-color: #5889d8;
     --text-main: #e0e0e0;
     --header-gradient: linear-gradient(230deg, #162032, #1f2937);
     --footer-bg: #1a1a1a;
     --footer-text: #aaaaaa;
     --nav-bg: #1f2937;
     --nav-hover: rgba(255, 255, 255, 0.1);
-    --box-bg: #1e1e1e;
+    --box-bg: transparent;
     --border-color: #333333;
 }
 
