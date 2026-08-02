@@ -1,6 +1,5 @@
 // js/load-components.js
 document.addEventListener("DOMContentLoaded", function () {
-
     // Header
     fetch('./components/header.html')
         .then(response => {
