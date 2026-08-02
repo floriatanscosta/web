@@ -1,9 +1,9 @@
 /* =========================================
    global.css
-   Configurações gerais, variáveis, header e footer
+   Configurações gerais e estrutura, variáveis, header e footer
    ========================================= */
-   
-/* === Variáveis de Cores (Padrão Light) === */
+
+/* === Variáveis de cores (claro) === */
 :root {
     --bg-color: #ffffff;
     --heading-color: #5a729e;
@@ -17,7 +17,7 @@
     --border-color: #e2e8f0;
 }
 
-/* === Variáveis de Cores (Modo Escuro) === */
+/* === Variáveis de cores (escuro) === */
 [data-theme="dark"] {
     --bg-color: #121212;
     --heading-color: #6c7ea9;
@@ -36,7 +36,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', Arial, Tahoma, Verdana, sans-serif;
 }
 
 /* === Estrutura Principal === */
@@ -58,7 +58,7 @@ body {
 /* Títulos Globais */
 h1, h2, h3, h4, h5, h6 {
     color: var(--heading-color);
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 /* === Header === */
@@ -76,15 +76,15 @@ header {
 }
 
 .logo-img {
-    height: 45px;
+    height: 55px;
     width: auto;
     display: block;
 }
 
 .site-title {
     text-align: center;
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 800;
     margin-bottom: 0;
 }
 
