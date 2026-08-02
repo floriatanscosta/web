@@ -420,9 +420,6 @@ ul.custom-list li, ol.custom-list li {
     text-align: center;
     padding: 80px 20px;
     background-color: var(--box-bg);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(90, 114, 158, 0.05);
-    border: 1px solid var(--border-color);
     max-width: 800px;
     margin: 0 auto;
 }
