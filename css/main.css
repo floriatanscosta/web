@@ -74,8 +74,8 @@ ul.custom-list li, ol.custom-list li {
 
 /* === Widget: Artigos Publicados === */
 .article-item {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+    margin-bottom: 30px;
 }
 
 .article-item:last-child {
@@ -85,17 +85,11 @@ ul.custom-list li, ol.custom-list li {
 
 .article-title {
     font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.article-authors {
-    font-size: 0.95rem;
-    color: var(--text-main);
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .article-journal {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-style: italic;
     color: #666;
     margin-bottom: 10px;
@@ -109,10 +103,10 @@ ul.custom-list li, ol.custom-list li {
     color: var(--heading-color);
     text-decoration: none;
     font-weight: 500;
-    padding: 4px 8px;
+    padding: 5px 8px;
     background-color: #f8fafc;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: 6px;
     transition: background 0.2s;
 }
 
@@ -124,17 +118,12 @@ ul.custom-list li, ol.custom-list li {
     background-image: url('../assets/icons/doi.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    margin-right: 8px;
+    margin-right: 0;
     vertical-align: middle;
 }
 
 .doi-link:hover {
     background-color: #e2e8f0;
-}
-
-.doi-icon {
-    width: 16px;
-    height: 16px;
 }
 
 /* === Widget: Projetos (Cards) === */
@@ -234,7 +223,7 @@ ul.custom-list li, ol.custom-list li {
 .timeline::after {
     content: '';
     position: absolute;
-    width: 4px;
+    width: 10px;
     background-color: var(--border-color);
     top: 0;
     bottom: 0;
@@ -283,6 +272,7 @@ ul.custom-list li, ol.custom-list li {
     margin-bottom: 10px;
     font-size: 1.1rem;
 }
+
 
 /* === Barras de Habilidades (Skills) === */
 .skill-box {
