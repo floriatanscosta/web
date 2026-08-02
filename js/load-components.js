@@ -1,7 +1,7 @@
 // js/load-components.js
 document.addEventListener("DOMContentLoaded", function () {
     // header
-    fetch('/components/header.html')
+    fetch('components/header.html')
         .then(response => {
             if (!response.ok) throw new Error("Erro ao carregar o header");
             return response.text();
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error('Problema com a requisição do header:', error));
 
     // footer
-    fetch('/components/footer.html')
+    fetch('components/footer.html')
         .then(response => {
             if (!response.ok) throw new Error("Erro ao carregar o footer");
             return response.text();
