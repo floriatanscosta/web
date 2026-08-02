@@ -457,3 +457,70 @@ ul.custom-list li, ol.custom-list li {
     background-color: #435b83;
     transform: translateY(-2px);
 }
+
+
+/* =========================================
+   Página Inicial - Botões Sociais e Métricas
+   ========================================= */
+.intro-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.social-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--box-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px 10px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    text-align: center;
+}
+
+.social-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(90, 114, 158, 0.15);
+    border-color: var(--heading-color);
+}
+
+.social-box img {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 12px;
+    transition: transform 0.3s;
+}
+
+.social-box:hover img {
+    transform: scale(1.1);
+}
+
+.social-box span {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+[data-theme="dark"] .social-box img {
+    filter: brightness(0.8) contrast(1.2);
+}

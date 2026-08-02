@@ -20,7 +20,7 @@
 /* === Variáveis de Cores (Modo Escuro) === */
 [data-theme="dark"] {
     --bg-color: #121212;
-    --heading-color: #5889d8;
+    --heading-color: #6c7ea9;
     --text-main: #e0e0e0;
     --header-gradient: linear-gradient(230deg, #162032, #1f2937);
     --footer-bg: #1a1a1a;
