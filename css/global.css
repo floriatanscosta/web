@@ -42,7 +42,7 @@ body {
 /* Títulos Globais */
 h1, h2, h3, h4, h5, h6 {
     color: var(--heading-color);
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 /* === Header === */
@@ -74,7 +74,7 @@ header {
 
 /* === Navegação === */
 nav {
-    background-color: var(--bg-color);
+    background-color: #5a729f;
     width: 100%;
     border-bottom: 1px solid var(--border-color);
 }
@@ -86,7 +86,7 @@ nav {
 }
 
 .nav-content a {
-    color: var(--heading-color);
+    color: #fff;
     text-decoration: none;
     padding: 15px 20px;
     font-weight: 500;
@@ -94,7 +94,7 @@ nav {
 }
 
 .nav-content a:hover {
-    background-color: rgba(90, 114, 158, 0.1);
+    background-color: rgba(18, 46, 99, 0.185);
 }
 
 .menu-toggle {
