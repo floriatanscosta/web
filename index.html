@@ -1,454 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
 
-    <!-- Fonte Inter para manter o visual elegante e técnico -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Meta Tags Básicas -->
+    <title>Floriatan Santos Costa - Portfolio</title>
+    <meta name="description"
+        content="Portfólio acadêmico e profissional de Floriatan Santos Costa. Explore projetos, publicações e experiências.">
+    <meta name="theme-color" content="#5a729e">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Floriatan Santos Costa - Portfolio">
+    <meta property="og:description"
+        content="Portfólio acadêmico e profissional de Floriatan Santos Costa. Explore projetos, publicações e experiências.">
+    <meta property="og:image" content="/assets/img/cover.png">
+    <meta property="og:url" content="https://floriatanscosta.github.io/">
 
-    <style>
-        /* ==========================================================================
-           RESET E VARIÁVEIS GERAIS
-           ========================================================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-color: #fafafa;
-            --surface-color: #ffffff;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --text-muted: #9ca3af;
-            --primary-color: #144770; /* Azul escuro moderno */
-            --primary-hover: #26608f;
-            --accent-color: #111827;
-            --border-color: #e5e7eb;
-            --max-width: 1200px;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.2s ease, background-color 0.2s ease;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* Utilitários de Layout */
-        .container {
-            width: 100%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Botões */
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background-color: #f3f4f6;
-            border-color: var(--text-muted);
-        }
-
-        /* ==========================================================================
-           HEADER (Sticky com efeito blur)
-           ========================================================================== */
-        .main-header {
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 72px;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--accent-color);
-        }
-
-        .logo span {
-            color: var(--primary-color);
-        }
-
-        .main-nav ul {
-            display: flex;
-            gap: 32px;
-        }
-
-        .main-nav a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .main-nav a:hover, 
-        .main-nav a.active {
-            color: var(--primary-color);
-        }
-
-        /* ==========================================================================
-           CONTEÚDO PRINCIPAL
-           ========================================================================== */
-        .main-content {
-            padding-bottom: 80px;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            padding: 80px 0;
-        }
-
-        .hero-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .hero-text {
-            flex: 1;
-            min-width: 320px;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .hero-text p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            max-width: 480px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-        }
-
-        .hero-visual {
-            flex: 1;
-            min-width: 320px;
-        }
-
-        /* Placeholder Visual Moderno */
-        .visual-placeholder {
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-            border-radius: 12px;
-            height: 360px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-        }
-
-        .mock-ui {
-            width: 60%;
-            background: var(--surface-color);
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .mock-bar {
-            height: 8px;
-            background-color: #f3f4f6;
-            margin-bottom: 12px;
-            border-radius: 4px;
-        }
-
-        .mock-bar.dynamic-width {
-            width: 75%;
-            background-color: var(--primary-color);
-            opacity: 0.2;
-        }
-
-        /* Seção de Funcionalidades */
-        .features-section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-        }
-
-        .section-title p {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-        }
-
-        /* Cards com efeito hover suave */
-        .card {
-            flex: 1;
-            min-width: 280px;
-            background-color: var(--surface-color);
-            padding: 32px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.04);
-        }
-
-        .card-icon {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-        }
-
-        .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* ==========================================================================
-           FOOTER
-           ========================================================================== */
-        .main-footer {
-            background-color: var(--surface-color);
-            border-top: 1px solid var(--border-color);
-            padding: 64px 0 32px 0;
-        }
-
-        .footer-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 40px;
-            margin-bottom: 48px;
-        }
-
-        .footer-brand {
-            max-width: 320px;
-        }
-
-        .footer-brand p {
-            margin-top: 16px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .footer-links h4 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 16px;
-            color: var(--text-muted);
-        }
-
-        .footer-links ul {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-links a {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border-color);
-            padding-top: 32px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ==========================================================================
-           RESPONSIVIDADE (Celular / Tablets)
-           ========================================================================== */
-        @media (max-width: 768px) {
-            .main-nav, .header-cta {
-                display: none; /* Esconde menu padrão no mobile */
-            }
-            
-            .hero-container {
-                text-align: center;
-                gap: 32px;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-text p {
-                margin: 0 auto 32px auto;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .footer-container {
-                flex-direction: column;
-                gap: 32px;
-            }
-        }
-    </style>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
+    <!-- header e nav js -->
+    <div id="header-placeholder"></div>
 
-    <!-- HEADER -->
-    <header class="main-header">
-        <div class="container header-container">
-            <div class="logo">
-                <a href="#">Plataforma<span>.</span></a>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#" class="active">Início</a></li>
-                    <li><a href="#">Funcionalidades</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </nav>
-            <div class="header-cta">
-                <a href="#" class="btn btn-primary">Começar</a>
-            </div>
+    <!-- Conteúdo principal -->
+    <main>
+        <div class="container">
+
+            <section class="col-1">
+                <h2>Bem-vindo ao Portfólio</h2>
+                <p>O fundo geral do site agora é branco. O texto principal utiliza um tom de cinza suave que oferece uma
+                    leitura extremamente confortável (evitando o cansaço visual de um texto 100% preto sobre fundo
+                    branco).</p>
+            </section>
+
+            <section class="col-2">
+                <div>
+                    <h2>Design Responsivo</h2>
+                    <p>O cabeçalho (header), rodapé (footer) e o conteúdo principal (main) expandem-se fluidamente, mas
+                        as informações dentro deles respeitam o limite máximo de 1280 pixels, mantendo tudo alinhado e
+                        centralizado.</p>
+                </div>
+                <div>
+                    <h2>Páginas e Estrutura</h2>
+                    <p>A estrutura de caixas modulares facilita a montagem de seções como <strong>Contato</strong>,
+                        <strong>Premiações</strong> e sua <strong>Timeline</strong>.
+                    </p>
+                </div>
+            </section>
         </div>
-    </header>
-
-    <!-- CONTENT -->
-    <main class="main-content">
-        
-        <!-- SEÇÃO HERO -->
-        <section class="hero-section">
-            <div class="container hero-container">
-                <div class="hero-text">
-                    <h1>Análise de dados descomplicada e eficiente</h1>
-                    <p>Uma interface limpa projetada para focar no que realmente importa: seus resultados e sua produtividade diária.</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary">Testar</a>
-                        <a href="#" class="btn btn-secondary">Saber mais</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="visual-placeholder">
-                        <div class="mock-ui">
-                            <div class="mock-bar"></div>
-                            <div class="mock-bar dynamic-width"></div>
-                            <div class="mock-bar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- SEÇÃO DE CARD FEATURES -->
     </main>
 
-    <!-- FOOTER -->
-    <footer class="main-footer">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <div class="logo"><a href="#">Plataforma<span>.</span></a></div>
-                <p>Simplificando o desenvolvimento e a análise visual de dados.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Produto</h4>
-                <ul>
-                    <li><a href="#">Ferramentas</a></li>
-                    <li><a href="#">Preços</a></li>
-                    <li><a href="#">Atualizações</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Suporte</h4>
-                <ul>
-                    <li><a href="#">Documentação</a></li>
-                    <li><a href="#">Guias</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <p>&copy; 2026 - Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
+    <!-- footer -->
+    <div id="footer-placeholder"></div>
+    <!-- scripts -->
+    <script src="js/load-components.js"></script>
+    <script src="js/menu.js"></script>
 </body>
+
 </html>
