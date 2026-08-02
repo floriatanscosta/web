@@ -1,6 +1,7 @@
 // js/load-components.js
 document.addEventListener("DOMContentLoaded", function () {
-    // header
+
+    // Header
     fetch('./components/header.html')
         .then(response => {
             if (!response.ok) throw new Error("Erro ao carregar o header");
@@ -8,10 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(data => {
             document.getElementById('header-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Problema com a requisição:', error));
 
-    // footer
+            // NOVO: Ajustar o ícone de lua/sol ao carregar o componente
+            const themeBtn = document.getElementById('theme-toggle');
+            if (localStorage.getItem('theme') === 'dark' && themeBtn) {
+                themeBtn.textContent = '☀️';
+            }
+        })
+        .catch(error => console.error('Problema com a requisição do header:', error));
+    // Footer
     fetch('./components/footer.html')
         .then(response => {
             if (!response.ok) throw new Error("Erro ao carregar");

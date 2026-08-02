@@ -3,16 +3,32 @@
    Configurações gerais, variáveis, header e footer
    ========================================= */
    
-/* === Variáveis de Cores (Padrão) === */
+/* === Variáveis de Cores (Padrão Light) === */
 :root {
     --bg-color: #ffffff;
     --heading-color: #5a729e;
     --text-main: #444444;
     --header-gradient: linear-gradient(230deg, #ffbded2b, #718fc83b);
-    --footer-bg: #5a729e;
-    --text-light: #ffffff;
+    --footer-bg: #f9f9f9;
+    --footer-text: #777777;
+    --nav-bg: #5a729f;
+    --nav-hover: rgba(18, 46, 99, 0.185);
     --box-bg: #ffffff;
     --border-color: #e2e8f0;
+}
+
+/* === Variáveis de Cores (Modo Escuro) === */
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --heading-color: #8ab4f8; /* Um azul mais vibrante para destacar no fundo escuro */
+    --text-main: #e0e0e0;
+    --header-gradient: linear-gradient(230deg, #162032, #1f2937);
+    --footer-bg: #1a1a1a;
+    --footer-text: #aaaaaa;
+    --nav-bg: #1f2937;
+    --nav-hover: rgba(255, 255, 255, 0.1);
+    --box-bg: #1e1e1e;
+    --border-color: #333333;
 }
 
 /* === Reset Básico === */
@@ -74,7 +90,7 @@ header {
 
 /* === Navegação === */
 nav {
-    background-color: #5a729f;
+    background-color: var(--nav-bg);
     width: 100%;
     border-bottom: 1px solid var(--border-color);
 }
@@ -94,7 +110,7 @@ nav {
 }
 
 .nav-content a:hover {
-    background-color: rgba(18, 46, 99, 0.185);
+    background-color: var(--nav-hover);
 }
 
 .menu-toggle {
@@ -116,8 +132,8 @@ main {
 
 /* === Footer === */
 footer {
-    background-color: #f9f9f9;
-    color: #777;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
     padding: 20px 0;
     text-align: center;
     width: 100%;
@@ -150,4 +166,19 @@ footer {
     .nav-content.active {
         display: flex;
     }
+}
+
+/* Botão tema */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--heading-color);
+    transition: transform 0.3s;
+    margin-right: 15px;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
 }

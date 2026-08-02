@@ -22,6 +22,12 @@
     <!-- Stylesheets (Caminhos relativos para o repositório de teste) -->
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/main.css">
+    <!-- Previne piscar -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
 </head>
 
 <body>
