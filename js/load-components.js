@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             document.getElementById('header-placeholder').innerHTML = data;
         })
-        .catch(error => console.error('Problema com a requisição do header:', error));
+        .catch(error => console.error('Problema com a requisição:', error));
 
     // footer
     fetch('./components/footer.html')
         .then(response => {
-            if (!response.ok) throw new Error("Erro ao carregar o footer");
+            if (!response.ok) throw new Error("Erro ao carregar");
             return response.text();
         })
         .then(data => {
@@ -26,6 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 yearSpan.textContent = new Date().getFullYear();
             }
         })
-        .catch(error => console.error('Problema com a requisição do footer:', error));
+        .catch(error => console.error('Problema com a requisição:', error));
 
 });
