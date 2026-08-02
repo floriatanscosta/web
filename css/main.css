@@ -414,3 +414,49 @@ ul.custom-list li, ol.custom-list li {
     border-top: 1px solid var(--border-color);
     line-height: 1.6;
 }
+
+/* === Página de Erro 404 === */
+.error-404-section {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: var(--box-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(90, 114, 158, 0.05);
+    border: 1px solid var(--border-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.error-404-section h1 {
+    font-size: 6rem;
+    color: var(--heading-color);
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.error-404-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.error-404-section p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* Botão Padrão (Pode ser reaproveitado em outras áreas do site) */
+.btn {
+    display: inline-block;
+    background-color: var(--heading-color);
+    color: #ffffff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #435b83;
+    transform: translateY(-2px);
+}
