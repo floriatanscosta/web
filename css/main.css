@@ -183,3 +183,171 @@ ol.custom-list li {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================
+   componentes (Perfil, Timeline, Skills, Formulário)
+   ========================================= */
+
+/* === Card de Perfil === */
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(90, 114, 158, 0.15);
+}
+
+.profile-info h3 {
+    margin-bottom: 5px;
+}
+
+.profile-info h4 {
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+/* === Timeline Vertical === */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--border-color);
+    top: 0;
+    bottom: 0;
+    left: 20px; /* Linha à esquerda */
+    border-radius: 2px;
+}
+
+.timeline-item {
+    padding: 15px 30px 15px 60px;
+    position: relative;
+    background-color: inherit;
+    width: 100%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: auto;
+    left: 14px;
+    background-color: var(--box-bg);
+    border: 4px solid var(--heading-color);
+    top: 20px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: var(--heading-color);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.timeline-content {
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.timeline-content h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* === Barras de Habilidades (Skills) === */
+.skill-box {
+    margin-bottom: 15px;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    background-color: var(--heading-color);
+    border-radius: 4px;
+}
+
+/* === Formulário de Contato === */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    background-color: #f8fafc;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--heading-color);
+    background-color: var(--box-bg);
+}
+
+.contact-form button {
+    background-color: var(--heading-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #435b83;
+}
+
+/* Responsividade do Perfil */
+@media (max-width: 600px) {
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
