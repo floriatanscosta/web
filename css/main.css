@@ -89,6 +89,7 @@ ul.custom-list li, ol.custom-list li { margin-bottom: 6px; }
 
 /* === 9. RESPONSIVIDADE (MEDIA QUERIES) === */
 @media (max-width: 768px) {
+    .col-1 { padding: 0;}
     .col-2 { grid-template-columns: 1fr; }
 }
 
