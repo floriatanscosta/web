@@ -26,3 +26,23 @@ function toggleTheme() {
         if (themeBtn) themeBtn.textContent = '☀️';
     }
 }
+
+// Função para troca manual de idioma através dos botões
+function switchLanguage(lang) {
+    // 1. Salva a escolha do usuário no navegador
+    localStorage.setItem('preferred_lang', lang);
+
+    // 2. Pega o endereço atual da página
+    const currentPath = window.location.pathname;
+
+    // 3. Faz o redirecionamento com base na escolha
+    if (lang === 'en' && !currentPath.includes('/en/')) {
+        // Vai do PT para o EN
+        window.location.href = '/en' + currentPath;
+    }
+    else if (lang === 'pt' && currentPath.includes('/en/')) {
+        // Vai do EN para o PT
+        const newPath = currentPath.replace('/en', '') || '/';
+        window.location.href = newPath;
+    }
+}
