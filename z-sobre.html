@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    
+    <title>Sobre - Floriatan Santos Costa</title>
+    <meta name="description" content="Biografia e trajetória profissional de Floriatan Santos Costa, pesquisador em química analítica e desenvolvedor.">
+    <meta name="theme-color" content="#5a729e">
+    
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/main.css">
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="container">
+            <h1>Sobre Mim</h1>
+
+            <!-- Card de Perfil -->
+            <div class="col-1 profile-card">
+                <!-- Substitua pelo caminho da sua foto -->
+                <img src="./assets/img/profile.png" alt="Floriatan Santos Costa" class="profile-img">
+                <div class="profile-info">
+                    <h3>Floriatan Dos Santos Costa</h3>
+                    <h4>Pesquisador de Pós-Doutorado em Química Analítica</h4>
+                    <p>
+                        Sou um pesquisador dedicado a expandir os limites da química analítica através da integração de novas tecnologias. Atualmente vinculado ao Departamento de Química da Universidade Federal do Paraná (UFPR) e realizando um estágio de pesquisa estendido na Universidad de Zaragoza, Espanha.
+                    </p>
+                    <p>
+                        Minha atuação foca no desenvolvimento de sistemas de micro-dispensação, manipulando volumes de picolitros a nanolitros para análises por ablação a laser e sp-ICP-MS. Além da espectrometria, aplico modelos quimiométricos, métricas de química verde e utilizo a fabricação digital (impressão 3D) para prototipagem de instrumentação de hardware laboratorial.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Grid de Habilidades (Química vs Tecnologia) -->
+            <div class="col-2">
+                <div>
+                    <h3 style="margin-bottom: 20px;">🔬 Competências Científicas</h3>
+                    
+                    <div class="skill-box">
+                        <div class="skill-name"><span>Espectrometria (ICP-MS, ICP-OES)</span> <span>95%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 95%;"></div></div>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <div class="skill-name"><span>Micro-dispensação & Microfluídica</span> <span>90%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <div class="skill-name"><span>Modificação de Superfícies & Filmes Finos</span> <span>85%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-name"><span>Quimiometria & Green Chemistry Metrics</span> <span>85%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom: 20px;">💻 Competências Tecnológicas</h3>
+                    
+                    <div class="skill-box">
+                        <div class="skill-name"><span>Modelagem & Impressão 3D (Bambu Studio)</span> <span>90%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <div class="skill-name"><span>Desenvolvimento Web (HTML, CSS, JS)</span> <span>85%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <div class="skill-name"><span>WordPress Theme Dev (Foundation 6)</span> <span>80%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <div class="skill-name"><span>Processamento Digital de Imagens</span> <span>75%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trajetória (Timeline) -->
+            <h2 style="margin-top: 40px; text-align: center;">Trajetória</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">2026 - Presente</span>
+                    <div class="timeline-content">
+                        <h3>Pesquisador Visitante</h3>
+                        <p><strong>Universidad de Zaragoza, Espanha</strong><br>Estágio estendido focado em pesquisa e desenvolvimento analítico, consolidando redes de colaboração internacional e processos instrumentais.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">Atual</span>
+                    <div class="timeline-content">
+                        <h3>Pesquisador de Pós-Doutorado</h3>
+                        <p><strong>Universidade Federal do Paraná (UFPR), Brasil</strong><br>Pesquisa em química analítica com ênfase no fracionamento de gotas em escala micro/nano, testes de tensão superficial e análise de elementos traço.</p>
+                    </div>
+                </div>
+                
+                <!-- Adicione mais itens da timeline conforme sua graduação, mestrado e doutorado -->
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="./js/load-components.js"></script>
+    <script src="./js/menu.js"></script>
+</body>
+</html>
