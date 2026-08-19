@@ -1,55 +1,40 @@
 // js/menu.js
 
-// Função para abrir e fechar o menu no mobile
-function toggleMenu() {
-    const menu = document.getElementById("navMenu");
-    if (menu) {
-        menu.classList.toggle("active");
-    } else {
-        console.error("O elemento 'navMenu' não foi encontrado na página.");
-    }
-}
+// ... (sua função toggleMenu continua igual) ...
 
-// Função para alternar o tema
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const themeBtn = document.getElementById('theme-toggle');
+    const basePath = window.location.pathname.startsWith('/web') ? '/web' : '';
 
     if (currentTheme === 'dark') {
-        // Muda para Claro
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
         if (themeBtn) {
-            // Insere o ícone de lua (escuro) para indicar a próxima ação
-            themeBtn.innerHTML = '<img src="/assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;">';
+            themeBtn.innerHTML = `<img src="${basePath}/assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;">`;
         }
     } else {
-        // Muda para Escuro
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
         if (themeBtn) {
-            // Insere o ícone de sol (claro) para indicar a próxima ação
-            themeBtn.innerHTML = '<img src="/assets/icons/claro.svg" alt="Ativar Modo Claro" style="width: 20px; height: 20px;">';
+            themeBtn.innerHTML = `<img src="${basePath}/assets/icons/claro.svg" alt="Ativar Modo Claro" style="width: 20px; height: 20px;">`;
         }
     }
 }
 
-// Função para troca manual de idioma através dos botões
 function switchLanguage(lang) {
-    // 1. Salva a escolha do usuário no navegador
     localStorage.setItem('preferred_lang', lang);
-
-    // 2. Pega o endereço atual da página
     const currentPath = window.location.pathname;
+    const basePath = currentPath.startsWith('/web') ? '/web' : '';
+    
+    // Remove o basePath temporariamente para fazer a troca limpa de /en/
+    let pathSemBase = currentPath.replace(basePath, '') || '/';
 
-    // 3. Faz o redirecionamento com base na escolha
-    if (lang === 'en' && !currentPath.includes('/en/')) {
-        // Vai do PT para o EN
-        window.location.href = '/en' + currentPath;
+    if (lang === 'en' && !pathSemBase.includes('/en/')) {
+        window.location.href = basePath + '/en' + (pathSemBase === '/' ? '' : pathSemBase);
     }
-    else if (lang === 'pt' && currentPath.includes('/en/')) {
-        // Vai do EN para o PT
-        const newPath = currentPath.replace('/en', '') || '/';
-        window.location.href = newPath;
+    else if (lang === 'pt' && pathSemBase.includes('/en/')) {
+        const newPath = pathSemBase.replace('/en', '') || '/';
+        window.location.href = basePath + newPath;
     }
 }

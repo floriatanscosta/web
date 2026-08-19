@@ -140,10 +140,46 @@ footer {
     background-color: var(--footer-bg);
     color: var(--footer-text);
     padding: 20px 0;
-    text-align: center;
     width: 100%;
     margin-top: auto;
-    font-size: 0.8rem;
+    font-size: 0.85rem; /* Um pouquinho maior para leitura confortável */
+}
+
+/* Nova estrutura de colunas para o rodapé */
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* Empurra os itens para as pontas */
+    align-items: center;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    gap: 15px;
+}
+
+.footer-left p {
+    margin-bottom: 0; /* Remove a margem padrão do parágrafo */
+}
+
+.footer-right {
+    display: flex;
+    gap: 20px; /* Espaço entre os links */
+}
+
+.footer-right a {
+    color: var(--footer-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-right a:hover {
+    color: var(--heading-color);
+}
+
+/* Responsividade: Centraliza no celular */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 /* === Responsividade Global (Header/Menu) === */
