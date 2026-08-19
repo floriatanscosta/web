@@ -56,12 +56,7 @@ body {
 }
 
 /* Títulos Globais */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
     color: var(--heading-color);
     margin-bottom: 30px;
 }
@@ -142,25 +137,25 @@ footer {
     padding: 20px 0;
     width: 100%;
     margin-top: auto;
-    font-size: 0.85rem; /* Um pouquinho maior para leitura confortável */
+    font-size: 0.85rem;
 }
 
-/* Nova estrutura de colunas para o rodapé */
+
 .footer-content {
     display: flex;
-    justify-content: space-between; /* Empurra os itens para as pontas */
+    justify-content: space-between; 
     align-items: center;
-    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    flex-wrap: wrap;
     gap: 15px;
 }
 
 .footer-left p {
-    margin-bottom: 0; /* Remove a margem padrão do parágrafo */
+    margin-bottom: 0;
 }
 
 .footer-right {
     display: flex;
-    gap: 20px; /* Espaço entre os links */
+    gap: 20px;
 }
 
 .footer-right a {
@@ -222,4 +217,71 @@ footer {
 
 .theme-toggle:hover {
     transform: scale(1.1);
+}
+
+/* === Menu Suspenso de Idiomas === */
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-dropbtn {
+    background: none;
+    border: none;
+    color: var(--heading-color);
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: opacity 0.3s;
+}
+
+.lang-dropbtn:hover {
+    opacity: 0.8;
+}
+
+.lang-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0; /* Alinha o balão à direita */
+    background-color: var(--box-bg);
+    min-width: 140px;
+    box-shadow: 0px 8px 15px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.lang-dropdown-content button {
+    color: var(--text-main);
+    padding: 12px 15px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.lang-dropdown-content button:last-child {
+    border-bottom: none;
+}
+
+.lang-dropdown-content button:hover {
+    background-color: rgba(90, 114, 158, 0.1); 
+}
+
+.lang-dropdown:hover .lang-dropdown-content {
+    display: block;
+}
+
+[data-theme="dark"] .lang-dropdown-content {
+    box-shadow: 0px 8px 15px rgba(0,0,0,0.5);
 }

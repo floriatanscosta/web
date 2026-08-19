@@ -9,13 +9,14 @@
         <!-- Agrupando os botões na direita -->
         <div style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
             
-            <!-- Botões de Idioma -->
-            <div class="lang-switcher" style="font-weight: bold; font-size: 0.95rem;">
-                <button onclick="switchLanguage('pt')" style="background: none; border: none; cursor: pointer; color: inherit; padding: 0;">PT</button>
-                <span>|</span>
-                <button onclick="switchLanguage('en')" style="background: none; border: none; cursor: pointer; color: inherit; padding: 0;">EN</button>
+            <!-- Botão Dropdown de Idioma -->
+            <div class="lang-dropdown">
+                <button class="lang-dropbtn">EN</button>
+                <div class="lang-dropdown-content">
+                    <button onclick="switchLanguage('pt')">Português (PT)</button>
+                    <button onclick="switchLanguage('en')">English (EN)</button>
+                </div>
             </div>
-
             <!-- Botão de Tema (Modo Escuro) com SVG -->
             <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme" style="padding: 0;">
                 <img src="../../assets/icons/escuro.svg" alt="Enable Dark Mode" style="width: 20px; height: 20px;">
