@@ -1,4 +1,5 @@
 // js/menu.js
+
 // Função para abrir e fechar o menu no mobile
 function toggleMenu() {
     const menu = document.getElementById("navMenu");
@@ -18,12 +19,18 @@ function toggleTheme() {
         // Muda para Claro
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
-        if (themeBtn) themeBtn.textContent = '🌙';
+        if (themeBtn) {
+            // Insere o ícone de lua (escuro) para indicar a próxima ação
+            themeBtn.innerHTML = '<img src="/assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;">';
+        }
     } else {
         // Muda para Escuro
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        if (themeBtn) themeBtn.textContent = '☀️';
+        if (themeBtn) {
+            // Insere o ícone de sol (claro) para indicar a próxima ação
+            themeBtn.innerHTML = '<img src="/assets/icons/claro.svg" alt="Ativar Modo Claro" style="width: 20px; height: 20px;">';
+        }
     }
 }
 
