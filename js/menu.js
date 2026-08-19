@@ -1,7 +1,16 @@
 // js/menu.js
 
-// ... (sua função toggleMenu continua igual) ...
+// Função para abrir e fechar o menu
+function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    if (menu) {
+        menu.classList.toggle("active");
+    } else {
+        console.error("O elemento 'navMenu' não foi encontrado na página.");
+    }
+}
 
+// Função para alternar o tema (Claro/Escuro)
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const themeBtn = document.getElementById('theme-toggle');
@@ -22,6 +31,7 @@ function toggleTheme() {
     }
 }
 
+// Função para troca manual de idioma
 function switchLanguage(lang) {
     localStorage.setItem('preferred_lang', lang);
     const currentPath = window.location.pathname;
