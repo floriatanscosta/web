@@ -68,7 +68,7 @@ nav { width: 100%; background-color: var(--nav-bg); border-bottom: 1px solid var
 /* === 7. RODAPÉ (FOOTER) === */
 footer { width: 100%; margin-top: auto; padding: 20px 0; background-color: var(--footer-bg); color: var(--footer-text); font-size: 0.85rem; }
 .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-.footer-left p { margin-bottom: 0; }
+.footer-left p { margin-bottom: 0; line-height: 1.1em; }
 .footer-right { display: flex; gap: 20px; }
 .footer-right a { color: var(--footer-text); font-weight: 500; text-decoration: none; transition: color 0.3s; }
 .footer-right a:hover { color: var(--heading-color); }
@@ -83,5 +83,25 @@ footer { width: 100%; margin-top: auto; padding: 20px 0; background-color: var(-
 }
 
 @media (max-width: 600px) {
-    .footer-content { flex-direction: column; text-align: center; }
+    .footer-content { flex-direction: column; text-align: center; font-size: 10px; }
+}
+
+
+/* === VERSÃO IMPRESSA === */
+@media print {
+    @page { size: A4; margin: 2cm; }
+    body { background-color: #ffffff !important; color: #000000 !important; font-size: 11pt; }
+    header, nav, footer, .theme-toggle, .lang-dropdown, .menu-toggle, .btn, .contact-form { display: none !important; }
+    main, .container { width: 100% !important; max-width: none !important; padding: 0 !important; margin: 0 !important; }
+    .col-1, .col-2 > div, .project-card, .metric-card, .timeline-content, .profile-img { box-shadow: none !important; border: 1px solid #cccccc !important; background-color: #ffffff !important; }
+    .col-2 > div, .project-card, .metric-card, .timeline-item, .article-item, .profile-card { page-break-inside: avoid; }
+    h1, h2, h3, h4, h5, h6 { page-break-after: avoid; color: #000000 !important; }
+    .timeline::after { background-color: #cccccc !important; }
+    .timeline-item::after { border-color: #555555 !important; background-color: #ffffff !important; }
+    .skill-bar { background-color: #eeeeee !important; border: 1px solid #cccccc; }
+    .skill-fill { background-color: #555555 !important; }
+    .tag, code, blockquote { background-color: transparent !important; border: 1px solid #cccccc !important; color: #000000 !important; }
+    blockquote { border-left: 4px solid #555555 !important; }
+    main a.inline-link { text-decoration: underline; color: #000000 !important; }
+    main a.inline-link::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #555555; }
 }
