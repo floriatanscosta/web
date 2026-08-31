@@ -1,41 +1,60 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-    <!-- Meta Tags Básicas -->
-    <title>Floriatan Santos Costa</title>
-    <meta name="description" content="Postdoctoral Researcher focused on the development of sustainable analytical methods">
+    <!-- Meta Tags -->
+    <title>Floriatan Santos Costa - Portfólio</title>
+    <meta name="description" content="Portfólio acadêmico e profissional de Floriatan Santos Costa. Explore projetos, publicações e experiências.">
+    <meta property="og:title" content="Floriatan Santos Costa - Portfólio">
+    <meta property="og:description" content="Portfólio acadêmico e profissional. Explore projetos, publicações e experiências.">
+    <meta property="og:image" content="../assets/img/cover.png">
     <meta name="theme-color" content="#5a729e">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Floriatan Santos Costa">
-    <meta property="og:description" content="Postdoctoral Researcher focused on the development of sustainable analytical methods">
-    <meta property="og:image" content="../assets/img/cover.png">
-    <meta property="og:url" content="https://floriatanscosta.github.io/">
+    <meta property="og:url" content="https://floriatan.com.br/">
 
-    <!-- Previne o piscar branco do modo escuro -->
+    <!-- Previne o piscar branco -->
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
-
     <style>
-        body {
-            background: var(--header-gradient);
-        }
+        body {background: var(--header-gradient);}
     </style>
     
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/main.css">
 </head>
 
 <body>
-    <!-- header -->
-    <div id="header-placeholder"></div>
+    <!-- Cabeçalho e Navegação -->
+    <header>
+        <div class="container header-content">
+            <a href="/">
+                <img src="../assets/logo.svg" alt="Logo Floriatan" class="logo-img">
+            </a>
+            <h1 class="site-title">Floriatan Santos Costa</h1>
+            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
+                <div class="lang-dropdown">
+                    <button class="lang-dropbtn">PT</button>
+                    <div class="lang-dropdown-content">
+                        <button onclick="switchLanguage('pt')">Português (PT)</button>
+                        <button onclick="switchLanguage('en')">English (EN)</button>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema" style="padding: 0;"><img src="../assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;"></button>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container nav-content" id="navMenu">
+            <a href="/">Início</a>
+        </div>
+    </nav>
 
     <!-- Conteúdo principal -->
     <main>
@@ -43,7 +62,7 @@
 
               <section class="col-1">
                 <h1 class="intro-title">Between Falcon tubes and algorithms, a researcher in search of answers!</h1>
-                <p class="intro-text">Science is a universe of possibilities. Between tubes, analytical curves, spectrometers, and data, I follow invisible traces that <a href="./vida-de-cientista" class="inline-link">tell stories</a> and reveal the mysteries of nature.</p>
+                <p class="intro-text">Science is a universe of possibilities. Between tubes, analytical curves, spectrometers, and data, I follow invisible traces that <a href="/vida-de-cientista" class="inline-link">tell stories</a> and reveal the mysteries of nature.</p>
                 <p class="intro-text">Every chemical element has its own signature, and every sample is an enigma to be unraveled. It is in this space between the visible and the hidden that my research takes place, seeking to understand the story of each analyzed sample. Each result is a clue and each experiment, a new chapter in the search for answers.</p>
                 <p class="intro-text">On this site, I share some of these stories, work, and productions.</p>
                 
@@ -79,11 +98,34 @@
         </div>
     </main>
 
-    <!-- footer -->
-    <div id="footer-placeholder"></div>
-    <!-- scripts -->
-    <script src="../js/load-components.js"></script>
+    <!-- Rodapé -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>&copy; <span id="year"></span> Floriatan Santos Costa — Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-right">
+                <a href="/sobre">Sobre</a>
+                <a href="/contato">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="../js/menu.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+ 

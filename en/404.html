@@ -1,52 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-    <!-- Meta Tags Básicas -->
-    <title>Floriatan Santos Costa - Portfolio</title>
-    <meta name="description" content="Academic and professional portfolio of Floriatan Santos Costa. Explore projects, publications, and experiences.">
+    <!-- Meta Tags -->
+    <title>Página não encontrada</title>
+    <meta property="og:image" content="./assets/img/cover.png">
     <meta name="theme-color" content="#5a729e">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Floriatan Santos Costa - Portfolio"> 
-    <meta property="og:description" content="Academic and professional portfolio of Floriatan Santos Costa. Explore projects, publications, and experiences.">
-    <meta property="og:image" content="./assets/img/cover.png">
-    <meta property="og:url" content="https://floriatanscosta.github.io/">
+    <meta property="og:url" content="https://floriatan.com.br/">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <!-- Previne piscar -->
+    <!-- Previne o piscar branco -->
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
+    
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-    <!-- header e nav js -->
-    <div id="header-placeholder"></div>
-    
+    <!-- Cabeçalho e Navegação -->
+    <header>
+        <div class="container header-content">
+            <a href="/">
+                <img src="./assets/logo.svg" alt="Logo Floriatan" class="logo-img">
+            </a>
+            <h1 class="site-title">Floriatan Santos Costa</h1>
+            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
+                <div class="lang-dropdown">
+                    <button class="lang-dropbtn">PT</button>
+                    <div class="lang-dropdown-content">
+                        <button onclick="switchLanguage('pt')">Português (PT)</button>
+                        <button onclick="switchLanguage('en')">English (EN)</button>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema" style="padding: 0;"><img src="./assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;"></button>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container nav-content" id="navMenu">
+            <a href="/">Início</a>
+            <a href="/biografia">Biografia</a>
+            <a href="/experiencia">Experiência</a>
+            <a href="/publicacoes">Publicações</a>
+            <a href="/premiacoes">Premiações</a>
+            <a href="/contato">Contato</a>
+        </div>
+    </nav>
+
     <!-- Conteúdo 404 -->
     <main>
         <div class="container">
             <section class="error-404-section">
-                <h2>404! Page not found</h2>
-                <p>Sorry, the page you are looking for does not exist, has been moved, or the address was typed incorrectly.</p>
-                <a href="./" class="btn">Go to homepage</a>
+                <h2>Página não encontrada!</h2>
+                <p>Desculpe, a página que você está procurando não existe, foi movida ou o endereço foi digitado incorretamente.</p>
+                <a href="/" class="btn">Ir para o início</a>
             </section>
         </div>
     </main>
-    
-    <!-- footer -->
-    <div id="footer-placeholder"></div>
-    
-    <!-- scripts -->
-    <script src="./js/load-components.js"></script>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>&copy; <span id="year"></span> Floriatan Santos Costa — Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-right">
+                <a href="/sobre">Sobre</a>
+                <a href="/contato">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="./js/menu.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>

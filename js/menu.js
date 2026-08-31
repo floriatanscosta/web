@@ -10,23 +10,22 @@ function toggleMenu() {
     }
 }
 
-// Função para alternar o tema (Claro/Escuro)
+// Função para alternar o tema (modo claro e escuro)
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const themeBtn = document.getElementById('theme-toggle');
-    const basePath = window.location.pathname.startsWith('/web') ? '/web' : '';
 
     if (currentTheme === 'dark') {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
         if (themeBtn) {
-            themeBtn.innerHTML = `<img src="${basePath}/assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;">`;
+            themeBtn.innerHTML = `<img src="/assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;">`;
         }
     } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
         if (themeBtn) {
-            themeBtn.innerHTML = `<img src="${basePath}/assets/icons/claro.svg" alt="Ativar Modo Claro" style="width: 20px; height: 20px;">`;
+            themeBtn.innerHTML = `<img src="/assets/icons/claro.svg" alt="Ativar Modo Claro" style="width: 20px; height: 20px;">`;
         }
     }
 }
@@ -35,16 +34,15 @@ function toggleTheme() {
 function switchLanguage(lang) {
     localStorage.setItem('preferred_lang', lang);
     const currentPath = window.location.pathname;
-    const basePath = currentPath.startsWith('/web') ? '/web' : '';
     
-    // Remove o basePath temporariamente para fazer a troca limpa de /en/
-    let pathSemBase = currentPath.replace(basePath, '') || '/';
-
-    if (lang === 'en' && !pathSemBase.includes('/en/')) {
-        window.location.href = basePath + '/en' + (pathSemBase === '/' ? '' : pathSemBase);
+    if (lang === 'en' && !currentPath.startsWith('/en/')) {
+        // Se estiver na raiz, vai para /en/. Se não, adiciona /en antes do caminho (ex: /en/biografia)
+        const newPath = currentPath === '/' ? '/en/' : '/en' + currentPath;
+        window.location.href = newPath;
     }
-    else if (lang === 'pt' && pathSemBase.includes('/en/')) {
-        const newPath = pathSemBase.replace('/en', '') || '/';
-        window.location.href = basePath + newPath;
+    else if (lang === 'pt' && currentPath.startsWith('/en/')) {
+        // Remove exatamente o '/en' do início do caminho
+        const newPath = currentPath.replace(/^\/en/, '') || '/';
+        window.location.href = newPath;
     }
 }
