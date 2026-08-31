@@ -5,17 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-    <title>Página template - Título da Página - Floriatan Santos Costa</title>
-    <meta name="description" content="Descrição da página">
+    <!-- Meta Tags -->
+    <title>Floriatan Santos Costa - Portfólio</title>
+    <meta name="description" content="Portfólio acadêmico e profissional de Floriatan Santos Costa. Explore projetos, publicações e experiências.">
+    <meta property="og:title" content="Floriatan Santos Costa - Portfólio">
+    <meta property="og:description" content="Portfólio acadêmico e profissional. Explore projetos, publicações e experiências.">
+    <meta property="og:image" content="./assets/img/cover.png">
     <meta name="theme-color" content="#5a729e">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floriatan.com.br/">
 
-    <!-- Previne o piscar branco do modo escuro -->
+    <!-- Previne o piscar branco -->
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
-    
+    <style>
+        body {background: var(--header-gradient);}
+    </style>
+
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/main.css">
 </head>
@@ -28,7 +37,6 @@
                 <img src="./assets/logo.svg" alt="Logo Floriatan" class="logo-img">
             </a>
             <h1 class="site-title">Floriatan Santos Costa</h1>
-            
             <div style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
                 <div class="lang-dropdown">
                     <button class="lang-dropbtn">PT</button>
@@ -37,23 +45,19 @@
                         <button onclick="switchLanguage('en')">English (EN)</button>
                     </div>
                 </div>
-
-                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema" style="padding: 0;">
-                    <img src="./assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;">
-                </button>
-                
+                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema" style="padding: 0;"><img src="./assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;"></button>
                 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             </div>
         </div>
     </header>
     <nav>
         <div class="container nav-content" id="navMenu">
-            <a href="/web/">Início</a>
-            <a href="/web/biografia">Biografia</a>
-            <a href="/web/experiencia">Experiência</a>
-            <a href="/web/publicacoes">Publicações</a>
-            <a href="/web/premiacoes">Premiações</a>
-            <a href="/web/contato">Contato</a>
+            <a href="/">Início</a>
+            <a href="/biografia">Biografia</a>
+            <a href="/experiencia">Experiência</a>
+            <a href="/publicacoes">Publicações</a>
+            <a href="/premiacoes">Premiações</a>
+            <a href="/contato">Contato</a>
         </div>
     </nav>
 
@@ -61,9 +65,23 @@
     <main>
         <div class="container">
             <section class="col-1">
-                <h2>Título da Seção</h2>
+                <h2>Título da seção</h2>
                 <p>Conteúdo aqui...</p>
             </section>
+
+
+            <section class="col-1">
+                <h3>Título da seção</h3>
+                <span>Conteúdo aqui...</span>
+            </section>
+
+
+            <section class="col-1">
+                <h4>Título da seção</h4>
+                <span>Conteúdo aqui...</span>
+            </section>
+
+
         </div>
     </main>
 
@@ -74,8 +92,8 @@
                 <p>&copy; <span id="year"></span> Floriatan Santos Costa — Todos os direitos reservados.</p>
             </div>
             <div class="footer-right">
-                <a href="#">Sobre</a>
-                <a href="#">Contato</a>
+                <a href="/sobre">Sobre</a>
+                <a href="/contato">Contato</a>
             </div>
         </div>
     </footer>
