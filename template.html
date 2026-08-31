@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <title>Página template - Título da Página - Floriatan Santos Costa</title>
+    <meta name="description" content="Descrição da página">
+    <meta name="theme-color" content="#5a729e">
+
+    <!-- Previne o piscar branco do modo escuro -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <!-- Cabeçalho e Navegação -->
+    <header>
+        <div class="container header-content">
+            <a href="/web/">
+                <img src="./assets/logo.svg" alt="Logo Floriatan" class="logo-img">
+            </a>
+            <h1 class="site-title">Floriatan Santos Costa</h1>
+            
+            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
+                <div class="lang-dropdown">
+                    <button class="lang-dropbtn">PT</button>
+                    <div class="lang-dropdown-content">
+                        <button onclick="switchLanguage('pt')">Português (PT)</button>
+                        <button onclick="switchLanguage('en')">English (EN)</button>
+                    </div>
+                </div>
+
+                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema" style="padding: 0;">
+                    <img src="./assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;">
+                </button>
+                
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container nav-content" id="navMenu">
+            <a href="/web/">Início</a>
+            <a href="/web/biografia">Biografia</a>
+            <a href="/web/experiencia">Experiência</a>
+            <a href="/web/publicacoes">Publicações</a>
+            <a href="/web/premiacoes">Premiações</a>
+            <a href="/web/contato">Contato</a>
+        </div>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main>
+        <div class="container">
+            <section class="col-1">
+                <h2>Título da Seção</h2>
+                <p>Conteúdo aqui...</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>&copy; <span id="year"></span> Floriatan Santos Costa — Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#">Sobre</a>
+                <a href="#">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./js/menu.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
