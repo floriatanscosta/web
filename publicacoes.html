@@ -4,35 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Meta Tags Básicas -->
-    <title>Publications - Floriatan Santos Costa</title>
-    <meta name="description" content="Postdoctoral Researcher focused on the development of sustainable analytical methods. Explore scientific productions, including articles, book chapters, and abstracts.">
-    
-    <!-- Favicon e Cores -->
-    <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <!-- Meta Tags -->
+    <title>Floriatan Santos Costa - Portfólio</title>
+    <meta name="description" content="Portfólio acadêmico e profissional de Floriatan Santos Costa. Explore projetos, publicações e experiências.">
+    <meta property="og:title" content="Floriatan Santos Costa - Portfólio">
+    <meta property="og:description" content="Portfólio acadêmico e profissional. Explore projetos, publicações e experiências.">
+    <meta property="og:image" content="./assets/img/cover.png">
     <meta name="theme-color" content="#5a729e">
-    
-    <!-- Open Graph (Redes Sociais) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Publications - Floriatan Santos Costa">
-    <meta property="og:description" content="Postdoctoral Researcher focused on the development of sustainable analytical methods.">
-    <meta property="og:image" content="/assets/img/cover.png">
+    <meta property="og:url" content="https://floriatan.com.br/">
 
-    <!-- Stylesheets (Caminhos relativos para o repositório de teste) -->
-    <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <!-- Previne piscar -->
+    <!-- Previne o piscar branco -->
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
+    
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-    <!-- Header Injetado via JS -->
-    <div id="header-placeholder"></div>
+    <!-- Cabeçalho e Navegação -->
+    <header>
+        <div class="container header-content">
+            <a href="/">
+                <img src="./assets/logo.svg" alt="Logo Floriatan" class="logo-img">
+            </a>
+            <h1 class="site-title">Floriatan Santos Costa</h1>
+            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
+                <div class="lang-dropdown">
+                    <button class="lang-dropbtn">PT</button>
+                    <div class="lang-dropdown-content">
+                        <button onclick="switchLanguage('pt')">Português (PT)</button>
+                        <button onclick="switchLanguage('en')">English (EN)</button>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema" style="padding: 0;"><img src="./assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;"></button>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container nav-content" id="navMenu">
+            <a href="/">Início</a>
+            <a href="/biografia">Biografia</a>
+            <a href="/experiencia">Experiência</a>
+            <a href="/publicacoes">Publicações</a>
+            <a href="/premiacoes">Premiações</a>
+            <a href="/contato">Contato</a>
+        </div>
+    </nav>
 
     <!-- Conteúdo Principal -->
     <main>
@@ -131,7 +155,7 @@
                         <p class="article-journal">Journal of Molecular Liquids</p>
                         <a href="https://doi.org/10.1016/j.molliq.2023.121801" class="doi-link" target="_blank">10.1016/j.molliq.2023.121801</a>
                     </article>
-                    
+            
                 </div>
             </section>
 
@@ -187,16 +211,29 @@
                         <p class="article-journal">20th Brazilian Meeting on Analytical Chemistry (2022)</p>
                     </article>
                 </div>
+                
             </section>
         </div>
     </main>
 
-    <!-- Footer Injetado via JS -->
-    <div id="footer-placeholder"></div>
+    <!-- Rodapé -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>&copy; <span id="year"></span> Floriatan Santos Costa — Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-right">
+                <a href="/sobre">Sobre</a>
+                <a href="/contato">Contato</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
-    <script src="./js/load-components.js"></script>
     <script src="./js/menu.js"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
