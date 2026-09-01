@@ -20,21 +20,21 @@ function atualizarAssinatura() {
     const celulaWeb = urlWeb ? `
       <td style="padding-right: 14px; vertical-align: middle;">
         <a href="${urlWeb}" target="_blank" style="text-decoration: none; display: block;">
-          <img src="/components/gerador/link.png" alt="CV" style="height: 20px; width: auto; display: block;" height="20" title="Currículum Vitae">
+          <img src="./components/gerador/link.png" alt="CV" style="height: 20px; width: auto; display: block;" height="20" title="Currículum Vitae">
         </a>
       </td>` : '';
 
     const celulaLattes = urlLattes ? `
       <td style="padding-right: 14px; vertical-align: middle;">
         <a href="${urlLattes}" target="_blank" style="text-decoration: none; display: block;">
-          <img src="/components/gerador/lattes.png" alt="Lattes" style="height: 20px; width: auto; display: block;" height="20" title="Currículo Lattes">
+          <img src="./components/gerador/lattes.png" alt="Lattes" style="height: 20px; width: auto; display: block;" height="20" title="Currículo Lattes">
         </a>
       </td>` : '';
 
     const celulaOrcid = urlOrcid ? `
       <td style="vertical-align: middle;">
         <a href="${urlOrcid}" target="_blank" style="text-decoration: none; display: block;">
-          <img src="/components/gerador/orcid.png" alt="ORCID" style="height: 20px; width: auto; display: block;" height="20" title="ORCID iD">
+          <img src="./components/gerador/orcid.png" alt="ORCID" style="height: 20px; width: auto; display: block;" height="20" title="ORCID iD">
         </a>
       </td>` : '';
 
