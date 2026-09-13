@@ -21,8 +21,8 @@
 /* 2. Gerador de XML (custom-plate.html) - Layout Principal e Containers */
 /*****************************************************************/
 .app-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin-top: 20px; }
-.form-panel { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-.preview-panel { display: flex; flex-direction: column; gap: 20px; }
+.form-panel { min-height: 1029px; var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.preview-panel { min-height: 1029px; display: flex; flex-direction: column; gap: 20px; }
 .card { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .form-group { display: flex; flex-direction: column; }
