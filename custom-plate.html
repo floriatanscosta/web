@@ -173,21 +173,21 @@
                 <div class="preview-panel">
                     <div class="card">
                         <h3>Matrix Visualization</h3>
-                        <h4 id="displayPlateId" class="plate-id-display">Plate ID: 1A_240</h4>
-                        <div id="gridWarning" class="grid-warning" style="display: none; color: #d9534f; font-weight: bold; margin-bottom: 10px;">Warning: Matrix size limit exceeded (Max 1536 positions). Matrix will not be rendered.</div>
-                        
+                        <h4 id="displayPlateId" class="plate-id-display">
+                            Plate ID: <span id="idText">1A_240</span> | Total Droplets: <span id="displayTotalDroplets" style="color: #4a90e2;">240</span>
+                        </h4>
+                        <div id="gridWarning" class="grid-warning" style="display: none; color: #d9534f; font-weight: bold; margin-bottom: 10px;"></div>
                         <div class="glass-slide-wrapper">
                             <div id="glassSlide" class="glass-slide">
                                 <div id="dropletGrid" class="droplet-grid"></div>
                             </div>
                         </div>
                     </div>
-
                     <div class="card">
                         <h3>Generated XML Code</h3>
                         <textarea id="xmlOutput" class="xml-output" readonly></textarea>
                         <div class="btn-group">
-                            <button id="copyBtn" class="btn">Copy code XML</button>
+                            <button id="copyBtn" class="btn">Copy code</button>
                             <button id="downloadBtn" class="btn">Download</button>
                         </div>
                     </div>

@@ -22,22 +22,18 @@ if (modalOverlay) {
     });
 }
 
-const yearElement = document.getElementById('year');
-if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('plateForm');
-    if (!form) return; 
+    if (!form) return;
 
     const inputs = form.querySelectorAll('input, select');
     const xmlOutput = document.getElementById('xmlOutput');
     const dropletGrid = document.getElementById('dropletGrid');
     const glassSlide = document.getElementById('glassSlide');
     const gridWarning = document.getElementById('gridWarning');
-    const displayPlateId = document.getElementById('displayPlateId');
-    
+    const idText = document.getElementById('idText');
+    const displayTotalDroplets = document.getElementById('displayTotalDroplets');
+
     // Mitigação contra injeção de dados (XSS)
     const escapeXml = (unsafe) => {
         return String(unsafe).replace(/[<>&'"]/g, function (c) {
@@ -52,13 +48,62 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateApp = () => {
-        if (!form.checkValidity()) return; 
+        if (!form.checkValidity()) return;
 
         const data = {};
         inputs.forEach(input => {
             data[input.id] = escapeXml(input.value);
         });
 
+        const rows = parseInt(data.rows, 10);
+        const cols = parseInt(data.cols, 10);
+        const totalDroplets = rows * cols;
+        const rowPitch = parseFloat(data.rowpitch);
+        const colPitch = parseFloat(data.colpitch);
+        const dropletSizeSelection = document.getElementById('dropletsize').value;
+
+        // Atualiza a exibição de texto
+        idText.textContent = data.plateId;
+        displayTotalDroplets.textContent = totalDroplets;
+
+        // ==========================================
+        // LÓGICA DE LIMITES DE SEGURANÇA E ESPAÇAMENTO
+        // ==========================================
+        let maxRows = Infinity;
+        if (rowPitch > 3) maxRows = 13;
+        else if (rowPitch > 2) maxRows = 20;
+        else if (rowPitch > 1.5) maxRows = 25;
+        else if (rowPitch > 1) maxRows = 36;
+
+        let maxCols = Infinity;
+        if (colPitch > 3) maxCols = 8;
+        else if (colPitch > 2) maxCols = 12;
+        else if (colPitch > 1.5) maxCols = 16;
+        else if (colPitch > 1) maxCols = 24;
+
+        let warningMessage = "";
+
+        if (totalDroplets > 1536) {
+            warningMessage = `Warning: Limit exceeded. Max total droplets is 1536 (Current: ${totalDroplets}).`;
+        } else if (rows > maxRows) {
+            warningMessage = `Warning: For a Row pitch > ${rowPitch > 3 ? 3 : rowPitch > 2 ? 2 : rowPitch > 1.5 ? 1.5 : 1} mm, maximum allowed rows is ${maxRows}.`;
+        } else if (cols > maxCols) {
+            warningMessage = `Warning: For a Col pitch > ${colPitch > 3 ? 3 : colPitch > 2 ? 2 : colPitch > 1.5 ? 1.5 : 1} mm, maximum allowed cols is ${maxCols}.`;
+        }
+
+        if (warningMessage !== "") {
+            gridWarning.textContent = warningMessage;
+            gridWarning.style.display = 'block';
+            dropletGrid.innerHTML = '';
+            xmlOutput.value = '<!-- Fix configuration errors to generate XML -->';
+            return;
+        } else {
+            gridWarning.style.display = 'none';
+        }
+
+        // ==========================================
+        // GERAÇÃO DO XML 
+        // ==========================================
         const xmlString = `<?xml version="1.0" encoding="utf-8"?>
 <HPDDPlate>
   <id>${data.plateId}</id>
@@ -77,64 +122,40 @@ document.addEventListener('DOMContentLoaded', () => {
   <nozzlemask>${data.nozzlemask}</nozzlemask>
   <horizontaloffset>${data.horizontaloffset}</horizontaloffset>
 </HPDDPlate>`;
-        
+
         xmlOutput.value = xmlString;
-        displayPlateId.textContent = `Plate ID: ${data.plateId}`;
 
-        const rows = parseInt(data.rows, 10);
-        const cols = parseInt(data.cols, 10);
-        const totalDroplets = rows * cols;
-        const rowPitch = parseFloat(data.rowpitch);
-        const colPitch = parseFloat(data.colpitch);
-        const dropletSizeSelection = document.getElementById('dropletsize').value;
-
-        // Rate Limiting Visual / Prevenção de travamento no DOM (Max 1536)
-        if (totalDroplets > 1536) {
-             gridWarning.style.display = 'block';
-             dropletGrid.innerHTML = ''; 
-             return;
-        } else {
-             gridWarning.style.display = 'none';
-        }
-        
         // ==========================================
-        // LÓGICA MATEMÁTICA DE ESCALA E POSICIONAMENTO
+        // LÓGICA MATEMÁTICA DE ESCALA E POSICIONAMENTO DA MATRIZ
         // ==========================================
         const SCALE = 6; // Fator de escala: 1 mm = 6 px
-        
-        // Dimensões físicas da lâmina
+
         const slideWidthMm = 30;
         const slideHeightMm = 80;
-        
-        // Ponto central da primeira gota (A1)
+
         const offsetLeftMm = 4;
         const offsetTopMm = 15;
 
-        // Redimensiona o container da lâmina (SVG)
         glassSlide.style.width = `${slideWidthMm * SCALE}px`;
         glassSlide.style.height = `${slideHeightMm * SCALE}px`;
 
         const rowPitchPx = rowPitch * SCALE;
         const colPitchPx = colPitch * SCALE;
 
-        // Posiciona a grade inteira subtraindo metade da célula para que o *centro* da primeira célula caia exato no offset
         dropletGrid.style.left = `${(offsetLeftMm * SCALE) - (colPitchPx / 2)}px`;
         dropletGrid.style.top = `${(offsetTopMm * SCALE) - (rowPitchPx / 2)}px`;
-        
-        // Estrutura a grade baseada no pitch exato
+
         dropletGrid.style.gridTemplateRows = `repeat(${rows}, ${rowPitchPx}px)`;
         dropletGrid.style.gridTemplateColumns = `repeat(${cols}, ${colPitchPx}px)`;
 
-        // Configuração visual das gotas (não altera as distâncias centro a centro)
-        let dropSizePx = 6; 
-        if (dropletSizeSelection === 'small') dropSizePx = 3;   
-        if (dropletSizeSelection === 'large') dropSizePx = 10;  
+        let dropSizePx = 6;
+        if (dropletSizeSelection === 'small') dropSizePx = 3;
+        if (dropletSizeSelection === 'large') dropSizePx = 10;
 
-        dropletGrid.innerHTML = ''; 
-        
+        dropletGrid.innerHTML = '';
+
         const fragment = document.createDocumentFragment();
         for (let i = 0; i < totalDroplets; i++) {
-            // A célula garante o espaçamento geométrico perfeito da matriz
             const cell = document.createElement('div');
             cell.className = 'droplet-cell';
             cell.style.width = `${colPitchPx}px`;
@@ -152,10 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     inputs.forEach(input => input.addEventListener('input', updateApp));
-    
+
     document.getElementById('copyBtn').addEventListener('click', () => {
         navigator.clipboard.writeText(xmlOutput.value).then(() => {
-            showModal('Success', 'XML configuration code has been copied to your clipboard!');
+            showModal('Success', 'XML code has been copied with success!');
         }).catch(err => {
             showModal('Error', 'Failed to copy text. Check your browser permissions.');
             console.error(err);
@@ -163,18 +184,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('downloadBtn').addEventListener('click', () => {
+        // Se houver erro, impede o download de um XML quebrado
+        if (gridWarning.style.display === 'block') {
+            showModal('Error', 'Please resolve the matrix configuration limits before downloading.');
+            return;
+        }
+
         const blob = new Blob([xmlOutput.value], { type: 'text/xml' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         const filename = escapeXml(document.getElementById('plateId').value) || 'HPDDPlate';
-        
+
         a.href = url;
         a.download = `${filename}.xml`;
-        
+
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        URL.revokeObjectURL(url); 
+        URL.revokeObjectURL(url);
     });
 
     updateApp();
