@@ -1,4 +1,3 @@
-
 // Controle Global do Modal
 const modalOverlay = document.getElementById('customModal');
 const modalTitle = document.getElementById('modalTitle');
@@ -22,12 +21,6 @@ if (modalOverlay) {
   modalOverlay.addEventListener('click', (e) => {
     if (e.target === modalOverlay) closeModal();
   });
-}
-
-// Configuração do Footer (Ano Dinâmico)
-const yearElement = document.getElementById('year');
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
 }
 
 // Lógica Principal da Aplicação
@@ -101,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let dropSizePx = 8;
-    if (dropletSizeSelection === 'small') dropSizePx = 4;
-    if (dropletSizeSelection === 'large') dropSizePx = 16;
+    if (dropletSizeSelection === 'small') dropSizePx = 3;
+    if (dropletSizeSelection === 'large') dropSizePx = 12;
 
     dropletGrid.style.gridTemplateRows = `repeat(${rows}, ${dropSizePx}px)`;
     dropletGrid.style.gridTemplateColumns = `repeat(${cols}, ${dropSizePx}px)`;
@@ -148,6 +141,5 @@ document.addEventListener('DOMContentLoaded', () => {
     URL.revokeObjectURL(url);
   });
 
-  // Inicia a aplicação populando a grid baseada nos valores iniciais
   updateApp();
 });

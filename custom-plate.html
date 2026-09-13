@@ -21,6 +21,13 @@
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
+    <style>
+    .card {
+        padding: 0px;
+    }
+
+    </style>
+
 
     <!-- css -->
     <link rel="stylesheet" href="./components/style.css">
@@ -49,9 +56,8 @@
             <!-- Idioma e tema -->
             <div class="header-right">
                 <div class="lang-dropdown">
-                    <button class="lang-dropbtn">PT</button>
+                    <button class="lang-dropbtn">EN</button>
                     <div class="lang-dropdown-content">
-                        <button onclick="switchLanguage('pt')">Português (PT)</button>
                         <button onclick="switchLanguage('en')">English (EN)</button>
                     </div>
                 </div>
@@ -63,49 +69,59 @@
         </div>
     </header>
 
+
     <!-- Main Content -->
     <main>
         <div class="container">
             <h2>Plate Configuration and XML Generator</h2>
             <div class="app-container">
-                
+    
                 <div class="form-panel">
                     <h3>Micro-dispensing Parameters</h3>
                     <form id="plateForm" class="form-grid">
                         <div class="form-group full-width">
-                            <label for="plateId">ID / Name <span class="custom-tooltip" data-tooltip="Unique identifier and name for the plate.">ⓘ</span></label>
+                            <label for="plateId">ID / Name <span class="custom-tooltip"
+                                    data-tooltip="Unique identifier and name for the plate.">ⓘ</span></label>
                             <input type="text" id="plateId" value="1A_240" required>
                         </div>
                         <div class="form-group">
-                            <label for="rows">Rows <span class="custom-tooltip" data-tooltip="Number of rows in the microplate matrix.">ⓘ</span></label>
+                            <label for="rows">Rows <span class="custom-tooltip"
+                                    data-tooltip="Number of rows in the microplate matrix.">ⓘ</span></label>
                             <input type="number" id="rows" value="20" min="1" required>
                         </div>
                         <div class="form-group">
-                            <label for="cols">Cols <span class="custom-tooltip" data-tooltip="Number of columns in the microplate matrix.">ⓘ</span></label>
+                            <label for="cols">Cols <span class="custom-tooltip"
+                                    data-tooltip="Number of columns in the microplate matrix.">ⓘ</span></label>
                             <input type="number" id="cols" value="12" min="1" required>
                         </div>
                         <div class="form-group">
-                            <label for="rowpitch">Row pitch <span class="custom-tooltip" data-tooltip="Distance (in mm) between the centers of adjacent rows.">ⓘ</span></label>
+                            <label for="rowpitch">Row pitch <span class="custom-tooltip"
+                                    data-tooltip="Distance (in mm) between the centers of adjacent rows.">ⓘ</span></label>
                             <input type="number" id="rowpitch" value="2" step="0.1" required>
                         </div>
                         <div class="form-group">
-                            <label for="colpitch">Col pitch <span class="custom-tooltip" data-tooltip="Distance (in mm) between the centers of adjacent columns.">ⓘ</span></label>
+                            <label for="colpitch">Col pitch <span class="custom-tooltip"
+                                    data-tooltip="Distance (in mm) between the centers of adjacent columns.">ⓘ</span></label>
                             <input type="number" id="colpitch" value="2" step="0.1" required>
                         </div>
                         <div class="form-group">
-                            <label for="a1offsetx">A1 Offset X <span class="custom-tooltip" data-tooltip="X-axis coordinate offset for the first position (A1).">ⓘ</span></label>
+                            <label for="a1offsetx">A1 Offset X <span class="custom-tooltip"
+                                    data-tooltip="X-axis coordinate offset for the first position (A1).">ⓘ</span></label>
                             <input type="number" id="a1offsetx" value="-1.35" step="0.01" required>
                         </div>
                         <div class="form-group">
-                            <label for="a1offsety">A1 Offset Y <span class="custom-tooltip" data-tooltip="Y-axis coordinate offset for the first position (A1).">ⓘ</span></label>
+                            <label for="a1offsety">A1 Offset Y <span class="custom-tooltip"
+                                    data-tooltip="Y-axis coordinate offset for the first position (A1).">ⓘ</span></label>
                             <input type="number" id="a1offsety" value="8" step="0.01" required>
                         </div>
                         <div class="form-group">
-                            <label for="defaultassayvolume">Default Assay Volume <span class="custom-tooltip" data-tooltip="Default dispensing volume per well/spot.">ⓘ</span></label>
+                            <label for="defaultassayvolume">Default Assay Volume <span class="custom-tooltip"
+                                    data-tooltip="Default dispensing volume per well/spot.">ⓘ</span></label>
                             <input type="number" id="defaultassayvolume" value="0" step="any" required>
                         </div>
                         <div class="form-group">
-                            <label for="shaketype">Shake Type <span class="custom-tooltip" data-tooltip="Type of shaking required for the plate.">ⓘ</span></label>
+                            <label for="shaketype">Shake Type <span class="custom-tooltip"
+                                    data-tooltip="Type of shaking required for the plate.">ⓘ</span></label>
                             <select id="shaketype">
                                 <option value="Never" selected>Never</option>
                                 <option value="Small">Small</option>
@@ -113,28 +129,32 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="shakedefault">Shake Default <span class="custom-tooltip" data-tooltip="Sets whether shaking is enabled by default.">ⓘ</span></label>
+                            <label for="shakedefault">Shake Default <span class="custom-tooltip"
+                                    data-tooltip="Sets whether shaking is enabled by default.">ⓘ</span></label>
                             <select id="shakedefault">
                                 <option value="False">False</option>
                                 <option value="True" selected>True</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="moveaccel">Move Acceleration <span class="custom-tooltip" data-tooltip="Acceleration speed for robotic movements.">ⓘ</span></label>
+                            <label for="moveaccel">Move Acceleration <span class="custom-tooltip"
+                                    data-tooltip="Acceleration speed for robotic movements.">ⓘ</span></label>
                             <select id="moveaccel">
                                 <option value="Slow">Slow</option>
                                 <option value="Fast" selected>Fast</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="customa1">Custom A1 <span class="custom-tooltip" data-tooltip="Determines if a custom offset is used for A1.">ⓘ</span></label>
+                            <label for="customa1">Custom A1 <span class="custom-tooltip"
+                                    data-tooltip="Determines if a custom offset is used for A1.">ⓘ</span></label>
                             <select id="customa1">
                                 <option value="False" selected>False</option>
                                 <option value="True">True</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="nozzlemask">Nozzle Mask <span class="custom-tooltip" data-tooltip="Active nozzle configuration during dispensing.">ⓘ</span></label>
+                            <label for="nozzlemask">Nozzle Mask <span class="custom-tooltip"
+                                    data-tooltip="Active nozzle configuration during dispensing.">ⓘ</span></label>
                             <select id="nozzlemask">
                                 <option value="One" selected>One</option>
                                 <option value="Small">Small</option>
@@ -142,26 +162,30 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="horizontaloffset">Horizontal Offset <span class="custom-tooltip" data-tooltip="Global horizontal offset applied to the plate.">ⓘ</span></label>
+                            <label for="horizontaloffset">Horizontal Offset <span class="custom-tooltip"
+                                    data-tooltip="Global horizontal offset applied to the plate.">ⓘ</span></label>
                             <input type="number" id="horizontaloffset" value="0" step="0.01" required>
                         </div>
-                        
-                        <div class="form-group full-width" style="border-top: 1px dashed #ccc; padding-top: 15px; margin-top: 5px;">
-                            <label for="dropletsize">Preview Droplet Size <span class="custom-tooltip" data-tooltip="Change the visual droplet size for the grid preview (does not affect XML).">ⓘ</span></label>
+    
+                        <div class="form-group full-width"
+                            style="border-top: 1px dashed #ccc; padding-top: 15px; margin-top: 5px;">
+                            <label for="dropletsize">Preview Droplet Size <span class="custom-tooltip"
+                                    data-tooltip="Change the visual droplet size for the grid preview (does not affect XML).">ⓘ</span></label>
                             <select id="dropletsize">
-                                <option value="small">Small (50 µm)</option>
-                                <option value="medium" selected>Medium (100 µm)</option>
-                                <option value="large">Large (200 µm)</option>
+                                <option value="small">Small</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="large">Large</option>
                             </select>
                         </div>
                     </form>
                 </div>
-                
+    
                 <div class="preview-panel">
                     <div class="card">
                         <h3>Matrix Visualization</h3>
                         <h4 id="displayPlateId" class="plate-id-display">Plate ID: 1A_240</h4>
-                        <div id="gridWarning" class="grid-warning" style="display: none; color: #d9534f; font-weight: bold; margin-bottom: 10px;">⚠️ Warning: Matrix size limit exceeded (Max 1536 positions). Matrix will not be rendered.</div>
+                        <div id="gridWarning" class="grid-warning"
+                            style="display: none; color: #d9534f; font-weight: bold; margin-bottom: 10px;">Warning: Matrix size limit exceeded (Max 1536 positions). Matrix will not be rendered.</div>
                         <div class="glass-slide">
                             <div id="dropletGrid" class="droplet-grid"></div>
                         </div>
@@ -176,7 +200,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
