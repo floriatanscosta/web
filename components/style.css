@@ -28,9 +28,9 @@
 .form-group { display: flex; flex-direction: column; }
 .form-group.full-width { grid-column: 1 / -1; }
 .form-group label { font-size: 0.9em; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
-.form-group input, .form-group select { padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; font-size: 1em; }
+.form-group input, .form-group select { padding: 8px 12px;border-radius: 4px; font-family: inherit; font-size: 1em; }
 .form-group input:focus, .form-group select:focus { border-color: #5a729e; outline: none; box-shadow: 0 0 0 2px rgba(90, 114, 158, 0.2); }
-.plate-id-display { color: #5a729e; margin-bottom: 15px; font-size: 1.1em; padding-bottom: 5px; }
+.plate-id-display { color: var(--text-color); margin-bottom: 15px; font-size: 1.1em; padding-bottom: 5px; }
 .glass-slide-wrapper { overflow: auto; background: #eef2f5; padding: 0; border: 1px solid var(--border-color); border-radius: 4px; display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
 .glass-slide { position: relative; background-image: url('https://floriatan.com.br/web/components/custom-plate/slide.svg'); background-size: 100% 100%; background-repeat: no-repeat; }
 .droplet-grid { position: absolute; display: grid; }
