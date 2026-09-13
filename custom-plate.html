@@ -21,13 +21,6 @@
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
-    <style>
-    .card {
-        padding: 0px;
-    }
-
-    </style>
-
 
     <!-- css -->
     <link rel="stylesheet" href="./components/style.css">
@@ -184,10 +177,12 @@
                     <div class="card">
                         <h3>Matrix Visualization</h3>
                         <h4 id="displayPlateId" class="plate-id-display">Plate ID: 1A_240</h4>
-                        <div id="gridWarning" class="grid-warning"
-                            style="display: none; color: #d9534f; font-weight: bold; margin-bottom: 10px;">Warning: Matrix size limit exceeded (Max 1536 positions). Matrix will not be rendered.</div>
-                        <div class="glass-slide">
-                            <div id="dropletGrid" class="droplet-grid"></div>
+                        <div id="gridWarning" class="grid-warning" style="display: none; color: #d9534f; font-weight: bold; margin-bottom: 10px;">Warning: Matrix size limit exceeded (Max 1536 positions). Matrix will not be rendered.</div>
+                        
+                        <div class="glass-slide-wrapper">
+                            <div id="glassSlide" class="glass-slide">
+                                <div id="dropletGrid" class="droplet-grid"></div>
+                            </div>
                         </div>
                     </div>
 
