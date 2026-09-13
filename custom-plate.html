@@ -63,11 +63,10 @@
     <!-- Main Content -->
     <main>
         <div class="container">
-            <h2>Plate Configuration and XML Generator</h2>
+            <h2>Custom Plate Design</h2>
             <div class="app-container">
-    
                 <div class="form-panel">
-                    <h3>Micro-dispensing Parameters</h3>
+                    <h3>Parameters</h3>
                     <form id="plateForm" class="form-grid">
                         <div class="form-group full-width">
                             <label for="plateId">ID / Name <span class="custom-tooltip" data-tooltip="Unique identifier and name for the plate.">ⓘ</span></label>
@@ -112,15 +111,15 @@
                         <div class="form-group">
                             <label for="shakedefault">Shake Default <span class="custom-tooltip" data-tooltip="Sets whether shaking is enabled by default.">ⓘ</span></label>
                             <select id="shakedefault">
-                                <option value="False">False</option>
-                                <option value="True" selected>True</option>
+                                <option value="False" selected>False</option>
+                                <option value="True">True</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="moveaccel">Move Acceleration <span class="custom-tooltip" data-tooltip="Acceleration speed for robotic movements.">ⓘ</span></label>
                             <select id="moveaccel">
-                                <option value="Slow">Slow</option>
-                                <option value="Fast" selected>Fast</option>
+                                <option value="Slow" selected>Slow</option>
+                                <option value="Fast">Fast</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -133,8 +132,8 @@
                         <div class="form-group">
                             <label for="nozzlemask">Nozzle Mask <span class="custom-tooltip" data-tooltip="Active nozzle configuration during dispensing.">ⓘ</span></label>
                             <select id="nozzlemask">
-                                <option value="One" selected>One</option>
-                                <option value="Small">Small</option>
+                                <option value="One">One</option>
+                                <option value="Small" selected>Small</option>
                                 <option value="Large">Large</option>
                             </select>
                         </div>
@@ -142,25 +141,29 @@
                             <label for="horizontaloffset">Horizontal Offset <span class="custom-tooltip" data-tooltip="Global horizontal offset applied to the plate.">ⓘ</span></label>
                             <input type="number" id="horizontaloffset" value="0" step="0.01" required>
                         </div>
-    
-                        <div class="form-group full-width"
-                            style="border-top: 1px dashed #ccc; padding-top: 15px; margin-top: 5px;">
-                            <label for="dropletsize">Preview Droplet Size <span class="custom-tooltip" data-tooltip="Change the visual droplet size for the grid preview (does not affect XML).">ⓘ</span></label>
+
+                        <div class="form-group full-width" style="border-top: 1px dashed #ccc; padding-top: 15px; margin-top: 5px;">
+                            <label for="dropletsize">Preview droplet size <span class="custom-tooltip" data-tooltip="Change the visual droplet size for the grid preview (does not affect XML).">ⓘ</span></label>
                             <select id="dropletsize">
                                 <option value="small">Small</option>
                                 <option value="medium" selected>Medium</option>
                                 <option value="large">Large</option>
                             </select>
                         </div>
+
                     </form>
                 </div>
-    
+
+
+                <!-- preview -->
                 <div class="preview-panel">
                     <div class="card">
-                        <h3>Matrix Visualization</h3>
-                        <h4 id="displayPlateId" class="plate-id-display">Plate ID: <span id="idText">1A_240</span> | Total Droplets: <span id="displayTotalDroplets" style="color: #c450ba;">240</span>
+                        <h3>Preview</h3>
+                        <h4 id="displayPlateId" class="plate-id-display">Plate ID: <span id="idText">1A_240</span> | Total Droplets:
+                            <span id="displayTotalDroplets" style="color: #1283af;">240</span>
                         </h4>
-                        <div id="gridWarning" class="grid-warning" style="display: none; color: #d9534f; font-weight: bold; margin-bottom: 10px;"></div>
+                        <div id="gridWarning" class="grid-warning"
+                            style="display: none; color: #d9534f; font-weight: bold; margin-bottom: 10px;"></div>
                         <div class="glass-slide-wrapper">
                             <div id="glassSlide" class="glass-slide">
                                 <div id="dropletGrid" class="droplet-grid"></div>

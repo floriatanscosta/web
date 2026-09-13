@@ -21,18 +21,18 @@
 /* 2. Gerador de XML (custom-plate.html) - Layout Principal e Containers */
 /*****************************************************************/
 .app-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin-top: 20px; }
-.form-panel { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.form-panel { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 .preview-panel { display: flex; flex-direction: column; gap: 20px; }
-.card { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.card { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .form-group { display: flex; flex-direction: column; }
 .form-group.full-width { grid-column: 1 / -1; }
-.form-group label { font-size: 0.9em; font-weight: 600; color: #333; margin-bottom: 5px; }
+.form-group label { font-size: 0.9em; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
 .form-group input, .form-group select { padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; font-size: 1em; }
 .form-group input:focus, .form-group select:focus { border-color: #5a729e; outline: none; box-shadow: 0 0 0 2px rgba(90, 114, 158, 0.2); }
-.plate-id-display { color: #5a729e; margin-bottom: 15px; font-size: 1.1em; border-bottom: 2px solid #eef2f5; padding-bottom: 5px; }
-.glass-slide-wrapper { overflow: auto; background: #eef2f5; padding: 20px; border: 1px solid #b0bec5; border-radius: 4px; display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
-.glass-slide { position: relative; background-image: url('https://floriatan.com.br/web/components/custom-plate/slide.svg'); background-size: 100% 100%; background-repeat: no-repeat; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.plate-id-display { color: #5a729e; margin-bottom: 15px; font-size: 1.1em; padding-bottom: 5px; }
+.glass-slide-wrapper { overflow: auto; background: #eef2f5; padding: 0; border: 1px solid var(--border-color); border-radius: 4px; display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
+.glass-slide { position: relative; background-image: url('https://floriatan.com.br/web/components/custom-plate/slide.svg'); background-size: 100% 100%; background-repeat: no-repeat; }
 .droplet-grid { position: absolute; display: grid; }
 .droplet-cell { display: flex; justify-content: center; align-items: center; }
 .droplet { background-color: #4a90e2; border-radius: 50%; box-shadow: inset -1px -1px 2px rgba(0,0,0,0.3); transition: width 0.3s, height 0.3s; }
