@@ -1,5 +1,5 @@
 # === 1. Configurações de Domínio e URL ===
-url: "https://floriatan.com.br"
+url: "https://floriatan.com.br/web/"
 baseurl: ""
 
 # === 2. Metadados Globais do Site ===
@@ -30,3 +30,5 @@ defaults:
       path: ""
     values:
       permissions-policy: "interest-cohort=()"
+
+      
