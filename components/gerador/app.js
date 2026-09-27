@@ -111,7 +111,7 @@ function copiarAssinatura() {
         
     } catch (err) {
         console.error('Erro ao copiar', err);
-        showModal('Erro', 'Não foi possível copiar a assinatura. Tente novamente');
+        showModal('Erro', 'Não foi possível copiar a assinatura. Tente novamente!');
     }
 }
 
