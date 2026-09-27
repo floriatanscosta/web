@@ -110,7 +110,7 @@ function copiarAssinatura() {
 
   } catch (err) {
     console.error('Erro ao copiar', err);
-    showModal('Erro', 'Não foi possível copiar a assinatura. Tente selecionar o texto manualmente.');
+    showModal('Erro', 'Não foi possível copiar a assinatura.');
   }
 }
 
