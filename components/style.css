@@ -11,14 +11,6 @@
 .form-panel { background-color: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 .preview-panel { display: flex; flex-direction: column; gap: 20px; }
 .card { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-/* ==== Formulários ==== */
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
-.form-group.full-width { grid-column: 1 / -1; }
-.form-group label { display: block; font-size: 0.9em; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
-.form-group input, .form-group select { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.9rem; font-family: inherit; background-color: var(--color-bg-surface-1); color: var(--text-main); transition: border-color var(--transition-normal); }
-.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--heading-color); background-color: var(--box-bg); box-shadow: 0 0 0 2px rgba(90, 114, 158, 0.2); }
-.tip { font-size: 0.75rem; color: var(--text-main); opacity: 0.7; margin-top: 4px; }
 /* ==== Botões e Grupos ==== */
 .btn-group { display: flex; gap: 10px; }
 .btn-group .btn { flex: 1; }
