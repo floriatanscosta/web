@@ -5,23 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-    <!-- Meta Tags -->
     <title>Página não encontrada</title>
     <meta property="og:image" content="./assets/img/cover.png">
     <meta name="theme-color" content="#5a729e">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://floriatan.com.br/">
-
     <!-- Previne o piscar branco -->
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
-    
-    <!-- css -->
-    <link rel="stylesheet" href="../web/css/style.css">
+   <!-- css -->
     <link rel="stylesheet" href="/web/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -41,19 +38,10 @@
             </nav>
             <!-- Idioma e tema -->
             <div class="header-right">
-                <div class="lang-dropdown">
-                    <button class="lang-dropbtn">PT</button>
-                    <div class="lang-dropdown-content">
-                    </div>
-                </div>
-                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema"
-                    style="padding: 0;"><img src="/assets/icons/escuro.svg" alt="Ativar Modo Escuro"
-                        style="width: 20px; height: 20px;"></button>
-                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema" style="padding: 0;"><img src="/assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;"></button>
             </div>
         </div>
     </header>
-
     <!-- Conteúdo 404 -->
     <main>
         <div class="container">
