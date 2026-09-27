@@ -12,7 +12,6 @@ function atualizarAssinatura() {
   const urlLattes = document.getElementById('input-url-lattes').value.trim();
   const urlOrcid = document.getElementById('input-url-orcid').value.trim();
 
-  // Tratamento de URL Absoluta para o Logo
   let logoAbsoluto = logoUrl;
   if (logoUrl.startsWith('./')) {
     logoAbsoluto = baseUrl + logoUrl.substring(1);
@@ -82,6 +81,11 @@ function atualizarAssinatura() {
   document.getElementById('preview-container').innerHTML = assinaturaHTML;
 }
 
+function formatarURL(url) {
+    if (!url) return '';
+    return (url.startsWith('http://') || url.startsWith('https://')) ? url : 'https://' + url;
+}
+
 function showModal(title, message) {
   document.getElementById('modalTitle').innerText = title;
   document.getElementById('modalMessage').innerText = message;
@@ -95,6 +99,12 @@ function closeModal() {
 document.getElementById('customModal').addEventListener('click', function (e) {
   if (e.target === this) closeModal();
 });
+
+function escaparHTML(texto) {
+    const div = document.createElement('div');
+    div.textContent = texto;
+    return div.innerHTML;
+}
 
 function copiarAssinatura() {
     const previewContainer = document.getElementById('preview-container');
