@@ -7,15 +7,14 @@
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <!-- Meta Tags -->
     <title>Floriatan Santos Costa - Portfólio</title>
-    <meta name="description"
-        content="Portfólio acadêmico e profissional de Floriatan Santos Costa. Explore projetos, publicações e experiências.">
+    <meta name="description" content="Portfólio acadêmico e profissional de Floriatan Santos Costa. Explore projetos, publicações e experiências.">
     <meta property="og:title" content="Floriatan Santos Costa - Portfólio">
-    <meta property="og:description"
-        content="Portfólio acadêmico e profissional. Explore projetos, publicações e experiências.">
+    <meta property="og:description" content="Portfólio acadêmico e profissional. Explore projetos, publicações e experiências.">
     <meta property="og:image" content="./assets/img/cover.png">
     <meta name="theme-color" content="#5a729e">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://floriatan.com.br/">
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- Previne o piscar branco -->
     <script>
@@ -28,7 +27,6 @@
     <link rel="stylesheet" href="./components/style.css">
     <link rel="stylesheet" href="../web/css/style.css">
     <link rel="stylesheet" href="./css/style.css">
-
 </head>
 
 <body>
@@ -56,9 +54,7 @@
                         <button onclick="switchLanguage('en')">English (EN)</button>
                     </div>
                 </div>
-                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema"
-                    style="padding: 0;"><img src="/assets/icons/escuro.svg" alt="Ativar Modo Escuro"
-                        style="width: 20px; height: 20px;"></button>
+                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema" style="padding: 0;"><img src="/assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;"></button>
                 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             </div>
         </div>
@@ -79,7 +75,7 @@
                             <option value="./components/gerador/logo-3.png">Logo 3 - UFPR/LAESB</option>
                         </select>
                     </div>
-    
+
                     <div class="form-group">
                         <label for="input-nome">Nome</label>
                         <input type="text" id="input-nome" value="Nome">
@@ -136,9 +132,8 @@
                     <div class="preview-box" id="preview-container">
                     </div>
                     <button class="btn btn-copy" onclick="copiarAssinatura()">Copiar assinatura</button>
-                    <div class="alert" id="success-alert">CONTEÚDO COPIADO COM SUCESSO!</div>
+                    <div class="alert" id="success-alert">CONTEÚDO COPIADO!</div>
                 </div>
-    
             </section>
         </div>
     </main>
@@ -157,12 +152,9 @@
             </div>
         </div>
     </footer>
-
     <!-- Scripts -->
-
     <script src="./js/app.js"></script>
     <script src="./components/gerador/app.js"></script>
-
 </body>
 
 </html>
