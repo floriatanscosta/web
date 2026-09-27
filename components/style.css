@@ -3,7 +3,6 @@
 // CONTEÚDOS MODULARES POR PÁGINAS
 ================================================================== */
 
-/*****************************************************************/
 /* Global WEB */
 /*****************************************************************/
 /* ==== Containers de Layout ==== */
@@ -11,13 +10,7 @@
 .form-panel { background-color: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 .preview-panel { display: flex; flex-direction: column; gap: 20px; }
 .card { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-/* ==== Botões e Grupos ==== */
-.btn-group { display: flex; gap: 10px; }
-.btn-group .btn { flex: 1; }
-.btn-copy { width: 100%; text-align: center; border: none; background-color: var(--heading-color); color: #fff; padding: 10px 15px; border-radius: var(--radius-sm); font-size: 0.9rem; cursor: pointer; transition: background-color var(--transition-normal); }
 .alert { margin-top: 10px; font-size: 0.9rem; color: #4CB96E; display: none; font-weight: 600; text-align: center; }
-
-/*****************************************************************/
 
 /* 1. Gerador de Assinatura (assinatura.html) */
 /*****************************************************************/
