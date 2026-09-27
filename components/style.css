@@ -22,7 +22,7 @@
 .form-panel-xml { min-height: 1029px; }
 .preview-panel-xml { min-height: 1029px; }
 .plate-id-display { color: var(--text-main); margin-bottom: 15px; font-size: 1.1em; padding-bottom: 5px; }
-.glass-slide-wrapper { overflow: auto; background: #eef2f5; padding: 0; border: 1px solid var(--border-color); border-radius: 4px; display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
+.glass-slide-wrapper { overflow: auto; background: #eef2f5; padding: 0; border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
 .glass-slide { position: relative; background-image: url('https://floriatan.com.br/web/components/custom-plate/slide.svg'); background-size: 100% 100%; background-repeat: no-repeat; }
 .droplet-grid { position: absolute; display: grid; }
 .droplet-cell { display: flex; justify-content: center; align-items: center; }

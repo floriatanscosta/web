@@ -67,30 +67,28 @@ document.addEventListener('DOMContentLoaded', () => {
         displayTotalDroplets.textContent = totalDroplets;
 
         // ==========================================
-        // LÓGICA DE LIMITES DE SEGURANÇA E ESPAÇAMENTO
+        // LÓGICA DE LIMITES DE SEGURANÇA E ESPAÇAMENTO FÍSICO
         // ==========================================
-        let maxRows = Infinity;
-        if (rowPitch > 3) maxRows = 13;
-        else if (rowPitch > 2) maxRows = 20;
-        else if (rowPitch > 1.5) maxRows = 25;
-        else if (rowPitch > 1) maxRows = 36;
+        // Regra 1: Limite absoluto
+        const MAX_TOTAL_DROPLETS = 1536;
 
-        let maxCols = Infinity;
-        if (colPitch > 3) maxCols = 8;
-        else if (colPitch > 2) maxCols = 12;
-        else if (colPitch > 1.5) maxCols = 16;
-        else if (colPitch > 1) maxCols = 24;
+        // Regra 2: Dimensões físicas máximas disponíveis
+        const MAX_ROWS_SPAN_MM = 41;
+        const MAX_COLS_SPAN_MM = 24.5;
+
+        // Cálculo dinâmico de quantas linhas/colunas cabem nesse espaço baseado no pitch
+        const maxRowsAllowed = Math.floor(MAX_ROWS_SPAN_MM / rowPitch) + 1;
+        const maxColsAllowed = Math.floor(MAX_COLS_SPAN_MM / colPitch) + 1;
 
         let warningMessage = "";
-
-        if (totalDroplets > 1536) {
-            warningMessage = `Warning: Limit exceeded. Max total droplets is 1536 (Current: ${totalDroplets}).`;
-        } else if (rows > maxRows) {
-            warningMessage = `Warning: For a Row pitch > ${rowPitch > 3 ? 3 : rowPitch > 2 ? 2 : rowPitch > 1.5 ? 1.5 : 1} mm, maximum allowed rows is ${maxRows}.`;
-        } else if (cols > maxCols) {
-            warningMessage = `Warning: For a Col pitch > ${colPitch > 3 ? 3 : colPitch > 2 ? 2 : colPitch > 1.5 ? 1.5 : 1} mm, maximum allowed cols is ${maxCols}.`;
+        // O limite total de gotas tem prioridade e é verificado primeiro
+        if (totalDroplets > MAX_TOTAL_DROPLETS) {
+            warningMessage = `Warning: Absolute limit exceeded. Max total droplets is ${MAX_TOTAL_DROPLETS} (Current: ${totalDroplets}).`;
+        } else if (rows > maxRowsAllowed) {
+            warningMessage = `Warning: Physical limit exceeded. For a Row pitch of ${rowPitch} mm, maximum allowed rows is ${maxRowsAllowed} (Max span: ${MAX_ROWS_SPAN_MM} mm).`;
+        } else if (cols > maxColsAllowed) {
+            warningMessage = `Warning: Physical limit exceeded. For a Col pitch of ${colPitch} mm, maximum allowed cols is ${maxColsAllowed} (Max span: ${MAX_COLS_SPAN_MM} mm).`;
         }
-
         if (warningMessage !== "") {
             gridWarning.textContent = warningMessage;
             gridWarning.style.display = 'block';
@@ -130,27 +128,27 @@ document.addEventListener('DOMContentLoaded', () => {
         // ==========================================
         const SCALE = 6; // Fator de escala: 1 mm = 6 px
 
+        // Dimensões do SVG de fundo
         const slideWidthMm = 30;
         const slideHeightMm = 80;
 
+        // Offset visual inicial para a primeira gota no renderizador
         const offsetLeftMm = 4;
         const offsetTopMm = 15;
-
         glassSlide.style.width = `${slideWidthMm * SCALE}px`;
         glassSlide.style.height = `${slideHeightMm * SCALE}px`;
-
         const rowPitchPx = rowPitch * SCALE;
         const colPitchPx = colPitch * SCALE;
 
+        // Alinhamento exato pelo centro da primeira célula
         dropletGrid.style.left = `${(offsetLeftMm * SCALE) - (colPitchPx / 2)}px`;
         dropletGrid.style.top = `${(offsetTopMm * SCALE) - (rowPitchPx / 2)}px`;
-
         dropletGrid.style.gridTemplateRows = `repeat(${rows}, ${rowPitchPx}px)`;
         dropletGrid.style.gridTemplateColumns = `repeat(${cols}, ${colPitchPx}px)`;
 
-        let dropSizePx = 6;
-        if (dropletSizeSelection === 'small') dropSizePx = 3;
-        if (dropletSizeSelection === 'large') dropSizePx = 10;
+        let dropSizePx = 4;
+        if (dropletSizeSelection === 'small') dropSizePx = 2;
+        if (dropletSizeSelection === 'large') dropSizePx = 6;
 
         dropletGrid.innerHTML = '';
 
@@ -184,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('downloadBtn').addEventListener('click', () => {
-        // Se houver erro, impede o download de um XML quebrado
+        // Se houver erro de limite, impede o download de um arquivo inválido
         if (gridWarning.style.display === 'block') {
             showModal('Error', 'Please resolve the matrix configuration limits before downloading.');
             return;
@@ -204,5 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
         URL.revokeObjectURL(url);
     });
 
+    // Inicia a aplicação populando a grid baseada nos valores padrão carregados
     updateApp();
 });
