@@ -61,7 +61,7 @@ function atualizarAssinatura() {
       </table>` : '';
 
   const assinaturaHTML = `
-<table cellpadding="0" cellspacing="0" style="font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.2; min-width: 480px; max-width: 650px; text-align: left;">
+<table cellpadding="0" cellspacing="0" style="font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.2; max-width: 650px; text-align: left;">
   <tr>
     <td style="vertical-align: middle; padding-right: 20px; width: 110px;">
       <img src="${logoAbsoluto}" alt="Logo Institucional" style="width: 110px; height: auto; display: block;" width="110">
