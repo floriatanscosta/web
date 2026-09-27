@@ -4,33 +4,42 @@
 ================================================================== */
 
 /*****************************************************************/
-/* 1. Gerador de assinatura (assinatura.html) */
+/* Global WEB */
 /*****************************************************************/
-/* ==== Gerador de Assinatura ==== */
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
+/* ==== Containers de Layout ==== */
+.app-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin-top: 20px; }
+.form-panel { background-color: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.preview-panel { display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+/* ==== Formulários ==== */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+.form-group.full-width { grid-column: 1 / -1; }
+.form-group label { display: block; font-size: 0.9em; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
 .form-group input, .form-group select { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.9rem; font-family: inherit; background-color: var(--color-bg-surface-1); color: var(--text-main); transition: border-color var(--transition-normal); }
-.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--heading-color); background-color: var(--box-bg); }
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--heading-color); background-color: var(--box-bg); box-shadow: 0 0 0 2px rgba(90, 114, 158, 0.2); }
 .tip { font-size: 0.75rem; color: var(--text-main); opacity: 0.7; margin-top: 4px; }
-.preview-column { display: flex; flex-direction: column; height: 100%; }
-.preview-box { border: 1px dashed var(--border-color); padding: 20px; background-color: var(--color-bg-surface-1); border-radius: var(--radius-md); min-height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+/* ==== Botões e Grupos ==== */
+.btn-group { display: flex; gap: 10px; }
+.btn-group .btn { flex: 1; }
 .btn-copy { width: 100%; text-align: center; border: none; background-color: var(--heading-color); color: #fff; padding: 10px 15px; border-radius: var(--radius-sm); font-size: 0.9rem; cursor: pointer; transition: background-color var(--transition-normal); }
 .alert { margin-top: 10px; font-size: 0.9rem; color: #4CB96E; display: none; font-weight: 600; text-align: center; }
 
 /*****************************************************************/
-/* 2. Gerador de XML (custom-plate.html) - Layout Principal e Containers */
 /*****************************************************************/
-.app-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin-top: 20px; }
-.form-panel { min-height: 1029px; background-color: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-.preview-panel { min-height: 1029px; display: flex; flex-direction: column; gap: 20px; }
-.card { background: var(--color-bg-surface-1); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.form-group { display: flex; flex-direction: column; }
-.form-group.full-width { grid-column: 1 / -1; }
-.form-group label { font-size: 0.9em; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
-.form-group input, .form-group select { padding: 8px 12px; border-radius: 4px; font-family: inherit; font-size: 1em; }
-.form-group input:focus, .form-group select:focus { border-color: #5a729e; outline: none; box-shadow: 0 0 0 2px rgba(90, 114, 158, 0.2); }
-.plate-id-display { color: var(--text-color); margin-bottom: 15px; font-size: 1.1em; padding-bottom: 5px; }
+/*****************************************************************/
+
+
+/* 1. Gerador de Assinatura (assinatura.html) */
+/*****************************************************************/
+.preview-column { display: flex; flex-direction: column; height: 100%; }
+.preview-box { border: 1px dashed var(--border-color); padding: 20px; background-color: var(--color-bg-surface-1); border-radius: var(--radius-md); min-height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+
+/* 2. Gerador de XML (custom-plate.html) */
+/*****************************************************************/
+.form-panel-xml { min-height: 1029px; }
+.preview-panel-xml { min-height: 1029px; }
+.plate-id-display { color: var(--text-main); margin-bottom: 15px; font-size: 1.1em; padding-bottom: 5px; }
 .glass-slide-wrapper { overflow: auto; background: #eef2f5; padding: 0; border: 1px solid var(--border-color); border-radius: 4px; display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
 .glass-slide { position: relative; background-image: url('https://floriatan.com.br/web/components/custom-plate/slide.svg'); background-size: 100% 100%; background-repeat: no-repeat; }
 .droplet-grid { position: absolute; display: grid; }
@@ -38,13 +47,19 @@
 .droplet { background-color: #4a90e2; border-radius: 50%; box-shadow: inset -1px -1px 2px rgba(0,0,0,0.3); transition: width 0.3s, height 0.3s; }
 .grid-warning { padding: 10px; background-color: var(--bg-error); border: 1px solid #fdbebd; color: var(--text-color-error); border-radius: 4px; }
 .xml-output { width: 100%; height: 285px; padding: 20px; font-family: 'Courier New', Courier, monospace; font-size: 0.85em; background: #282c34; color: #abb2bf; border: none; border-radius: 4px; resize: vertical; white-space: pre; overflow-x: auto; margin-bottom: 15px; box-sizing: border-box; }
-.btn-group { display: flex; gap: 10px; }
-.btn-group .btn { flex: 1; }
 
 /*****************************************************************/
-/* 3. Responsividade (Media Queries) */
+/* Responsividade (Media Queries) */
 /*****************************************************************/
 /* ==== Tablets ==== */
-@media (max-width: 1024px) { .app-container { grid-template-columns: 1fr; } .form-panel, .preview-panel { min-height: auto; } }
+@media (max-width: 1024px) {
+    .app-container { grid-template-columns: 1fr; }
+    .form-panel-xml, .preview-panel-xml { min-height: auto; }
+}
 /* ==== Celulares ==== */
-@media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .form-group.full-width { grid-column: auto; } .btn-group { flex-direction: column; } .btn-group .btn { width: 100%; } }
+@media (max-width: 768px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full-width { grid-column: auto; }
+    .btn-group { flex-direction: column; }
+    .btn-group .btn { width: 100%; }
+}
