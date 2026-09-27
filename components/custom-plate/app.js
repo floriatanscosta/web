@@ -122,16 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
 </HPDDPlate>`;
 
         xmlOutput.value = xmlString;
-
-        // ==========================================
-        // LÓGICA MATEMÁTICA DE ESCALA E POSICIONAMENTO DA MATRIZ
-        // ==========================================
         const SCALE = 6; // Fator de escala: 1 mm = 6 px
-
         // Dimensões do SVG de fundo
         const slideWidthMm = 30;
         const slideHeightMm = 80;
-
         // Offset visual inicial para a primeira gota no renderizador
         const offsetLeftMm = 4;
         const offsetTopMm = 15;
