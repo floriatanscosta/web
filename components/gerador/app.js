@@ -97,21 +97,22 @@ document.getElementById('customModal').addEventListener('click', function (e) {
 });
 
 function copiarAssinatura() {
-  const previewContainer = document.getElementById('preview-container');
-  const range = document.createRange();
-  range.selectNode(previewContainer);
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(range);
-
-  try {
-    document.execCommand('copy');
+    const previewContainer = document.getElementById('preview-container');
+    const tabelaAssinatura = previewContainer.querySelector('table');
+    if (!tabelaAssinatura) return;
+    const range = document.createRange();
+    range.selectNode(tabelaAssinatura);
     window.getSelection().removeAllRanges();
-    showModal('Sucesso!', 'A assinatura foi copiada para a área de transferência. Agora é só colar (Ctrl+V) nas configurações do seu cliente de e-mail.');
-
-  } catch (err) {
-    console.error('Erro ao copiar', err);
-    showModal('Erro', 'Não foi possível copiar a assinatura.');
-  }
+    window.getSelection().addRange(range);
+    try {
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        showModal('Sucesso!', 'A assinatura foi copiada para a área de transferência. Agora é só colar (Ctrl+V) nas configurações do seu cliente de e-mail.');
+        
+    } catch (err) {
+        console.error('Erro ao copiar', err);
+        showModal('Erro', 'Não foi possível copiar a assinatura. Tente novamente');
+    }
 }
 
 document.getElementById('select-logo').addEventListener('change', atualizarAssinatura);
