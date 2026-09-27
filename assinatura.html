@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <!-- Meta Tags -->
-    <title>Floriatan Santos Costa - Portfólio</title>
-    <meta name="description" content="Portfólio acadêmico e profissional de Floriatan Santos Costa. Explore projetos, publicações e experiências.">
-    <meta property="og:title" content="Floriatan Santos Costa - Portfólio">
-    <meta property="og:description" content="Portfólio acadêmico e profissional. Explore projetos, publicações e experiências.">
+    <title>Assinatura E-mail design - Floriatan Santos Costa</title>
+    <meta name="description" content="Gerador de assinaturas de e-mail institucionais.">
+    <meta property="og:title" content="Assinatura E-mail design - Floriatan Santos Costa">
+    <meta property="og:description" content="Configure e gere a sua assinatura de e-mail institucional.">
     <meta property="og:image" content="./assets/img/cover.png">
     <meta name="theme-color" content="#5a729e">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://floriatan.com.br/">
+    <meta property="og:url" content="https://floriatan.com.br/web/assinatura">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Previne o piscar branco -->
@@ -51,85 +51,95 @@
         </div>
     </header>
 
-    <!-- CONTEUDO AQUI -->
+    <!-- Main Content -->
     <main>
         <div class="container">
             <h2>Assinatura E-mail design</h2>
-            <section class="grid-row grid-50-50">
-                <!-- Formulário (Cartão 1) -->
-                <div class="card">
-                    <h2>Dados da Assinatura</h2>
-                    <div class="form-group">
-                        <label for="select-logo">Logo da Instituição</label>
-                        <select id="select-logo">
-                            <option value="./components/gerador/logo-1.png">Logo 1 - UFPR</option>
-                            <option value="./components/gerador/logo-2.png">Logo 2 - UFPR/Química</option>
-                            <option value="./components/gerador/logo-3.png">Logo 3 - UFPR/LAESB</option>
-                        </select>
-                    </div>
+            <div class="app-container">
+                <div class="form-panel">
+                    <h3>Dados da Assinatura</h3>
+                    <form id="assinaturaForm" class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="select-logo">Logo da Instituição</label>
+                            <select id="select-logo">
+                                <option value="./components/gerador/logo-1.png">Logo 1 - UFPR</option>
+                                <option value="./components/gerador/logo-2.png">Logo 2 - UFPR/Química</option>
+                                <option value="./components/gerador/logo-3.png">Logo 3 - UFPR/LAESB</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="input-nome">Nome</label>
-                        <input type="text" id="input-nome" value="Nome">
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="input-cargo">Cargo ou título</label>
-                        <input type="text" id="input-cargo" value="Cargo ou Função">
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="input-lab1">Laboratório</label>
-                        <input type="text" id="input-lab1" value="Laboratorio">
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="input-inst1">Instituição</label>
-                        <input type="text" id="input-inst1" value="Universidade Federal do Paraná">
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="input-lab2">Laboratório (se houver)</label>
-                        <input type="text" id="input-lab2" value="Laboratório (se houver)">
-                        <div class="tip">Apague para ocultar</div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="input-inst2">Instituição (se houver)</label>
-                        <input type="text" id="input-inst2" value="Instituição (se houver)">
-                        <div class="tip">Apague para ocultar</div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="input-url-web">Site pessoal</label>
-                        <input type="text" id="input-url-web" value="Link aqui">
-                        <div class="tip">Apague para ocultar</div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="input-url-lattes">Currículo Lattes</label>
-                        <input type="text" id="input-url-lattes" value="http://lattes.cnpq.br/XXXXXXXXXXXX">
-                        <div class="tip">Apague para ocultar</div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="input-url-orcid">Link do OrcID</label>
-                        <input type="text" id="input-url-orcid" value="https://orcid.org/XXXX-XXXX-XXXX-XXXX">
-                        <div class="tip">Apague para ocultar</div>
+                        <div class="form-group full-width">
+                            <label for="input-nome">Nome</label>
+                            <input type="text" id="input-nome" value="Nome">
+                        </div>
+        
+                        <div class="form-group full-width">
+                            <label for="input-cargo">Cargo ou título</label>
+                            <input type="text" id="input-cargo" value="Cargo ou Função">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="input-lab1">Laboratório</label>
+                            <input type="text" id="input-lab1" value="Laboratorio">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="input-inst1">Instituição</label>
+                            <input type="text" id="input-inst1" value="Universidade Federal do Paraná">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="input-lab2">Laboratório (se houver) <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+                            <input type="text" id="input-lab2" value="Laboratório (se houver)">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="input-inst2">Instituição (se houver) <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+                            <input type="text" id="input-inst2" value="Instituição (se houver)">
+                        </div>
+        
+                        <div class="form-group full-width">
+                            <label for="input-url-web">Site pessoal <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+                            <input type="text" id="input-url-web" value="Link aqui">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="input-url-lattes">Currículo Lattes <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+                            <input type="text" id="input-url-lattes" value="http://lattes.cnpq.br/XXXXXXXXXXXX">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="input-url-orcid">Link do OrcID <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+                            <input type="text" id="input-url-orcid" value="https://orcid.org/XXXX-XXXX-XXXX-XXXX">
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- preview -->
+                <div class="preview-panel">
+                    <div class="card">
+                        <h3>Visualização (real time)</h3>
+                        <div class="preview-box" id="preview-container" style="padding: 20px; background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-sm); margin-bottom: 20px;">
+                            <!-- O conteúdo da assinatura será injetado aqui pelo JS -->
+                        </div>
+                        <div class="btn-group">
+                            <button id="copyBtn" class="btn btn-copy" onclick="copiarAssinatura()">Copiar assinatura</button>
+                        </div>
                     </div>
                 </div>
-                <!-- Visualização e Ação (Cartão 2) -->
-                <div class="card preview-column">
-                    <h2>Visualização (real time)</h2>
-                    <div class="preview-box" id="preview-container">
-                    </div>
-                    <button class="btn btn-copy" onclick="copiarAssinatura()">Copiar assinatura</button>
-                    <div class="alert" id="success-alert">CONTEÚDO COPIADO!</div>
-                </div>
-            </section>
+            </div>
         </div>
     </main>
 
+    <!-- Modal Global -->
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 id="modalTitle" class="modal-title">Sucesso!</h3>
+            <p id="modalMessage" class="modal-message">A assinatura foi copiada.</p>
+            <button class="btn" style="width: 100%;" onclick="closeModal()">OK</button>
+        </div>
+    </div>
 
     <!-- Rodapé -->
     <footer>
@@ -144,6 +154,7 @@
             </div>
         </div>
     </footer>
+    
     <!-- Scripts -->
     <script src="./js/app.js"></script>
     <script src="./components/gerador/app.js"></script>

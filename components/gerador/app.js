@@ -69,22 +69,35 @@ function atualizarAssinatura() {
     document.getElementById('preview-container').innerHTML = assinaturaHTML;
 }
 
-async function copiarAssinatura() {
-    const previewBox = document.getElementById('preview-container');
-    const alertBox = document.getElementById('success-alert');
+function showModal(title, message) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalMessage').innerText = message;
+    document.getElementById('customModal').classList.add('active');
+}
 
+function closeModal() {
+    document.getElementById('customModal').classList.remove('active');
+}
+
+document.getElementById('customModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+
+function copiarAssinatura() {
+    const previewContainer = document.getElementById('preview-container');
+    const range = document.createRange();
+    range.selectNode(previewContainer);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    
     try {
-        const blob = new Blob([previewBox.innerHTML], { type: 'text/html' });
-        const data = [new ClipboardItem({ 'text/html': blob })];
-
-        await navigator.clipboard.write(data);
-
-        alertBox.style.display = 'block';
-        setTimeout(() => {
-            alertBox.style.display = 'none';
-        }, 5000);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        showModal('Sucesso!', 'A assinatura foi copiada para a área de transferência. Agora é só colar (Ctrl+V) nas configurações do seu cliente de e-mail.');
+        
     } catch (err) {
-        alert('Falha ao copiar automaticamente. Por favor, selecione a assinatura visualmente com o mouse, use Ctrl+C e depois Ctrl+V no seu e-mail.');
+        console.error('Erro ao copiar', err);
+        showModal('Erro', 'Não foi possível copiar a assinatura. Tente selecionar o texto manualmente.');
     }
 }
 
