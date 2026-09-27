@@ -29,4 +29,4 @@ defaults:
   - scope:
       path: ""
     values:
-      permissions-policy: "interest-cohort=()"     
+      permissions-policy: "interest-cohort=()"
