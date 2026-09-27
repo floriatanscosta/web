@@ -53,8 +53,14 @@
 
     <!-- Main Content -->
     <main>
+        <section>
+            <div class="container">
+                <div class="alert-box alert-warning margin-top-2" style="margin-bottom: 20px;">
+                <div><strong>Aviso:</strong> Esta ferramenta está em desenvolvimento ativo. Algumas funcionalidades podem passar por instabilidades ou receber atualizações sem aviso prévio.</div>
+                </div>
+        </section>
+        
         <div class="container">
-            
             <div class="app-container">
                 <div class="form-panel">
                     <h3>Dados da assinatura</h3>
@@ -119,7 +125,7 @@
                 <div class="preview-panel">
                     <div class="card">
                         <h3>Preview</h3>
-                        <div class="preview-box" id="preview-container" style="padding: 20px; background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-sm); margin-bottom: 20px;"><!-- O conteúdo da assinatura será injetado aqui pelo JS --></div>
+                        <div class="preview-box" id="preview-container" style="padding: 20px; background: #eef2f5; border: 1px solid var(--border-color); border-radius: var(--radius-sm); margin-bottom: 20px;"><!-- O conteúdo da assinatura será injetado aqui pelo JS --></div>
                         <div class="btn-group">
                             <button id="copyBtn" class="btn btn-copy" onclick="copiarAssinatura()">Copiar assinatura</button>
                         </div>
@@ -128,6 +134,7 @@
             </div>
         </div>
     </main>
+   
 
     <!-- Modal Global -->
     <div id="customModal" class="modal-overlay">

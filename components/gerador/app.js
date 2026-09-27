@@ -20,7 +20,7 @@ function atualizarAssinatura() {
     logoAbsoluto = "https://floriatan.com.br" + logoUrl;
   }
 
-  const blocoNome = nome ? `<div style="font-size: 18px; font-weight: 800; color: #223D71; margin-bottom: 2px; letter-spacing: 0.5px;">${nome}</div>` : '';
+  const blocoNome = nome ? `<div style="font-size: 18px; font-weight: 800; color: #3a4d74; margin-bottom: 2px; letter-spacing: 0.5px;">${nome}</div>` : '';
   const blocoCargo = cargo ? `<div style="font-size: 12px; font-weight: 600; color: #4b5563; margin-bottom: 12px; letter-spacing: 0.5px;">${cargo}</div>` : '';
   const blocoLab1 = lab1 ? `<div style="font-size: 12px; color: #1f2937; font-weight: 600; margin-bottom: 1px;">${lab1}</div>` : '';
   const marginInst1 = (lab2 || inst2 || urlWeb || urlLattes || urlOrcid) ? '8px' : '0px';
