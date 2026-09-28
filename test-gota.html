@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otimização de Câmara sp-ICP-MS</title>
+    <style>
+        /* ================================================================== // icpms-fluid-dynamics.css // Calculadora para Otimização de Câmara sp-ICP-MS ================================================================== */
+        
+        /* 1. Estrutura geral */ /*****************************************************************/
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: #f0f4f8; margin: 0; padding: 2rem; color: #334155; }
+        .container { max-width: 900px; margin: 0 auto; background: #ffffff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        
+        /* ==== Tipografia e Titulos ==== */
+        h1 { font-size: 1.5rem; color: #0f172a; margin-bottom: 0.5rem; text-align: center; }
+        p.subtitle { text-align: center; font-size: 0.875rem; color: #64748b; margin-bottom: 2rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1.5rem; }
+        
+        /* 2. Formularios e Entradas */ /*****************************************************************/
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        label { font-size: 0.875rem; font-weight: 600; color: #475569; }
+        input, select { padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
+        input:focus, select:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        
+        /* 3. Painel de Resultados */ /*****************************************************************/
+        .results { background: #f8fafc; padding: 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+        .result-card { background: #ffffff; padding: 1.25rem 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); text-align: center; }
+        .result-value { font-size: 1.5rem; font-weight: 700; color: #0f172a; margin: 0.5rem 0; font-family: monospace; }
+        .result-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; font-weight: 600; }
+        
+        /* ==== Status de Fluxo ==== */
+        .status-container { margin-top: 1.5rem; text-align: center; }
+        .status-badge { display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 700; font-size: 1rem; letter-spacing: 0.025em; text-transform: uppercase; transition: all 0.3s ease; }
+        .laminar { background-color: #dcfce7; color: #166534; border: 2px solid #bbf7d0; box-shadow: 0 0 15px rgba(22, 101, 52, 0.1); }
+        .transicao { background-color: #fef08a; color: #854d0e; border: 2px solid #fde047; box-shadow: 0 0 15px rgba(133, 77, 14, 0.1); }
+        .turbulento { background-color: #fee2e2; color: #991b1b; border: 2px solid #fecaca; box-shadow: 0 0 15px rgba(153, 27, 27, 0.1); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Calculadora de Fluidodinâmica para ICP-MS</h1>
+    <p class="subtitle">Otimização de Câmara (Low Volume / High Efficiency)</p>
+
+    <div class="grid">
+        <div class="input-group">
+            <label for="gasType">Gás de Arraste/Bainha</label>
+            <select id="gasType">
+                <option value="argon" selected>Argônio (Ar)</option>
+                <option value="helium">Hélio (He)</option>
+                <option value="nitrogen">Nitrogênio (N2)</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="nebFlow">Vazão do Nebulizador (L/min)</label>
+            <input type="number" id="nebFlow" value="0.30" min="0.01" step="0.01">
+        </div>
+        <div class="input-group">
+            <label for="auxFlow">Vazão de Bainha / Make-up (L/min)</label>
+            <input type="number" id="auxFlow" value="0.70" min="0.00" step="0.01">
+        </div>
+        <div class="input-group">
+            <label for="chamberDia">Diâmetro Interno Médio (mm)</label>
+            <input type="number" id="chamberDia" value="12.0" min="1.0" step="0.5">
+        </div>
+        <div class="input-group">
+            <label for="chamberLen">Comprimento Útil da Câmara (mm)</label>
+            <input type="number" id="chamberLen" value="65.0" min="5.0" step="1.0">
+        </div>
+    </div>
+
+    <div class="results">
+        <div class="result-grid">
+            <div class="result-card">
+                <div class="result-label">Volume Interno Livre</div>
+                <div class="result-value" id="resVolume">0.00 mL</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Velocidade Linear</div>
+                <div class="result-value" id="resVelocity">0.00 m/s</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Tempo de Residência</div>
+                <div class="result-value" id="resTime">0.00 ms</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Número de Reynolds (Re)</div>
+                <div class="result-value" id="resReynolds">0</div>
+            </div>
+        </div>
+        
+        <div class="status-container">
+            <div id="flowStatus" class="status-badge laminar">Fluxo Laminar</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Propriedades físicas dos gases a 25°C e 1 atm
+    const gasProperties = {
+        argon:    { density: 1.66,   viscosity: 2.26e-5 }, // rho em kg/m³, mu em Pa.s
+        helium:   { density: 0.166,  viscosity: 1.96e-5 },
+        nitrogen: { density: 1.16,   viscosity: 1.78e-5 }
+    };
+
+    function calculateDynamics() {
+        // 1. Captura e validação segura de inputs (Evita XSS e erros matemáticos de divisão por zero)
+        const gasType = document.getElementById('gasType').value;
+        const qNeb = Math.max(0, parseFloat(document.getElementById('nebFlow').value) || 0);
+        const qAux = Math.max(0, parseFloat(document.getElementById('auxFlow').value) || 0);
+        const dia = Math.max(0.1, parseFloat(document.getElementById('chamberDia').value) || 1); // min 0.1 para evitar divisão por 0
+        const len = Math.max(0, parseFloat(document.getElementById('chamberLen').value) || 0);
+
+        // Obtenção das propriedades do gás selecionado
+        const rho = gasProperties[gasType].density;
+        const mu = gasProperties[gasType].viscosity;
+
+        // 2. Cálculos Geométricos
+        const radiusCm = (dia / 2) / 10;
+        const lengthCm = len / 10;
+        const areaCm2 = Math.PI * Math.pow(radiusCm, 2);
+        
+        // Volume em cm³ (mL)
+        const volumeMl = areaCm2 * lengthCm;
+
+        // 3. Cálculos de Fluxo
+        const qTotalLmin = qNeb + qAux;
+        
+        // Converter vazão para cm³/s para o cálculo de tempo de residência
+        const qTotalCm3s = (qTotalLmin * 1000) / 60; 
+        
+        // Converter vazão para m³/s para o cálculo de velocidade linear e Reynolds
+        const qTotalM3s = qTotalLmin / 60000;
+        const diaM = dia / 1000;
+        const areaM2 = Math.PI * Math.pow((diaM / 2), 2);
+        
+        // Velocidade linear (m/s) e Tempo de Residência (ms)
+        const velocity = qTotalM3s / areaM2;
+        const residenceTimeMs = qTotalCm3s > 0 ? (volumeMl / qTotalCm3s) * 1000 : 0;
+
+        // Número de Reynolds (Re = rho * v * D / mu)
+        const reynolds = (rho * velocity * diaM) / mu;
+
+        // 4. Atualização segura do DOM usando textContent
+        document.getElementById('resVolume').textContent = volumeMl.toFixed(2) + ' mL';
+        document.getElementById('resVelocity').textContent = velocity.toFixed(3) + ' m/s';
+        document.getElementById('resTime').textContent = Math.round(residenceTimeMs) + ' ms';
+        document.getElementById('resReynolds').textContent = Math.round(reynolds);
+
+        // 5. Avaliação do Regime de Fluxo
+        const statusBadge = document.getElementById('flowStatus');
+        statusBadge.className = 'status-badge'; // reset
+        
+        if (reynolds < 2000) {
+            statusBadge.textContent = 'Fluxo Laminar Seguro';
+            statusBadge.classList.add('laminar');
+        } else if (reynolds >= 2000 && reynolds <= 4000) {
+            statusBadge.textContent = 'Zona de Transição (Risco)';
+            statusBadge.classList.add('transicao');
+        } else {
+            statusBadge.textContent = 'Fluxo Turbulento (Perda de Amostra)';
+            statusBadge.classList.add('turbulento');
+        }
+    }
+
+    // Adiciona Event Listeners seguros para recálculo automático
+    const inputs = document.querySelectorAll('input, select');
+    inputs.forEach(input => {
+        input.addEventListener('input', calculateDynamics);
+    });
+
+    // Chamada inicial
+    calculateDynamics();
+</script>
+
+</body>
+</html>
