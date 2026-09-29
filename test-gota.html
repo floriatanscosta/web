@@ -4,31 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otimização de Câmara sp-ICP-MS</title>
-    <style>
-        /* ================================================================== // icpms-fluid-dynamics.css // Calculadora para Otimização de Câmara sp-ICP-MS ================================================================== */
-        
-        /* 1. Estrutura geral */ /*****************************************************************/
+    <style>        
+        /* 1. Estrutura geral */
+        /*****************************************************************/
         body { font-family: system-ui, -apple-system, sans-serif; background-color: #f0f4f8; margin: 0; padding: 2rem; color: #334155; }
         .container { max-width: 900px; margin: 0 auto; background: #ffffff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-        
         /* ==== Tipografia e Titulos ==== */
         h1 { font-size: 1.5rem; color: #0f172a; margin-bottom: 0.5rem; text-align: center; }
         p.subtitle { text-align: center; font-size: 0.875rem; color: #64748b; margin-bottom: 2rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1.5rem; }
-        
-        /* 2. Formularios e Entradas */ /*****************************************************************/
+        /* 2. Formularios e Entradas */
+        /*****************************************************************/
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
         .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
         label { font-size: 0.875rem; font-weight: 600; color: #475569; }
         input, select { padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
         input:focus, select:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
-        
-        /* 3. Painel de Resultados */ /*****************************************************************/
+        /* 3. Painel de Resultados */
+        /*****************************************************************/
         .results { background: #f8fafc; padding: 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0; }
         .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
         .result-card { background: #ffffff; padding: 1.25rem 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); text-align: center; }
         .result-value { font-size: 1.5rem; font-weight: 700; color: #0f172a; margin: 0.5rem 0; font-family: monospace; }
         .result-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; font-weight: 600; }
-        
         /* ==== Status de Fluxo ==== */
         .status-container { margin-top: 1.5rem; text-align: center; }
         .status-badge { display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 700; font-size: 1rem; letter-spacing: 0.025em; text-transform: uppercase; transition: all 0.3s ease; }
@@ -89,7 +86,7 @@
                 <div class="result-value" id="resReynolds">0</div>
             </div>
         </div>
-        
+
         <div class="status-container">
             <div id="flowStatus" class="status-badge laminar">Fluxo Laminar</div>
         </div>
@@ -99,9 +96,9 @@
 <script>
     // Propriedades físicas dos gases a 25°C e 1 atm
     const gasProperties = {
-        argon:    { density: 1.66,   viscosity: 2.26e-5 }, // rho em kg/m³, mu em Pa.s
-        helium:   { density: 0.166,  viscosity: 1.96e-5 },
-        nitrogen: { density: 1.16,   viscosity: 1.78e-5 }
+        argon: { density: 1.66, viscosity: 2.26e-5 }, // rho em kg/m³, mu em Pa.s
+        helium: { density: 0.166, viscosity: 1.96e-5 },
+        nitrogen: { density: 1.16, viscosity: 1.78e-5 }
     };
 
     function calculateDynamics() {
@@ -120,21 +117,21 @@
         const radiusCm = (dia / 2) / 10;
         const lengthCm = len / 10;
         const areaCm2 = Math.PI * Math.pow(radiusCm, 2);
-        
+
         // Volume em cm³ (mL)
         const volumeMl = areaCm2 * lengthCm;
 
         // 3. Cálculos de Fluxo
         const qTotalLmin = qNeb + qAux;
-        
+
         // Converter vazão para cm³/s para o cálculo de tempo de residência
-        const qTotalCm3s = (qTotalLmin * 1000) / 60; 
-        
+        const qTotalCm3s = (qTotalLmin * 1000) / 60;
+
         // Converter vazão para m³/s para o cálculo de velocidade linear e Reynolds
         const qTotalM3s = qTotalLmin / 60000;
         const diaM = dia / 1000;
         const areaM2 = Math.PI * Math.pow((diaM / 2), 2);
-        
+
         // Velocidade linear (m/s) e Tempo de Residência (ms)
         const velocity = qTotalM3s / areaM2;
         const residenceTimeMs = qTotalCm3s > 0 ? (volumeMl / qTotalCm3s) * 1000 : 0;
@@ -151,7 +148,7 @@
         // 5. Avaliação do Regime de Fluxo
         const statusBadge = document.getElementById('flowStatus');
         statusBadge.className = 'status-badge'; // reset
-        
+
         if (reynolds < 2000) {
             statusBadge.textContent = 'Fluxo Laminar Seguro';
             statusBadge.classList.add('laminar');
@@ -175,4 +172,5 @@
 </script>
 
 </body>
+
 </html>
