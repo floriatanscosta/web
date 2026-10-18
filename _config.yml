@@ -7,4 +7,5 @@ lang: "pt-BR"
 
 exclude:
   - README.md
+  - LICENSE
   - .gitignore

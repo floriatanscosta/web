@@ -34,3 +34,15 @@ O seletor de tema do cabeçalho (`<details class="lang-menu theme-menu">`) é o 
 
 - As imagens da assinatura de e-mail (`components/gerador/*.png`) são usadas com URL absoluta (`https://floriatan.com.br/web/…`) nos e-mails enviados — não renomeie nem mova esses arquivos.
 - Nenhuma ferramenta envia dados a servidores; tudo roda no navegador.
+
+## Licença
+
+O **código** das ferramentas (HTML, CSS e JavaScript deste repositório) está sob a [licença MIT](LICENSE).
+
+Ficam **fora** da licença MIT, com todos os direitos reservados: os textos das páginas, as imagens de capa e
+o logotipo Fc. As imagens usadas pelo gerador de assinatura (`components/gerador/*.png`) e os nomes de
+produtos e instituições citados (como Tecan) pertencem aos respectivos titulares.
+
+A base visual compartilhada (`/css`, `/js`, fontes e ícones) vem do repositório do site principal
+(`floriatanscosta.github.io`), que tem as próprias informações de licença.
+
