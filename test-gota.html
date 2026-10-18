@@ -43,10 +43,18 @@
         <li><a href="/web/">Ferramentas</a></li>
         <li><a href="/web/assinatura">Assinatura</a></li>
         <li><a href="/web/custom-plate">Custom Plate</a></li>
+        <li><a href="/web/sobre">Sobre</a></li>
       </ul>
     </nav>
     <div class="header-right">
-      <button type="button" class="icon-btn theme-toggle" data-theme-toggle aria-label="Alternar tema claro/escuro" aria-pressed="false" title="Alternar tema claro/escuro"><svg class="icon icon-moon" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#moon"></use></svg><svg class="icon icon-sun" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#sun"></use></svg></button>
+      <details class="lang-menu theme-menu">
+        <summary aria-label="Tema" title="Tema"><svg class="icon tm-light" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#sun"></use></svg><svg class="icon tm-dark" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#moon"></use></svg><svg class="icon tm-system" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#contrast"></use></svg></summary>
+        <ul class="lang-menu__list theme-menu__list">
+          <li><button type="button" data-theme-set="light" aria-pressed="false"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#sun"></use></svg>Claro</button></li>
+          <li><button type="button" data-theme-set="dark" aria-pressed="false"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#moon"></use></svg>Escuro</button></li>
+          <li><button type="button" data-theme-set="system" aria-pressed="false"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#contrast"></use></svg>Seguir o sistema</button></li>
+        </ul>
+      </details>
       <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menu"><svg class="icon icon-menu" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#menu"></use></svg><svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#close"></use></svg></button>
     </div>
   </div>
@@ -99,6 +107,9 @@
       <p id="flowStatus" class="status-badge laminar" aria-live="polite">Fluxo laminar</p>
     </div>
   </section>
+  <div class="alert-box alert-warning tool-note" role="note">
+    <div><strong>Em teste:</strong> os resultados são estimativas e a ferramenta pode mudar ou ficar indisponível sem aviso prévio. Veja o <a class="inline-link" href="/web/aviso">Aviso de uso</a>.</div>
+  </div>
 </div>
 </main>
 <footer class="site-footer">
@@ -110,7 +121,7 @@
       <li><a class="footer-profile" href="/"><img src="/assets/favicon.svg" alt="Site de Floriatan Santos Costa" width="22" height="22"></a></li>
       <li><a class="footer-profile" href="http://lattes.cnpq.br/0287106268880389" target="_blank" rel="noopener noreferrer"><img src="/assets/icons/lattes.svg" alt="Currículo Lattes" width="22" height="22"><span class="visually-hidden"> (abre em nova aba)</span></a></li>
     </ul>
-    <nav aria-label="Links do rodapé"><ul class="footer-right"><li><a href="/">Site principal</a></li><li><a href="/web/">Ferramentas</a></li><li><a href="/sobre">Sobre</a></li><li><a href="/contato">Contato</a></li></ul></nav>
+    <nav aria-label="Links do rodapé"><ul class="footer-right"><li><a href="/">Site principal</a></li><li><a href="/web/">Ferramentas</a></li><li><a href="/web/sobre">Sobre</a></li><li><a href="/web/aviso">Aviso de uso</a></li><li><a href="/contato">Contato</a></li></ul></nav>
   </div>
 </footer>
 <script src="/js/app.js" defer></script>

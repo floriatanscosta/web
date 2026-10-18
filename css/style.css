@@ -25,6 +25,12 @@
 .tool-card__body p { font-size: 0.95rem; color: var(--text-muted); flex: 1; }
 .tool-card__body .btn { align-self: flex-start; }
 
+/* 2b. Páginas de texto (Sobre e Aviso de uso) */
+/*****************************************************************/
+.prose-list { list-style: disc; margin: 10px 0 0; padding-left: 1.3em; }
+.prose-list li + li { margin-top: 6px; }
+.prose-list li::marker { color: var(--heading-color); }
+
 /* 3. Layout das ferramentas (formulário + pré-visualização) */
 /*****************************************************************/
 /* Campos de URL com o mesmo visual dos demais campos do site principal */
