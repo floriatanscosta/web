@@ -8,4 +8,5 @@ lang: "pt-BR"
 exclude:
   - README.md
   - LICENSE
+  - CHANGELOG.md
   - .gitignore

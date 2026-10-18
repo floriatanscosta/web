@@ -35,6 +35,8 @@ O seletor de tema do cabeçalho (`<details class="lang-menu theme-menu">`) é o 
 - As imagens da assinatura de e-mail (`components/gerador/*.png`) são usadas com URL absoluta (`https://floriatan.com.br/web/…`) nos e-mails enviados — não renomeie nem mova esses arquivos.
 - Nenhuma ferramenta envia dados a servidores; tudo roda no navegador.
 
+O histórico de alterações está em [`CHANGELOG.md`](CHANGELOG.md).
+
 ## Licença
 
 O **código** das ferramentas (HTML, CSS e JavaScript deste repositório) está sob a [licença MIT](LICENSE).
