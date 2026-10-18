@@ -1,22 +1,87 @@
 /* ==================================================================
-// style.css
-// CSS importato do principal
+// /web/css/style.css
+// Estilos EXCLUSIVOS do diretório /web/ (ferramentas).
+// A base visual (cores, fontes, cabeçalho, rodapé, botões, cartões,
+// formulários, modal) vem do site principal:
+//   /css/global.css  e  /css/main.css
+// Este arquivo é carregado depois deles e só acrescenta o que é próprio
+// das ferramentas.
 ================================================================== */
-@import url("https://floriatan.com.br/css/global.css");
-@import url("https://floriatan.com.br/css/main.css");
 
-
-/* 1. Reset básico */
+/* 1. Cabeçalho: subtítulo "Ferramentas" ao lado do nome */
 /*****************************************************************/
-header {background-color: var(--border-color);}
+.site-subtitle { font-weight: 500; color: var(--text-muted); }
 
-/* 2. Cards home */
+/* 2. Página inicial — cartões das ferramentas */
 /*****************************************************************/
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 15px; }
-.project-card { background-color: var(--box-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; box-shadow var(--transition-normal); display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
-.project-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
-.project-card p { font-size: 0.95rem; margin-bottom: 15px; }
-.project-cover-box { height: 160px; border-radius: var(--radius-sm); margin-bottom: 15px; overflow: hidden; border: 1px solid var(--border-color); background-color: var(--color-bg-surface-2, #f8fafc); display: flex; align-items: center; justify-content: center; }
-.project-cover-img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-normal); }
-.project-card:hover .project-cover-img { transform: scale(1.05); }
-.project-footer { margin-top: 20px; width: 100%; }
+.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.tool-card { display: flex; flex-direction: column; overflow: hidden; background: var(--box-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast); }
+.tool-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--heading-color); }
+.tool-card__cover { aspect-ratio: 2 / 1; overflow: hidden; background: var(--surface-2); border-bottom: 1px solid var(--border-color); }
+.tool-card__cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transition-normal); }
+.tool-card:hover .tool-card__cover img { transform: scale(1.04); }
+.tool-card__body { display: flex; flex-direction: column; gap: 10px; flex: 1; padding: 20px 22px 22px; }
+.tool-card__title { font-size: 1.15rem; margin-bottom: 0; color: var(--heading-strong); }
+.tool-card__body p { font-size: 0.95rem; color: var(--text-muted); flex: 1; }
+.tool-card__body .btn { align-self: flex-start; }
+
+/* 3. Layout das ferramentas (formulário + pré-visualização) */
+/*****************************************************************/
+/* Campos de URL com o mesmo visual dos demais campos do site principal */
+input[type="url"] { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem; font-family: inherit; background-color: var(--color-bg-surface-1); color: var(--text-main); transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
+input[type="url"]:focus { outline: none; border-color: var(--heading-color); background-color: var(--box-bg); box-shadow: 0 0 0 3px rgba(102, 111, 228, 0.25); }
+
+/*****************************************************************/
+.app-container { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.preview-panel { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.app-container .card-title { margin-bottom: 18px; }
+.tool-note { margin-top: 28px; }
+
+/* 4. Gerador de assinatura (assinatura.html) */
+/*****************************************************************/
+/* Fundo branco fixo (também no modo escuro): é como a assinatura aparece nos clientes de e-mail */
+.preview-box { border: 1px dashed var(--border-color); padding: 20px; background: #ffffff; color: #333333; border-radius: var(--radius-md); min-height: 200px; overflow-x: auto; margin-bottom: 20px; }
+
+/* 5. Gerador de XML (custom-plate.html) */
+/*****************************************************************/
+.glass-slide-wrapper { overflow: auto; background: #eef2f5; border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
+.glass-slide { position: relative; flex-shrink: 0; background: url("/web/components/custom-plate/slide.svg") no-repeat center / 100% 100%; }
+.droplet-grid { position: absolute; display: grid; }
+.droplet-cell { display: flex; justify-content: center; align-items: center; }
+.droplet { background-color: #4a90e2; border-radius: 50%; box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.3); transition: width 0.3s, height 0.3s; }
+.grid-warning { margin: 20px 0 0; padding: 10px 14px; font-size: 0.9rem; font-weight: 600; word-wrap: break-word; color: #b42318; background: rgba(220, 38, 38, 0.08); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: var(--radius-sm); }
+[data-theme="dark"] .grid-warning { color: #fca5a5; }
+.plate-id-display { margin-top: 18px; color: var(--text-main); }
+.plate-id-display strong { color: var(--heading-strong); }
+.plate-total { font-weight: 700; color: var(--link-color); font-variant-numeric: tabular-nums; }
+.xml-output { width: 100%; height: 260px; padding: 18px; margin-bottom: 15px; font-family: var(--font-mono); font-size: 0.85em; line-height: 1.5; background: #282c34; color: #abb2bf; border: none; border-radius: var(--radius-sm); resize: vertical; white-space: pre; overflow-x: auto; }
+.xml-output:focus { background: #282c34; }
+
+/* 6. Calculadora de fluidodinâmica (test-gota.html) */
+/*****************************************************************/
+.calc-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 20px; }
+.calc-inputs .form-group { margin-bottom: 0; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.result-card { display: flex; flex-direction: column; gap: 6px; padding: 18px 14px; text-align: center; background: var(--surface-2); border: 1px solid var(--border-color); border-radius: var(--radius-md); }
+.result-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+.result-value { font-family: var(--font-mono); font-size: 1.45rem; font-weight: 700; color: var(--heading-strong); font-variant-numeric: tabular-nums; }
+.status-container { margin-top: 22px; text-align: center; }
+.status-badge { display: inline-block; padding: 10px 26px; border-radius: 999px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; border: 2px solid transparent; transition: background-color var(--transition-normal), color var(--transition-normal); }
+.status-badge.laminar { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+.status-badge.transicao { background: #fef08a; color: #854d0e; border-color: #fde047; }
+.status-badge.turbulento { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+
+/*****************************************************************/
+/* Responsividade */
+/*****************************************************************/
+@media (max-width: 1024px) {
+    .app-container { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .form-grid { grid-template-columns: minmax(0, 1fr); }
+    .form-group.full-width { grid-column: auto; }
+    .btn-group { flex-direction: column; }
+    .btn-group .btn { width: 100%; }
+    .site-subtitle { display: none; }
+}

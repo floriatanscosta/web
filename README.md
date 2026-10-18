@@ -1,3 +1,32 @@
-# web
+# Ferramentas — floriatan.com.br/web
 
-// -- // -- // -- //
+Ferramentas e aplicações web simples, publicadas em **https://floriatan.com.br/web/** (GitHub Pages do repositório `floriatanscosta/web`).
+
+| Página | Endereço | Script |
+|---|---|---|
+| Lista de ferramentas | `/web/` | — |
+| Gerador de assinatura de e-mail | `/web/assinatura` | `components/gerador/app.js` |
+| Custom Plate Design XML (Tecan) | `/web/custom-plate` | `components/custom-plate/app.js` |
+| Calculadora de fluidodinâmica ICP-MS (em teste, fora da lista) | `/web/test-gota` | `components/gota/app.js` |
+| Página de erro | `/web/404` | — |
+
+## Como o visual funciona
+
+As páginas usam a **mesma base do site principal**, carregada do próprio domínio:
+
+- `/css/global.css` e `/css/main.css` — cores, fontes, cabeçalho, rodapé, botões, cartões, formulários, modal;
+- `/js/theme-init.js` e `/js/app.js` — tema claro/escuro, menu do celular e ano do rodapé;
+- `/assets/…` — logotipo, favicon, ícones e fontes.
+
+Assim, qualquer ajuste visual feito no site principal vale também aqui. O que é exclusivo das ferramentas fica em **`css/style.css`** (este repositório).
+
+> Como esses arquivos vêm de `floriatan.com.br`, abrir os HTML direto do computador (duplo clique) mostra a página sem estilo. Para testar localmente, sirva o site principal na raiz e este repositório em `/web/`.
+
+## Editar
+
+O site é **estático**: não há script de geração. Cabeçalho e rodapé estão escritos em cada página HTML; ao incluir uma ferramenta nova, copie uma página existente, troque o conteúdo de `<main>` e adicione o link no menu (`<nav>`) de todas as páginas e um cartão em `index.html`.
+
+## Observações
+
+- As imagens da assinatura de e-mail (`components/gerador/*.png`) são usadas com URL absoluta (`https://floriatan.com.br/web/…`) nos e-mails enviados — não renomeie nem mova esses arquivos.
+- Nenhuma ferramenta envia dados a servidores; tudo roda no navegador.

@@ -1,32 +1,10 @@
-# === 1. Configurações ===
-url: "https://floriatan.com.br/web/"
-baseurl: ""
+# Configuração do Jekyll usada pelo GitHub Pages (projeto publicado em floriatan.com.br/web/).
+# As páginas são HTML estático; o Jekyll apenas as copia.
+url: "https://floriatan.com.br"
+baseurl: "/web"
+title: "Ferramentas · Floriatan Santos Costa"
+lang: "pt-BR"
 
-# === 2. Metadados do site s===
-title: "Floriatan Santos Costa"
-description: "Pesquisador de Pós-Doutorado em Química Analítica"
-author: "Floriatan Santos Costa"
-github_username: "floriatanscosta"
-
-# === 3. Estrutura de Links ===
-permalink: pretty
-
-# === 4. Plugins Oficiais ===
-plugins:
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  
-# === 5. Limpeza de Build ===
 exclude:
   - README.md
   - .gitignore
-  - node_modules/
-  - package.json
-  - package-lock.json
-
-# === 6. Variáveis ===
-defaults:
-  - scope:
-      path: ""
-    values:
-      permissions-policy: "interest-cohort=()"

@@ -1,169 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-    <!-- Meta Tags -->
-    <title>Assinatura E-mail design - Floriatan Santos Costa</title>
-    <meta name="description" content="Gerador de assinaturas de e-mail institucionais.">
-    <meta property="og:title" content="Assinatura E-mail design - Floriatan Santos Costa">
-    <meta property="og:description" content="Configure e gere a sua assinatura de e-mail institucional.">
-    <meta property="og:image" content="./assets/img/cover.png">
-    <meta name="theme-color" content="#5a729e">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://floriatan.com.br/web/assinatura">
-    <meta name="robots" content="noindex, nofollow">
-
-    <!-- Previne o piscar branco -->
-    <script>
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-    </script>
-
-    <!-- css -->
-    <link rel="stylesheet" href="./components/style.css">
-    <link rel="stylesheet" href="../web/css/style.css">
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Gerador de assinatura de e-mail · Floriatan Santos Costa</title>
+  <meta name="description" content="Gerador de assinaturas de e-mail institucionais com logotipo, Lattes e ORCID.">
+  <meta name="author" content="Floriatan Santos Costa">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://floriatan.com.br/web/assinatura">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Floriatan Santos Costa">
+  <meta property="og:title" content="Gerador de assinatura de e-mail · Floriatan Santos Costa">
+  <meta property="og:description" content="Gerador de assinaturas de e-mail institucionais com logotipo, Lattes e ORCID.">
+  <meta property="og:url" content="https://floriatan.com.br/web/assinatura">
+  <meta property="og:image" content="https://floriatan.com.br/web/components/gerador/cover.png">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#5a729e" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1f26" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/roboto-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Base visual compartilhada com o site principal (mesmo domínio) -->
+  <script src="/js/theme-init.js"></script>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <!-- Estilos exclusivos do /web -->
+  <link rel="stylesheet" href="/web/css/style.css">
 </head>
-
 <body>
-    <!-- Header e nav -->
-    <header>
-        <div class="container header-content">
-            <!-- Logo e nome -->
-            <div class="header-left">
-                <a href="/en/" class="logo-link">
-                    <img src="./assets/logo.svg" alt="Logo Floriatan" class="logo-img">
-                </a>
-                <h1 class="site-title">Assinatura E-mail design</h1>
-            </div>
-            <!--  Menu -->
-            <nav id="navMenu" class="nav-content">
-            </nav>
-            <!-- Idioma e tema -->
-            <div class="header-right">
-                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema" style="padding: 0;"><img src="./assets/icons/escuro.svg" alt="Ativar Modo Escuro" style="width: 20px; height: 20px;"></button>
-                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <div class="container">
-            <div class="app-container">
-                <div class="form-panel">
-                    <h3>Dados da assinatura</h3>
-                    <form id="assinaturaForm" class="form-grid">
-                        <div class="form-group full-width">
-                            <label for="select-logo">Logo</label>
-                            <select id="select-logo">
-                                <option value="./components/gerador/logo-1.png">Logo 1 - UFPR</option>
-                                <option value="./components/gerador/logo-2.png">Logo 2 - UFPR e Dep. Química</option>
-                                <option value="./components/gerador/logo-3.png">Logo 3 - UFPR e LAESB</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label for="input-nome">Nome</label>
-                            <input type="text" id="input-nome" value="Nome">
-                        </div>
-        
-                        <div class="form-group full-width">
-                            <label for="input-cargo">Cargo ou título</label>
-                            <input type="text" id="input-cargo" value="Cargo ou Função">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="input-lab1">Laboratório</label>
-                            <input type="text" id="input-lab1" value="Laboratório de Espectrometria, Sensores e Biossensores">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="input-inst1">Instituição</label>
-                            <input type="text" id="input-inst1" value="Universidade Federal do Paraná">
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="input-lab2">Laboratório (se houver) <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">Info</span></label>
-                            <input type="text" id="input-lab2" value="">
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="input-inst2">Instituição (se houver) <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">Info</span></label>
-                            <input type="text" id="input-inst2" value="">
-                        </div>
-        
-                        <div class="form-group full-width">
-                            <label for="input-url-web">Site pessoal (se houver) <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">Info</span></label>
-                            <input type="text" id="input-url-web" value="">
-                        </div>
-        
-                        <div class="form-group">
-                            <label for="input-url-lattes">Currículo lattes <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">Info</span></label>
-                            <input type="text" id="input-url-lattes" value="http://lattes.cnpq.br/XXXXXXXXXXXX">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="input-url-orcid">Link do OrcID <span class="custom-tooltip" data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">Info</span></label>
-                            <input type="text" id="input-url-orcid" value="https://orcid.org/XXXX-XXXX-XXXX-XXXX">
-                        </div>
-                    </form>
-                </div>
-                <!-- preview -->
-                <div class="preview-panel">
-                    <div class="card">
-                        <h3>Preview</h3>
-                        <div class="preview-box" id="preview-container" style="padding: 20px; background: #eef2f5;"></div>
-                        <div class="btn-group">
-                            <button id="copyBtn" class="btn btn-copy" onclick="copiarAssinatura()">Copiar assinatura</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section>
-            <div class="container">
-                <div class="alert-box alert-warning margin-top-2" style="margin-bottom: 40px;">
-                    <div><strong>Aviso:</strong> Esta ferramenta está em desenvolvimento. Algumas funcionalidades podem passar por instabilidades ou receber atualizações sem aviso prévio.</div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-   
-
-    <!-- Modal Global -->
-    <div id="customModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h3 id="modalTitle" class="modal-title">Sucesso!</h3>
-            <p id="modalMessage" class="modal-message">A assinatura foi copiada.</p>
-            <button class="btn" style="width: 100%;" onclick="closeModal()">OK</button>
-        </div>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="container header-content">
+    <a class="brand" href="/web/" aria-label="Ferramentas — Floriatan Santos Costa">
+      <img src="/assets/logo.svg" alt="" class="logo-img" width="44" height="44">
+      <span class="site-title">Floriatan Costa <span class="site-subtitle">· Ferramentas</span></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+      <ul class="nav-content"><li><a href="/web/">Ferramentas</a></li><li><a href="/web/assinatura" aria-current="page">Assinatura de e-mail</a></li><li><a href="/web/custom-plate">Custom Plate XML</a></li><li><a href="/">Site principal</a></li></ul>
+    </nav>
+    <div class="header-right">
+      <button type="button" class="icon-btn theme-toggle" data-theme-toggle aria-label="Alternar tema claro/escuro" aria-pressed="false" title="Alternar tema claro/escuro"><svg class="icon icon-moon" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#moon"></use></svg><svg class="icon icon-sun" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#sun"></use></svg></button>
+      <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menu"><svg class="icon icon-menu" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#menu"></use></svg><svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#close"></use></svg></button>
     </div>
-
-    <!-- Rodapé -->
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-left">
-                <p>&copy; <span id="year"></span> Floriatan Santos Costa — All rights reserved</p>
-            </div>
-            <div class="footer-right">
-                <a href="/">Perfil</a>
-                <a href="/web/sobre">Sobre</a>
-                <a href="/web/contato">Contato</a>
-            </div>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="page-hero container">
+  <p class="eyebrow">Ferramentas</p>
+  <h1>Gerador de assinatura de e-mail</h1>
+  <p class="lead">Preencha os campos, confira a pré-visualização e copie a assinatura para colar nas configurações do seu cliente de e-mail.</p>
+</section>
+<div class="container">
+  <div class="app-container">
+    <section class="card" aria-labelledby="h-dados">
+      <h2 id="h-dados" class="card-title">Dados da assinatura</h2>
+      <form id="assinaturaForm" class="form-grid" novalidate>
+        <div class="form-group full-width">
+          <label for="select-logo">Logo</label>
+          <select id="select-logo">
+            <option value="./components/gerador/logo-1.png">Logo 1 - UFPR</option>
+            <option value="./components/gerador/logo-2.png">Logo 2 - UFPR e Dep. Química</option>
+            <option value="./components/gerador/logo-3.png">Logo 3 - UFPR e LAESB</option>
+          </select>
         </div>
-    </footer>
-    
-    <!-- Scripts -->
-    <script src="./js/app.js"></script>
-    <script src="./components/gerador/app.js"></script>
-</body>
+        <div class="form-group full-width">
+          <label for="input-nome">Nome</label>
+          <input type="text" id="input-nome" value="Nome" autocomplete="name">
+        </div>
+        <div class="form-group full-width">
+          <label for="input-cargo">Cargo ou título</label>
+          <input type="text" id="input-cargo" value="Cargo ou Função" autocomplete="organization-title">
+        </div>
+        <div class="form-group">
+          <label for="input-lab1">Laboratório</label>
+          <input type="text" id="input-lab1" value="Laboratório de Espectrometria, Sensores e Biossensores">
+        </div>
+        <div class="form-group">
+          <label for="input-inst1">Instituição</label>
+          <input type="text" id="input-inst1" value="Universidade Federal do Paraná" autocomplete="organization">
+        </div>
+        <div class="form-group">
+          <label for="input-lab2">Laboratório (se houver) <span class="custom-tooltip" tabindex="0" role="img" aria-label="Apague o conteúdo para ocultar este campo na assinatura." data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+          <input type="text" id="input-lab2" value="">
+        </div>
+        <div class="form-group">
+          <label for="input-inst2">Instituição (se houver) <span class="custom-tooltip" tabindex="0" role="img" aria-label="Apague o conteúdo para ocultar este campo na assinatura." data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+          <input type="text" id="input-inst2" value="">
+        </div>
+        <div class="form-group full-width">
+          <label for="input-url-web">Site pessoal (se houver) <span class="custom-tooltip" tabindex="0" role="img" aria-label="Apague o conteúdo para ocultar este campo na assinatura." data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+          <input type="url" id="input-url-web" value="" inputmode="url" placeholder="https://">
+        </div>
+        <div class="form-group">
+          <label for="input-url-lattes">Currículo Lattes <span class="custom-tooltip" tabindex="0" role="img" aria-label="Apague o conteúdo para ocultar este campo na assinatura." data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+          <input type="url" id="input-url-lattes" value="http://lattes.cnpq.br/XXXXXXXXXXXX" inputmode="url">
+        </div>
+        <div class="form-group">
+          <label for="input-url-orcid">Link do ORCID <span class="custom-tooltip" tabindex="0" role="img" aria-label="Apague o conteúdo para ocultar este campo na assinatura." data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+          <input type="url" id="input-url-orcid" value="https://orcid.org/XXXX-XXXX-XXXX-XXXX" inputmode="url">
+        </div>
+      </form>
+    </section>
+    <div class="preview-panel">
+      <section class="card" aria-labelledby="h-preview">
+        <h2 id="h-preview" class="card-title">Pré-visualização</h2>
+        <div class="preview-box" id="preview-container" aria-live="polite"></div>
+        <div class="btn-group">
+          <button type="button" id="copyBtn" class="btn">Copiar assinatura</button>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="alert-box alert-warning tool-note" role="note">
+    <div><strong>Aviso:</strong> Esta ferramenta está em desenvolvimento. Algumas funcionalidades podem passar por instabilidades ou receber atualizações sem aviso prévio.</div>
+  </div>
+</div>
 
+<div id="customModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalMessage" hidden>
+  <div class="modal-content">
+    <button type="button" class="modal-close" data-modal-close aria-label="Fechar">&times;</button>
+    <h2 id="modalTitle" class="modal-title">Sucesso!</h2>
+    <p id="modalMessage" class="modal-message">A assinatura foi copiada.</p>
+    <button type="button" class="btn btn-block" data-modal-close>OK</button>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-left">
+      <p>© <span data-year>2026</span> Floriatan Santos Costa. Todos os direitos reservados.</p>
+    </div>
+    <ul class="footer-profiles">
+      <li><a class="footer-profile" href="/"><img src="/assets/favicon.svg" alt="Site de Floriatan Santos Costa" width="22" height="22"></a></li>
+      <li><a class="footer-profile" href="http://lattes.cnpq.br/0287106268880389" target="_blank" rel="noopener noreferrer"><img src="/assets/icons/lattes.svg" alt="Currículo Lattes" width="22" height="22"><span class="visually-hidden"> (abre em nova aba)</span></a></li>
+    </ul>
+    <nav aria-label="Links do rodapé"><ul class="footer-right"><li><a href="/">Site principal</a></li><li><a href="/web/">Ferramentas</a></li><li><a href="/sobre">Sobre</a></li><li><a href="/contato">Contato</a></li></ul></nav>
+  </div>
+</footer>
+<script src="/js/app.js" defer></script>
+<script src="/web/components/gerador/app.js" defer></script>
+</body>
 </html>
