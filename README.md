@@ -20,7 +20,7 @@ informações a servidores, e não é preciso instalar nada nem criar conta.
 | Lista de ferramentas | `/web/` | — | Cartões com as ferramentas disponíveis |
 | Gerador de assinatura de e-mail | `/web/assinatura` | `components/gerador/app.js` | Monta uma assinatura padronizada (nome, cargo, vínculos, logotipo e links para site, Lattes e ORCID) pronta para colar no Gmail, Outlook, Thunderbird e outros |
 | Custom Plate Design XML (Tecan) | `/web/custom-plate` | `components/custom-plate/app.js` | Define os parâmetros de uma placa personalizada, mostra a grade de gotas em escala sobre a lâmina e gera o XML para o Tecan Uno Dispenser |
-| Calculadora de fluidodinâmica ICP-MS (em teste, fora da lista) | `/web/test-gota` | `components/gota/app.js` | — |
+| Calculadora de fluidodinâmica ICP-MS (em teste, fora da lista) | `/web/test-gota` | `components/gota/app.js` | Calcula volume interno, velocidade linear, tempo de residência e número de Reynolds de uma câmara de nebulização e indica o regime de fluxo |
 | Sobre as Ferramentas | `/web/sobre` | — | O que são, como funcionam, privacidade, tecnologia e código |
 | Aviso de uso (disclaimer) | `/web/aviso` | — | Condições de uso e conferência dos resultados |
 | Página de erro | `/web/404` | — | — |
@@ -62,16 +62,16 @@ Cada ferramenta tem a página `.html` na raiz e a lógica em `components/<ferram
 
 ```text
 web/
-├── assets/
-│   ├── icons/                   # ícones SVG (tema, Lattes, ORCID, DOI, PDF…)
-│   ├── img/cover.png            # imagem de compartilhamento
+├── assets/                      # cópia antiga, não referenciada (as páginas usam /assets/ do site principal)
+│   ├── icons/
+│   ├── img/cover.png
 │   ├── favicon.svg
 │   └── logo.svg
 ├── components/
 │   ├── custom-plate/            # app.js, cover.png, slide.svg
 │   ├── gerador/                 # app.js, cover.png e imagens da assinatura (*.png)
 │   ├── gota/                    # app.js (calculadora em teste)
-│   └── style.css                # não referenciado pelas páginas atuais
+│   └── style.css                # não usado pelas Ferramentas; só por design-meta.html do site principal
 ├── css/
 │   └── style.css                # estilos exclusivos das ferramentas
 ├── js/
@@ -86,7 +86,7 @@ web/
 ├── index.html
 ├── LICENSE
 ├── README.md
-├── robots.txt                   # bloqueia a indexação (Disallow: /)
+├── robots.txt                   # sem efeito: os buscadores só leem o robots.txt da raiz do domínio
 ├── sobre.html
 └── test-gota.html
 ```
@@ -101,6 +101,8 @@ O seletor de tema do cabeçalho (`<details class="lang-menu theme-menu">`) é o 
 
 - As imagens da assinatura de e-mail (`components/gerador/*.png`) são usadas com URL absoluta (`https://floriatan.com.br/web/…`) nos e-mails enviados — não renomeie nem mova esses arquivos.
 - Nenhuma ferramenta envia dados a servidores; tudo roda no navegador.
+- Indexação: as páginas das ferramentas (`assinatura`, `custom-plate`, `test-gota`) e a 404 têm `<meta name="robots" content="noindex, nofollow">`; a lista, "Sobre" e "Aviso de uso" podem aparecer nos buscadores.
+- `assets/`, `js/` e `components/style.css` não são usados pelas páginas atuais (ver o item I34 do `PENDENCIAS.md` do site principal antes de apagar).
 
 O histórico de alterações está em [`CHANGELOG.md`](CHANGELOG.md).
 

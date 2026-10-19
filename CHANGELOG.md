@@ -1,5 +1,8 @@
 # Histórico de alterações — Ferramentas (/web)
 
+## 2026-10-19 — Documentação
+- README revisado: descrição da Calculadora de fluidodinâmica, indexação das páginas e arquivos que não são usados (`assets/`, `js/`, `components/style.css`, `robots.txt`).
+
 ## 2026-10-18 — Tema, páginas institucionais e licença
 - **Tema com três opções** (claro, escuro e seguir o sistema), com o mesmo seletor do site principal; a escolha vale para o site e para as Ferramentas.
 - **Menu**: item "Sobre" e marcação da página atual (`aria-current="page"`), mantendo os rótulos curtos definidos pelo autor.
