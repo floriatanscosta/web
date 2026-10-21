@@ -1,5 +1,12 @@
 # Histórico de alterações — Ferramentas (/web)
 
+## 2026-10-21 — Assinatura: imagens pelo GitHub, revisão e compressão
+- **Imagens da assinatura** (logo e ícones) passam a vir de `raw.githubusercontent.com/floriatanscosta/web/main/components/gerador/`, que não depende do domínio. Os arquivos continuam no mesmo lugar, e as assinaturas antigas, que apontam para `floriatan.com.br/web/…`, seguem funcionando.
+- **Compressão das imagens** (de 284 KB para 43 KB no total): ícones reduzidos de 200 × 200 para 60 × 60 px (são exibidos com 20 px; 3x para telas de alta densidade), logos e capas convertidos para paleta de 256 cores e otimizados com oxipng, sem diferença visível.
+- **Segurança (Assinatura)**: só os logos da lista são aceitos (um valor alterado no navegador não entra na assinatura); links com `rel="noopener noreferrer"`.
+- **Correções (Assinatura)**: ícones com `width` e `height` fixos (o Outlook ignora `width: auto`); "Currículum" → "Curriculum"; a pré-visualização não é mais lida inteira pelo leitor de tela a cada tecla; a assinatura não é mais montada duas vezes a cada alteração.
+- Calculadora em teste: o cálculo não é mais feito duas vezes a cada alteração.
+
 ## 2026-10-21 — Licença: todos os direitos reservados
 - `LICENSE`: a licença MIT foi substituída por uma licença proprietária (todos os direitos reservados, Leis nº 9.610/1998 e nº 9.609/1998). Copiar, modificar, redistribuir, republicar ou usar comercialmente depende de autorização por escrito; continuam permitidos o uso das ferramentas no site, o uso dos resultados gerados e o que os Termos de Serviço do GitHub exigem.
 - Aviso de copyright no cabeçalho dos scripts (`components/*/app.js`) e das folhas de estilo.

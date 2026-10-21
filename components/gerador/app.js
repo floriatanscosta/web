@@ -5,9 +5,11 @@
 (function () {
   'use strict';
 
-  // As imagens da assinatura precisam de URL absoluta para aparecer nos e-mails enviados
-  var BASE_URL = 'https://floriatan.com.br/web';
-  var SITE_URL = 'https://floriatan.com.br';
+  // As imagens da assinatura precisam de URL absoluta para aparecer nos e-mails enviados.
+  // Vêm direto do GitHub (raw.githubusercontent.com), que não depende do domínio do site.
+  // Não renomeie nem mova os arquivos de components/gerador/ e mantenha o repositório público.
+  var IMG_URL = 'https://raw.githubusercontent.com/floriatanscosta/web/main/components/gerador/';
+  var LOGOS = ['logo-1.png', 'logo-2.png', 'logo-3.png', 'logo-4.png'];
 
   var $ = function (id) { return document.getElementById(id); };
   var form = $('assinaturaForm');
@@ -43,7 +45,9 @@
   /* ---------- montagem da assinatura ---------- */
 
   function atualizarAssinatura() {
-    var logoUrl = valor('select-logo');
+    // Só aceita os logos conhecidos (o valor do <select> pode ser alterado no navegador)
+    var logo = valor('select-logo');
+    if (LOGOS.indexOf(logo) === -1) logo = LOGOS[0];
     var nome = escaparHTML(valor('input-nome'));
     var cargo = escaparHTML(valor('input-cargo'));
     var lab1 = escaparHTML(valor('input-lab1'));
@@ -53,11 +57,6 @@
     var urlWeb = formatarURL(valor('input-url-web'));
     var urlLattes = formatarURL(valor('input-url-lattes'));
     var urlOrcid = formatarURL(valor('input-url-orcid'));
-
-    var logoAbsoluto = logoUrl;
-    if (logoUrl.indexOf('./') === 0) logoAbsoluto = BASE_URL + logoUrl.substring(1);
-    else if (logoUrl.indexOf('/') === 0) logoAbsoluto = SITE_URL + logoUrl;
-    logoAbsoluto = escaparHTML(logoAbsoluto);
 
     var temLinks = urlWeb || urlLattes || urlOrcid;
 
@@ -73,14 +72,14 @@
     function celula(url, img, alt, title, ultima) {
       if (!url) return '';
       return '\n      <td style="' + (ultima ? '' : 'padding-right: 14px; ') + 'vertical-align: middle;">' +
-        '\n        <a href="' + url + '" target="_blank" style="text-decoration: none; display: block;">' +
-        '\n          <img src="' + BASE_URL + '/components/gerador/' + img + '" alt="' + alt + '" style="height: 20px; width: auto; display: block;" height="20" title="' + title + '">' +
+        '\n        <a href="' + url + '" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">' +
+        '\n          <img src="' + IMG_URL + img + '" alt="' + alt + '" style="height: 20px; width: 20px; display: block;" width="20" height="20" title="' + title + '">' +
         '\n        </a>\n      </td>';
     }
 
     var blocoSocial = temLinks ?
       '\n      <table cellpadding="0" cellspacing="0" style="border-collapse: collapse;">\n        <tr>' +
-      celula(urlWeb, 'link.png', 'CV', 'Currículum Vitae', false) +
+      celula(urlWeb, 'link.png', 'CV', 'Curriculum Vitae', false) +
       celula(urlLattes, 'lattes.png', 'Lattes', 'Currículo Lattes', false) +
       celula(urlOrcid, 'orcid.png', 'ORCID', 'ORCID iD', true) +
       '\n        </tr>\n      </table>' : '';
@@ -89,7 +88,7 @@
       '\n<table cellpadding="0" cellspacing="0" style="font-family: \'Roboto\', Helvetica, Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.2; max-width: 650px; text-align: left;">' +
       '\n  <tr>' +
       '\n    <td style="vertical-align: middle; padding-right: 20px; width: 110px;">' +
-      '\n      <img src="' + logoAbsoluto + '" alt="Logo Institucional" style="width: 110px; height: auto; display: block;" width="110">' +
+      '\n      <img src="' + IMG_URL + logo + '" alt="Logo institucional" style="width: 110px; height: auto; display: block;" width="110">' +
       '\n    </td>' +
       '\n    <td style="vertical-align: top; width: 2px; background-color: #dfe5f1; padding: 0;"></td>' +
       '\n    <td style="vertical-align: middle; padding-left: 20px;">' +
@@ -168,8 +167,8 @@
 
   /* ---------- eventos ---------- */
 
+  // "input" também dispara em <select>; "change" redesenharia duas vezes
   form.addEventListener('input', atualizarAssinatura);
-  form.addEventListener('change', atualizarAssinatura);
   form.addEventListener('submit', function (e) { e.preventDefault(); });
   if (copyBtn) copyBtn.addEventListener('click', copiarAssinatura);
 

@@ -96,7 +96,7 @@ web/
 Os endereços públicos (`/web/assinatura`, `/web/custom-plate`, …) e os caminhos de
 `components/` já circulam fora do site e por isso não mudam:
 
-- `components/gerador/*.png` é carregado com URL absoluta pelas assinaturas já enviadas por e-mail;
+- `components/gerador/*.png` é carregado com URL absoluta (do GitHub e, nas assinaturas antigas, do domínio) pelos e-mails já enviados;
 - `components/custom-plate/cover.png` e `components/gerador/cover.png` são as imagens de compartilhamento (`og:image`);
 - `components/style.css` e `css/style.css` são usados pelo `design-meta.html` do site principal.
 
@@ -114,7 +114,7 @@ O seletor de tema do cabeçalho (`<details class="lang-menu theme-menu">`) é o 
 
 ## Observações
 
-- As imagens da assinatura de e-mail (`components/gerador/*.png`) são usadas com URL absoluta (`https://floriatan.com.br/web/…`) nos e-mails enviados — não renomeie nem mova esses arquivos.
+- As imagens da assinatura de e-mail (`components/gerador/*.png`) entram nas assinaturas com URL absoluta **do GitHub** (`https://raw.githubusercontent.com/floriatanscosta/web/main/components/gerador/…`), que continua funcionando mesmo se o domínio parar. Assinaturas geradas antes de 21/10/2026 usam `https://floriatan.com.br/web/components/gerador/…`. **Não renomeie nem mova esses arquivos, não renomeie o branch `main` e mantenha o repositório público**: qualquer uma dessas mudanças tira as imagens das assinaturas já em uso.
 - Nenhuma ferramenta envia dados a servidores; tudo roda no navegador.
 - Indexação: as páginas das ferramentas (`assinatura`, `custom-plate`, `test-gota`) e a 404 têm `<meta name="robots" content="noindex, nofollow">`; a lista, "Sobre" e "Aviso de uso" podem aparecer nos buscadores.
 - `assets/`, `js/` e `robots.txt`, sem uso (item I34 do `PENDENCIAS.md` do site principal), foram movidos para `_arquivo/` e saíram do site; a pasta pode ser apagada quando quiser.

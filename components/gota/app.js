@@ -67,8 +67,8 @@
     }
   }
 
+  // "input" também dispara em <select>; "change" recalcularia duas vezes
   form.addEventListener('input', calculateDynamics);
-  form.addEventListener('change', calculateDynamics);
   form.addEventListener('submit', function (e) { e.preventDefault(); });
   calculateDynamics();
 })();
