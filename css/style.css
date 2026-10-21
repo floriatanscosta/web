@@ -100,7 +100,7 @@ ol.prose-list--ordered { list-style: decimal; }
 /* 5. Gerador de XML (custom-plate.html) */
 /*****************************************************************/
 .glass-slide-wrapper { overflow: auto; background: #eef2f5; border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
-.glass-slide { position: relative; flex-shrink: 0; overflow: hidden; background: url("/web/components/custom-plate/slide.svg") no-repeat center / 100% 100%; }
+.glass-slide { position: relative; flex-shrink: 0; overflow: hidden; background: url("/web/components/custom-plate/assets/slide.svg") no-repeat center / 100% 100%; }
 .droplet-grid { position: absolute; display: grid; }
 .droplet-cell { display: flex; justify-content: center; align-items: center; }
 .droplet { background-color: #4a90e2; border-radius: 50%; box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.3); transition: width 0.3s, height 0.3s; }
@@ -118,7 +118,7 @@ ol.prose-list--ordered { list-style: decimal; }
 .xml-output { width: 100%; height: 260px; padding: 18px; margin-bottom: 15px; font-family: var(--font-mono); font-size: 0.85em; line-height: 1.5; background: #282c34; color: #abb2bf; border: none; border-radius: var(--radius-sm); resize: vertical; white-space: pre; overflow-x: auto; }
 .xml-output:focus { background: #282c34; }
 
-/* 6. Calculadora de fluidodinâmica (test-gota.html) */
+/* 6. Calculadora de fluidodinâmica (fluidodinamica.html) */
 /*****************************************************************/
 .calc-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 20px; }
 .calc-inputs .form-group { margin-bottom: 0; }

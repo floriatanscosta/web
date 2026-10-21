@@ -18,9 +18,9 @@ informações a servidores, e não é preciso instalar nada nem criar conta.
 | Página | Endereço | Script | O que faz |
 |---|---|---|---|
 | Lista de ferramentas | `/web/` | — | Cartões com as ferramentas disponíveis |
-| Gerador de assinatura de e-mail | `/web/assinatura` | `components/gerador/app.js` | Monta uma assinatura padronizada (nome, cargo, vínculos, e-mail, telefone, logotipo e links para site, Lattes e ORCID), confere os dados, copia como texto formatado ou HTML e exporta em PDF ([descrição](components/gerador/README.md)) |
+| Gerador de assinatura de e-mail | `/web/assinatura` | `components/assinatura/app.js` | Monta uma assinatura padronizada (nome, cargo, vínculos, e-mail, telefone, logotipo e links para site, Lattes e ORCID), confere os dados, copia como texto formatado ou HTML e exporta em PDF ([descrição](components/assinatura/README.md)) |
 | Custom Plate Design XML (Tecan) | `/web/custom-plate` | `components/custom-plate/app.js` | Define os parâmetros de uma placa personalizada, mostra a grade de gotas em escala sobre a lâmina, gera o XML para o Tecan Uno Dispenser e exporta placa, configurações e XML em PDF ([descrição](components/custom-plate/README.md)) |
-| Calculadora de fluidodinâmica ICP-MS (em teste, fora da lista) | `/web/test-gota` | `components/gota/app.js` | Calcula volume interno, velocidade linear, tempo de residência e número de Reynolds de uma câmara de nebulização e indica o regime de fluxo |
+| Calculadora de fluidodinâmica ICP-MS (em teste, fora da lista) | `/web/fluidodinamica` (antes `/web/test-gota`, que redireciona) | `components/fluidodinamica/app.js` | Calcula volume interno, velocidade linear, tempo de residência e número de Reynolds de uma câmara de nebulização e indica o regime de fluxo ([descrição](components/fluidodinamica/README.md)) |
 | Sobre as Ferramentas | `/web/sobre` | — | O que são, como funcionam, privacidade, tecnologia e código |
 | Aviso de uso (disclaimer) | `/web/aviso` | — | Condições de uso e conferência dos resultados |
 | Página de erro | `/web/404` | — | — |
@@ -56,7 +56,7 @@ floriatan.com.br/                    floriatan.com.br/web/  (este repositório)
 
 > Como esses arquivos vêm de `floriatan.com.br`, abrir os HTML direto do computador (duplo clique) mostra a página sem estilo. Para testar localmente, sirva o site principal na raiz e este repositório em `/web/`.
 
-Cada ferramenta tem a página `.html` na raiz e a lógica em `components/<ferramenta>/app.js`.
+Cada ferramenta tem a página `.html` na raiz e uma pasta `components/<ferramenta>/` com `app.js`, `cover.png`, `README.md` e `assets/` (ver "Padrão de cada ferramenta").
 
 ## Estrutura do repositório
 
@@ -67,22 +67,35 @@ fora do site (o Jekyll as ignora e elas também estão em `exclude` no `_config.
 web/
 ├── _arquivo/                    # NÃO publicado: cópias antigas sem uso (assets/, js/, robots.txt)
 ├── _dev/                        # NÃO publicado: desenvolvimento de novas ferramentas
-│   ├── _modelo/                 # página e script de partida (copie para começar)
+│   ├── _modelo/                 # index.html, app.js e assets/ de partida (copie para começar)
 │   └── README.md                # como criar, testar localmente e publicar
-├── components/                  # lógica e imagens de cada ferramenta publicada
-│   ├── custom-plate/            # app.js, cover.png, slide.svg, README.md (descrição da ferramenta)
-│   ├── gerador/                 # app.js, cover.png, imagens da assinatura (*.png), README.md (descrição)
-│   ├── gota/                    # app.js (calculadora em teste)
-│   └── style.css                # não usado pelas Ferramentas; só por design-meta.html do site principal
+├── components/                  # uma pasta por ferramenta publicada
+│   ├── assinatura/              # Gerador de assinatura de e-mail
+│   │   ├── assets/              # logos e ícones usados nas assinaturas (URL absoluta: não mover)
+│   │   ├── app.js
+│   │   ├── cover.png            # capa do cartão e og:image
+│   │   └── README.md            # descrição, verificações e histórico de versões
+│   ├── custom-plate/            # Custom Plate Design XML (Tecan)
+│   │   ├── assets/slide.svg     # desenho da lâmina da pré-visualização
+│   │   ├── app.js
+│   │   ├── cover.png
+│   │   └── README.md
+│   ├── fluidodinamica/          # Calculadora de fluidodinâmica ICP-MS (em teste)
+│   │   ├── assets/              # vazia por enquanto
+│   │   ├── app.js
+│   │   └── README.md
+│   ├── gerador/                 # LEGADO: imagens das assinaturas geradas até a versão 2.0.1 (não mover)
+│   └── style.css                # LEGADO: só para o design-meta.html do site principal
 ├── css/
 │   └── style.css                # estilos exclusivos das ferramentas
 ├── 404.html                     # páginas publicadas (endereços /web/<nome>, sem .html)
 ├── assinatura.html
 ├── aviso.html
 ├── custom-plate.html
+├── fluidodinamica.html
 ├── index.html
 ├── sobre.html
-├── test-gota.html
+├── test-gota.html               # redireciona o endereço antigo para /web/fluidodinamica
 ├── .editorconfig                # padrão de formatação (UTF-8, LF, 2 espaços)
 ├── .gitignore
 ├── _config.yml                  # configuração do Jekyll / GitHub Pages
@@ -91,14 +104,26 @@ web/
 └── README.md
 ```
 
-### Por que as páginas ficam na raiz e o código em `components/`
+### Padrão de cada ferramenta
 
-Os endereços públicos (`/web/assinatura`, `/web/custom-plate`, …) e os caminhos de
-`components/` já circulam fora do site e por isso não mudam:
+| O quê | Onde |
+|---|---|
+| Página | `<ferramenta>.html` na raiz (endereço `/web/<ferramenta>`) |
+| Lógica | `components/<ferramenta>/app.js` |
+| Capa (940 × 470 px) | `components/<ferramenta>/cover.png` |
+| Descrição | `components/<ferramenta>/README.md` (não publicada) |
+| Imagens e outros arquivos | `components/<ferramenta>/assets/` |
+| Estilos | seção própria em `css/style.css` |
 
-- `components/gerador/*.png` é carregado com URL absoluta (do GitHub e, nas assinaturas antigas, do domínio) pelos e-mails já enviados;
-- `components/custom-plate/cover.png` e `components/gerador/cover.png` são as imagens de compartilhamento (`og:image`);
-- `components/style.css` e `css/style.css` são usados pelo `design-meta.html` do site principal.
+O nome da pasta em `components/` é o mesmo do endereço da página.
+
+### O que não pode mudar de lugar
+
+Alguns caminhos são usados fora deste repositório e por isso ficam onde estão:
+
+- `components/assinatura/assets/*.png` e `components/gerador/*.png`: carregados com URL absoluta pelos e-mails já enviados (pelo GitHub e, nas assinaturas mais antigas, pelo domínio);
+- `components/<ferramenta>/cover.png`: imagens de compartilhamento (`og:image`);
+- `components/style.css`, `css/style.css` e `components/custom-plate/assets/slide.svg`: usados pelo `design-meta.html` do site principal.
 
 ## Desenvolvimento de novas ferramentas
 
@@ -108,20 +133,20 @@ e só vão para a raiz e para `components/` quando estiverem prontas. O passo a 
 
 ## Editar
 
-O site é **estático**: não há script de geração. Cabeçalho e rodapé estão escritos em cada página HTML; ao publicar uma ferramenta nova (desenvolvida em `_dev/`), crie a página na raiz, ponha o script em `components/<ferramenta>/app.js` e adicione o link no menu (`<nav>`) de todas as páginas, um cartão em `index.html` e uma descrição em `sobre.html`. Marque o item da página atual no menu com `aria-current="page"`.
+O site é **estático**: não há script de geração. Cabeçalho e rodapé estão escritos em cada página HTML; ao publicar uma ferramenta nova (desenvolvida em `_dev/`), crie a página na raiz, crie `components/<ferramenta>/` no padrão acima e adicione o link no menu (`<nav>`) de todas as páginas, um cartão em `index.html` e uma descrição em `sobre.html`. Marque o item da página atual no menu com `aria-current="page"`.
 
 O seletor de tema do cabeçalho (`<details class="lang-menu theme-menu">`) é o mesmo do site principal; o comportamento vem de `/js/app.js`.
 
 ## Observações
 
-- As imagens da assinatura de e-mail (`components/gerador/*.png`) entram nas assinaturas com URL absoluta **do GitHub** (`https://raw.githubusercontent.com/floriatanscosta/web/main/components/gerador/…`), que continua funcionando mesmo se o domínio parar. Assinaturas geradas antes de 21/10/2026 usam `https://floriatan.com.br/web/components/gerador/…`. **Não renomeie nem mova esses arquivos, não renomeie o branch `main` e mantenha o repositório público**: qualquer uma dessas mudanças tira as imagens das assinaturas já em uso.
+- As imagens da assinatura de e-mail (`components/assinatura/assets/*.png`) entram nas assinaturas com URL absoluta **do GitHub** (`https://raw.githubusercontent.com/floriatanscosta/web/main/components/assinatura/assets/…`), que continua funcionando mesmo se o domínio parar. Assinaturas geradas até a versão 2.0.1 usam as imagens de `components/gerador/` (pelo GitHub ou por `https://floriatan.com.br/web/components/gerador/…`). **Não renomeie nem mova esses arquivos, não renomeie o branch `main` e mantenha o repositório público**: qualquer uma dessas mudanças tira as imagens das assinaturas já em uso.
 - Nenhuma ferramenta envia dados a servidores; tudo roda no navegador.
-- Indexação: as páginas das ferramentas (`assinatura`, `custom-plate`, `test-gota`) e a 404 têm `<meta name="robots" content="noindex, nofollow">`; a lista, "Sobre" e "Aviso de uso" podem aparecer nos buscadores.
+- Indexação: as páginas das ferramentas (`assinatura`, `custom-plate`, `fluidodinamica`, `test-gota`) e a 404 têm `<meta name="robots" content="noindex, nofollow">`; a lista, "Sobre" e "Aviso de uso" podem aparecer nos buscadores.
 - `assets/`, `js/` e `robots.txt`, sem uso (item I34 do `PENDENCIAS.md` do site principal), foram movidos para `_arquivo/` e saíram do site; a pasta pode ser apagada quando quiser.
 - `components/style.css` continua publicado porque o `design-meta.html` do site principal depende dele.
 
 O histórico de alterações está em [`CHANGELOG.md`](CHANGELOG.md).
-A Assinatura tem versão própria (SemVer, tags `assinatura-vX.Y.Z`); veja [`components/gerador/README.md`](components/gerador/README.md#versionamento).
+A Assinatura tem versão própria (SemVer, tags `assinatura-vX.Y.Z`); veja [`components/assinatura/README.md`](components/assinatura/README.md#versionamento).
 
 ## Licença
 

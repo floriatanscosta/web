@@ -11,11 +11,13 @@ GitHub — não guarde aqui senhas, chaves ou dados pessoais.
 _dev/
 ├── _modelo/          # ponto de partida: copie esta pasta para começar
 │   ├── index.html    # página com cabeçalho, rodapé e tema iguais aos das ferramentas
-│   └── app.js        # script com o padrão dos demais (IIFE, 'use strict', escape de HTML)
+│   ├── app.js        # script com o padrão dos demais (IIFE, 'use strict', escape de HTML)
+│   └── assets/       # imagens e outros arquivos da ferramenta
 └── <nova-ferramenta>/
     ├── index.html
     ├── app.js
-    └── … imagens, notas, dados de teste
+    ├── README.md     # descrição (vai junto na publicação)
+    └── assets/       # imagens, dados de teste
 ```
 
 ## Criar uma ferramenta
@@ -39,7 +41,8 @@ cd site && python3 -m http.server 8000
 
 ## Publicar
 
-1. Mova o script para `components/<ferramenta>/app.js` (e as imagens para a mesma pasta).
+1. Crie `components/<ferramenta>/` com `app.js`, `README.md`, `cover.png` (capa do cartão em
+   `/web/`, 940 × 470 px) e as imagens em `assets/`. Comprima as imagens antes de publicar.
 2. Crie `<ferramenta>.html` na raiz a partir do `index.html` de desenvolvimento, com o
    `<script>` apontando para `/web/components/<ferramenta>/app.js` e o endereço
    `https://floriatan.com.br/web/<ferramenta>` em `canonical` e `og:url`.

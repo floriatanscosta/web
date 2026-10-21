@@ -111,8 +111,8 @@ Revise os offsets, o pitch e o número de linhas e colunas.
 |---|---|
 | `custom-plate.html` (raiz) | Página e formulário |
 | `components/custom-plate/app.js` | Validação, geração do XML, pré-visualização, cópia, download e exportação em PDF |
-| `components/custom-plate/slide.svg` | Desenho da lâmina (fundo da pré-visualização; também usado por `components/style.css`) |
+| `components/custom-plate/assets/slide.svg` | Desenho da lâmina (fundo da pré-visualização e do PDF; também usado por `components/style.css`) |
 | `components/custom-plate/cover.png` | Imagem do cartão em `/web/` e de compartilhamento (`og:image`) |
 | `components/custom-plate/README.md` | Este arquivo (não publicado: está em `exclude` no `_config.yml`) |
 
-Mantenha os nomes de `slide.svg` e `cover.png`: eles são usados com caminho absoluto.
+Mantenha os nomes de `assets/slide.svg` e `cover.png`: eles são usados com caminho absoluto (CSS, `og:image` e o `design-meta.html` do site principal, via `components/style.css`).

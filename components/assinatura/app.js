@@ -7,22 +7,30 @@
   'use strict';
 
   // Versão da ferramenta (SemVer). Ao mudar: atualize também o ?v= do <script> em assinatura.html,
-  // o "Histórico de versões" em components/gerador/README.md e o CHANGELOG.md, e crie a tag assinatura-vX.Y.Z.
-  var VERSAO = '2.0.1';
+  // o "Histórico de versões" em components/assinatura/README.md e o CHANGELOG.md, e crie a tag assinatura-vX.Y.Z.
+  var VERSAO = '2.1.0';
 
   // As imagens da assinatura precisam de URL absoluta para aparecer nos e-mails enviados.
   // Vêm direto do GitHub (raw.githubusercontent.com), que não depende do domínio do site.
-  // Não renomeie nem mova os arquivos de components/gerador/ e mantenha o repositório público.
-  var IMG_URL = 'https://raw.githubusercontent.com/floriatanscosta/web/main/components/gerador/';
+  // Não renomeie nem mova os arquivos de components/assinatura/assets/ e mantenha o repositório público.
+  // (components/gerador/ guarda as imagens usadas pelas assinaturas geradas até a versão 2.0.1.)
+  var IMG_URL = 'https://raw.githubusercontent.com/floriatanscosta/web/main/components/assinatura/assets/';
   // Logos com fundo branco (legíveis também no modo escuro dos clientes de e-mail).
   // Os logo-N.png transparentes continuam no repositório: assinaturas antigas usam esses arquivos.
   var LOGOS = {
-    'logo-1-branco.png': 'UFPR',
-    'logo-2-branco.png': 'UFPR · Departamento de Química',
-    'logo-3-branco.png': 'UFPR · LaESB',
-    'logo-4-branco.png': 'UFPR · Universidad de Zaragoza'
+    'logo-ufpr.png': 'UFPR',
+    'logo-ufpr-quimica.png': 'UFPR · Departamento de Química',
+    'logo-ufpr-laesb.png': 'UFPR · LaESB',
+    'logo-ufpr-zaragoza.png': 'UFPR · Universidad de Zaragoza'
   };
-  var LOGO_PADRAO = 'logo-1-branco.png';
+  var LOGO_PADRAO = 'logo-ufpr.png';
+  // Nomes usados até a versão 2.0.1 (dados salvos no navegador)
+  var LOGOS_ANTIGOS = {
+    'logo-1-branco.png': 'logo-ufpr.png',
+    'logo-2-branco.png': 'logo-ufpr-quimica.png',
+    'logo-3-branco.png': 'logo-ufpr-laesb.png',
+    'logo-4-branco.png': 'logo-ufpr-zaragoza.png'
+  };
   var STORAGE_KEY = 'web.assinatura.v1';
 
   var $ = function (id) { return document.getElementById(id); };
@@ -245,9 +253,9 @@
     var ultimo = d.orcid ? 'orcid' : (d.lattes ? 'lattes' : 'web');
     var icones = (d.web || d.lattes || d.orcid) ?
       '\n      <table cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin-top: ' + (grupos.length || d.cargo ? 14 : 8) + 'px;">\n        <tr>' +
-      icone(d.web, 'link.png', 'Site', 'Site', ultimo === 'web') +
-      icone(d.lattes, 'lattes.png', 'Lattes', 'Currículo Lattes', ultimo === 'lattes') +
-      icone(d.orcid, 'orcid.png', 'ORCID', 'ORCID iD', true) +
+      icone(d.web, 'icone-site.png', 'Site', 'Site', ultimo === 'web') +
+      icone(d.lattes, 'icone-lattes.png', 'Lattes', 'Currículo Lattes', ultimo === 'lattes') +
+      icone(d.orcid, 'icone-orcid.png', 'ORCID', 'ORCID iD', true) +
       '\n        </tr>\n      </table>' : '';
 
     return '<table cellpadding="0" cellspacing="0" style="font-family: \'Roboto\', Helvetica, Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.25; max-width: 650px; text-align: left; border-collapse: collapse;">' +
@@ -309,9 +317,13 @@
     if (!obj || typeof obj !== 'object') return;
     CAMPOS_SALVOS.forEach(function (id) {
       if (typeof obj[id] !== 'string') return;
-      // Logo salvo de uma versão antiga ou adulterado: mantém o padrão
-      if (id === 'select-logo' && !Object.prototype.hasOwnProperty.call(LOGOS, obj[id])) return;
-      $(id).value = obj[id].slice(0, 500);
+      var v = obj[id];
+      if (id === 'select-logo') {
+        if (Object.prototype.hasOwnProperty.call(LOGOS_ANTIGOS, v)) v = LOGOS_ANTIGOS[v];
+        // Logo desconhecido ou adulterado: mantém o padrão
+        if (!Object.prototype.hasOwnProperty.call(LOGOS, v)) return;
+      }
+      $(id).value = v.slice(0, 500);
     });
     if (lembrar) lembrar.checked = true;
   }

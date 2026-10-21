@@ -24,7 +24,7 @@
 .preview-panel-xml { min-height: 1029px; }
 .plate-id-display { color: var(--text-main); margin-top: 20px; font-size: 1.0em;display: flex; flex-direction: column;}
 .glass-slide-wrapper { overflow: auto; background: #eef2f5; padding: 0; border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
-.glass-slide { position: relative; background-image: url('https://floriatan.com.br/web/components/custom-plate/slide.svg'); background-size: 100% 100%; background-repeat: no-repeat; }
+.glass-slide { position: relative; background-image: url('https://floriatan.com.br/web/components/custom-plate/assets/slide.svg'); background-size: 100% 100%; background-repeat: no-repeat; }
 .droplet-grid { position: absolute; display: grid; }
 .droplet-cell { display: flex; justify-content: center; align-items: center; }
 .droplet { background-color: #4a90e2; border-radius: 50%; box-shadow: inset -1px -1px 2px rgba(0,0,0,0.3); transition: width 0.3s, height 0.3s; }

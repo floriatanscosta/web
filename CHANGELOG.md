@@ -1,8 +1,16 @@
 # Histórico de alterações — Ferramentas (/web)
 
 > **Versões das ferramentas.** A Assinatura tem versão própria (SemVer), com tag `assinatura-vX.Y.Z`
-> no Git; o histórico resumido está em [`components/gerador/README.md`](components/gerador/README.md#histórico-de-versões).
+> no Git; o histórico resumido está em [`components/assinatura/README.md`](components/assinatura/README.md#histórico-de-versões).
 > Os títulos abaixo indicam a versão quando a mudança é da Assinatura.
+
+## 2026-10-21 — Organização das ferramentas (Assinatura 2.1.0)
+- **Uma pasta por ferramenta em `components/`**, com o mesmo nome do endereço da página: `app.js`, `cover.png`, `README.md` e as imagens e outros arquivos em `assets/`.
+- **Assinatura**: `components/gerador/` → `components/assinatura/`. Imagens com nomes descritivos em `assets/` (`logo-ufpr.png`, `logo-ufpr-quimica.png`, `logo-ufpr-laesb.png`, `logo-ufpr-zaragoza.png`, `icone-site.png`, `icone-lattes.png`, `icone-orcid.png`); as assinaturas novas usam esses endereços. Logos salvos no navegador com os nomes antigos são convertidos. Versão **2.1.0**.
+- **`components/gerador/` fica como legado**, só com as imagens das assinaturas geradas até a 2.0.1 (com README explicando por que não pode sair do lugar).
+- **Custom Plate**: `slide.svg` → `components/custom-plate/assets/slide.svg` (CSS das ferramentas e `components/style.css` atualizados).
+- **Calculadora**: endereço `/web/test-gota` → **`/web/fluidodinamica`**; `components/gota/` → `components/fluidodinamica/`, com README próprio. O endereço antigo redireciona para o novo.
+- `_dev/_modelo/` com `assets/`; guias de publicação, README (estrutura, padrão de cada ferramenta e caminhos que não podem mudar) atualizados.
 
 ## 2026-10-21 — Custom Plate: exportar em PDF
 - **Botão "Export PDF"**: folha A4 (em inglês, como a interface) com a lâmina em escala (A1 destacado, posição de A1, extensão da grade e aviso de grade fora do vidro), a tabela de configurações com o elemento XML de cada campo, o XML completo e a data de geração. Tudo em uma página.
