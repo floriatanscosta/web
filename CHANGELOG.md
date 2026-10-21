@@ -1,5 +1,13 @@
 # Histórico de alterações — Ferramentas (/web)
 
+## 2026-10-21 — Organização do repositório
+- **Nova pasta `_dev/`** (não publicada) para desenvolver ferramentas novas, com um modelo em `_dev/_modelo/` (página com cabeçalho, rodapé e tema, e script de partida) e um guia em `_dev/README.md` (criar, testar localmente, publicar).
+- **Limpeza (item I34 do site principal)**: `assets/`, `js/` e `robots.txt`, que nenhuma página usava, foram movidos para `_arquivo/` (não publicada). Saem do site: `/web/assets/…`, `/web/js/app.js` e `/web/robots.txt`.
+- `_config.yml`: `_dev/`, `_arquivo/` e `.editorconfig` em `exclude`.
+- `.editorconfig` com o padrão de formatação (UTF-8, LF, indentação de 2 espaços).
+- Endereços das páginas e caminhos de `components/` mantidos (assinaturas já enviadas, imagens de compartilhamento e `design-meta.html` do site principal dependem deles).
+- README: estrutura revisada, motivo da organização e seção sobre desenvolvimento.
+
 ## 2026-10-19 — Documentação
 - README revisado: descrição da Calculadora de fluidodinâmica, indexação das páginas e arquivos que não são usados (`assets/`, `js/`, `components/style.css`, `robots.txt`).
 

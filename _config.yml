@@ -5,8 +5,13 @@ baseurl: "/web"
 title: "Ferramentas · Floriatan Santos Costa"
 lang: "pt-BR"
 
+# Não publicados. Pastas que começam com "_" já são ignoradas pelo Jekyll;
+# _dev/ e _arquivo/ ficam listadas também aqui para deixar a regra explícita.
 exclude:
+  - _dev/
+  - _arquivo/
   - README.md
   - LICENSE
   - CHANGELOG.md
   - .gitignore
+  - .editorconfig

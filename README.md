@@ -60,40 +60,55 @@ Cada ferramenta tem a página `.html` na raiz e a lógica em `components/<ferram
 
 ## Estrutura do repositório
 
+Só a raiz, `components/` e `css/` são publicados. Pastas que começam com `_` ficam
+fora do site (o Jekyll as ignora e elas também estão em `exclude` no `_config.yml`).
+
 ```text
 web/
-├── assets/                      # cópia antiga, não referenciada (as páginas usam /assets/ do site principal)
-│   ├── icons/
-│   ├── img/cover.png
-│   ├── favicon.svg
-│   └── logo.svg
-├── components/
+├── _arquivo/                    # NÃO publicado: cópias antigas sem uso (assets/, js/, robots.txt)
+├── _dev/                        # NÃO publicado: desenvolvimento de novas ferramentas
+│   ├── _modelo/                 # página e script de partida (copie para começar)
+│   └── README.md                # como criar, testar localmente e publicar
+├── components/                  # lógica e imagens de cada ferramenta publicada
 │   ├── custom-plate/            # app.js, cover.png, slide.svg
 │   ├── gerador/                 # app.js, cover.png e imagens da assinatura (*.png)
 │   ├── gota/                    # app.js (calculadora em teste)
 │   └── style.css                # não usado pelas Ferramentas; só por design-meta.html do site principal
 ├── css/
 │   └── style.css                # estilos exclusivos das ferramentas
-├── js/
-│   └── app.js                   # não referenciado (as páginas usam /js/app.js do site principal)
-├── .gitignore
-├── 404.html
-├── _config.yml                  # configuração do Jekyll / GitHub Pages
+├── 404.html                     # páginas publicadas (endereços /web/<nome>, sem .html)
 ├── assinatura.html
 ├── aviso.html
-├── CHANGELOG.md
 ├── custom-plate.html
 ├── index.html
-├── LICENSE
-├── README.md
-├── robots.txt                   # sem efeito: os buscadores só leem o robots.txt da raiz do domínio
 ├── sobre.html
-└── test-gota.html
+├── test-gota.html
+├── .editorconfig                # padrão de formatação (UTF-8, LF, 2 espaços)
+├── .gitignore
+├── _config.yml                  # configuração do Jekyll / GitHub Pages
+├── CHANGELOG.md
+├── LICENSE
+└── README.md
 ```
+
+### Por que as páginas ficam na raiz e o código em `components/`
+
+Os endereços públicos (`/web/assinatura`, `/web/custom-plate`, …) e os caminhos de
+`components/` já circulam fora do site e por isso não mudam:
+
+- `components/gerador/*.png` é carregado com URL absoluta pelas assinaturas já enviadas por e-mail;
+- `components/custom-plate/cover.png` e `components/gerador/cover.png` são as imagens de compartilhamento (`og:image`);
+- `components/style.css` e `css/style.css` são usados pelo `design-meta.html` do site principal.
+
+## Desenvolvimento de novas ferramentas
+
+Ferramentas novas nascem em **`_dev/<nome-da-ferramenta>/`**, a partir de `_dev/_modelo/`,
+e só vão para a raiz e para `components/` quando estiverem prontas. O passo a passo
+(incluindo como testar localmente com o site principal) está em [`_dev/README.md`](_dev/README.md).
 
 ## Editar
 
-O site é **estático**: não há script de geração. Cabeçalho e rodapé estão escritos em cada página HTML; ao incluir uma ferramenta nova, copie uma página existente, troque o conteúdo de `<main>` e adicione o link no menu (`<nav>`) de todas as páginas, um cartão em `index.html` e uma descrição em `sobre.html`. Marque o item da página atual no menu com `aria-current="page"`.
+O site é **estático**: não há script de geração. Cabeçalho e rodapé estão escritos em cada página HTML; ao publicar uma ferramenta nova (desenvolvida em `_dev/`), crie a página na raiz, ponha o script em `components/<ferramenta>/app.js` e adicione o link no menu (`<nav>`) de todas as páginas, um cartão em `index.html` e uma descrição em `sobre.html`. Marque o item da página atual no menu com `aria-current="page"`.
 
 O seletor de tema do cabeçalho (`<details class="lang-menu theme-menu">`) é o mesmo do site principal; o comportamento vem de `/js/app.js`.
 
@@ -102,7 +117,8 @@ O seletor de tema do cabeçalho (`<details class="lang-menu theme-menu">`) é o 
 - As imagens da assinatura de e-mail (`components/gerador/*.png`) são usadas com URL absoluta (`https://floriatan.com.br/web/…`) nos e-mails enviados — não renomeie nem mova esses arquivos.
 - Nenhuma ferramenta envia dados a servidores; tudo roda no navegador.
 - Indexação: as páginas das ferramentas (`assinatura`, `custom-plate`, `test-gota`) e a 404 têm `<meta name="robots" content="noindex, nofollow">`; a lista, "Sobre" e "Aviso de uso" podem aparecer nos buscadores.
-- `assets/`, `js/` e `components/style.css` não são usados pelas páginas atuais (ver o item I34 do `PENDENCIAS.md` do site principal antes de apagar).
+- `assets/`, `js/` e `robots.txt`, sem uso (item I34 do `PENDENCIAS.md` do site principal), foram movidos para `_arquivo/` e saíram do site; a pasta pode ser apagada quando quiser.
+- `components/style.css` continua publicado porque o `design-meta.html` do site principal depende dele.
 
 O histórico de alterações está em [`CHANGELOG.md`](CHANGELOG.md).
 
