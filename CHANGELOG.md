@@ -1,5 +1,18 @@
 # Histórico de alterações — Ferramentas (/web)
 
+## 2026-10-21 — Assinatura: modo escuro, contato, HTML, PDF e instruções
+- **Logos com fundo branco** (`logo-N-branco.png`, cantos arredondados): continuam legíveis quando o cliente de e-mail usa fundo escuro. Os logos transparentes antigos ficam no repositório para as assinaturas já enviadas.
+- **Logo 4** (UFPR e Universidad de Zaragoza) incluído na lista; texto alternativo de cada logo com o nome das instituições (aparece quando o Outlook bloqueia as imagens).
+- **Texto simples com os links por extenso** ao copiar (antes saíam só nome e instituição).
+- Ícone do site com rótulo "Site" (antes "CV / Curriculum Vitae"); ícones de 20 para 24 px.
+- **Nome obrigatório**; nome e cargo vêm vazios, com exemplo (antes "Nome" e "Cargo ou Função" podiam ir para a assinatura).
+- **Novos campos opcionais: e-mail e telefone**, verificados e com links `mailto:` e `tel:`.
+- **Botão "Copiar HTML"** e **botão "Exportar PDF"** (folha A4 com a assinatura e os dados, pela impressão do navegador, sem biblioteca externa).
+- **Como instalar**: passo a passo para Gmail, Outlook na web/novo Outlook, Outlook clássico, Apple Mail e Thunderbird.
+- **Lembrar meus dados neste navegador** (opcional, desmarcado por padrão); textos de privacidade de "Sobre", "Aviso de uso" e README atualizados.
+- Correção: as listas com marcadores do "Aviso de uso" apareciam sem marcador (a regra `ul[class]` do site principal se sobrepunha).
+- Descrição da ferramenta em `components/gerador/README.md` (não publicada).
+
 ## 2026-10-21 — Assinatura: verificação dos links
 - **Lattes**: aceita `http://lattes.cnpq.br/` + 16 dígitos (com ou sem `https`, `www` e barra final), só os 16 dígitos ou o link do buscatextual com identificador K (`visualizacv.do?id=K0000000A0`). O link é gravado na forma padrão `http://lattes.cnpq.br/0000000000000000`.
 - **ORCID**: aceita `https://orcid.org/0000-0000-0000-0000` ou só o identificador (com ou sem hífens) e confere o **dígito verificador** (ISO 7064 MOD 11-2, o mesmo cálculo do ORCID). O link é gravado como `https://orcid.org/…`, com `X` maiúsculo.

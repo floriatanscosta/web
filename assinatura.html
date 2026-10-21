@@ -73,18 +73,20 @@
         <div class="form-group full-width">
           <label for="select-logo">Logo</label>
           <select id="select-logo">
-            <option value="logo-1.png">Logo 1 - UFPR</option>
-            <option value="logo-2.png">Logo 2 - UFPR e Dep. Química</option>
-            <option value="logo-3.png">Logo 3 - UFPR e LAESB</option>
+            <option value="logo-1-branco.png">Logo 1 - UFPR</option>
+            <option value="logo-2-branco.png">Logo 2 - UFPR e Dep. Química</option>
+            <option value="logo-3-branco.png">Logo 3 - UFPR e LaESB</option>
+            <option value="logo-4-branco.png">Logo 4 - UFPR e Universidad de Zaragoza</option>
           </select>
         </div>
         <div class="form-group full-width">
-          <label for="input-nome">Nome</label>
-          <input type="text" id="input-nome" value="Nome" autocomplete="name">
+          <label for="input-nome">Nome <span class="field-required">(obrigatório)</span></label>
+          <input type="text" id="input-nome" value="" placeholder="Ex.: Maria da Silva" autocomplete="name" required aria-describedby="erro-nome">
+          <p class="field-error" id="erro-nome" role="alert" hidden></p>
         </div>
         <div class="form-group full-width">
           <label for="input-cargo">Cargo ou título</label>
-          <input type="text" id="input-cargo" value="Cargo ou Função" autocomplete="organization-title">
+          <input type="text" id="input-cargo" value="" placeholder="Ex.: Doutoranda em Química" autocomplete="organization-title">
         </div>
         <div class="form-group">
           <label for="input-lab1">Laboratório</label>
@@ -102,6 +104,16 @@
           <label for="input-inst2">Instituição (se houver) <span class="custom-tooltip" tabindex="0" role="img" aria-label="Apague o conteúdo para ocultar este campo na assinatura." data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
           <input type="text" id="input-inst2" value="">
         </div>
+        <div class="form-group">
+          <label for="input-email">E-mail (se houver) <span class="custom-tooltip" tabindex="0" role="img" aria-label="Apague o conteúdo para ocultar este campo na assinatura." data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+          <input type="email" id="input-email" value="" placeholder="nome@ufpr.br" autocomplete="email" autocapitalize="off" spellcheck="false" aria-describedby="erro-email">
+          <p class="field-error" id="erro-email" role="alert" hidden></p>
+        </div>
+        <div class="form-group">
+          <label for="input-telefone">Telefone (se houver) <span class="custom-tooltip" tabindex="0" role="img" aria-label="Apague o conteúdo para ocultar este campo na assinatura." data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
+          <input type="tel" id="input-telefone" value="" placeholder="+55 41 3361-0000" autocomplete="tel" aria-describedby="erro-telefone">
+          <p class="field-error" id="erro-telefone" role="alert" hidden></p>
+        </div>
         <div class="form-group full-width">
           <label for="input-url-web">Site pessoal (se houver) <span class="custom-tooltip" tabindex="0" role="img" aria-label="Apague o conteúdo para ocultar este campo na assinatura." data-tooltip="Apague o conteúdo para ocultar este campo na assinatura.">ⓘ</span></label>
           <input type="url" id="input-url-web" value="" inputmode="url" placeholder="https://www.exemplo.com.br" autocomplete="url" autocapitalize="off" spellcheck="false" aria-describedby="erro-url-web">
@@ -117,6 +129,10 @@
           <input type="url" id="input-url-orcid" value="" inputmode="url" placeholder="https://orcid.org/0000-0000-0000-0000" autocapitalize="off" spellcheck="false" aria-describedby="erro-url-orcid">
           <p class="field-error" id="erro-url-orcid" role="alert" hidden></p>
         </div>
+        <div class="form-group full-width">
+          <label class="check-field" for="lembrar-dados"><input type="checkbox" id="lembrar-dados"> Lembrar meus dados neste navegador</label>
+          <p class="field-hint">Os dados ficam salvos só neste navegador e não são enviados a lugar nenhum. Desmarque para apagá-los.</p>
+        </div>
       </form>
     </section>
     <div class="preview-panel">
@@ -125,7 +141,56 @@
         <div class="preview-box" id="preview-container"></div>
         <div class="btn-group">
           <button type="button" id="copyBtn" class="btn">Copiar assinatura</button>
+          <button type="button" id="copyHtmlBtn" class="btn btn-outline">Copiar HTML</button>
+          <button type="button" id="pdfBtn" class="btn btn-outline">Exportar PDF</button>
         </div>
+        <p class="field-hint">“Copiar assinatura” serve para a maioria dos clientes. “Copiar HTML” copia o código, para quem cola a assinatura em HTML. “Exportar PDF” abre a impressão do navegador: escolha “Salvar como PDF”.</p>
+      </section>
+      <section class="card" aria-labelledby="h-instalar">
+        <h2 id="h-instalar" class="card-title">Como instalar</h2>
+        <details class="install-step">
+          <summary>Gmail (navegador)</summary>
+          <ol class="prose-list prose-list--ordered">
+            <li>Clique em “Copiar assinatura”.</li>
+            <li>No Gmail, abra a engrenagem → <strong>Ver todas as configurações</strong> → aba <strong>Geral</strong> → <strong>Assinatura</strong> → <strong>Criar nova</strong>.</li>
+            <li>Cole (Ctrl+V ou ⌘+V) no quadro da assinatura.</li>
+            <li>Escolha a assinatura em “Padrões de assinatura” e clique em <strong>Salvar alterações</strong>, no fim da página.</li>
+          </ol>
+        </details>
+        <details class="install-step">
+          <summary>Outlook na web e novo Outlook</summary>
+          <ol class="prose-list prose-list--ordered">
+            <li>Clique em “Copiar assinatura”.</li>
+            <li>Abra <strong>Configurações</strong> → <strong>Contas</strong> → <strong>Assinaturas</strong> → <strong>Nova assinatura</strong>.</li>
+            <li>Dê um nome, cole a assinatura e clique em <strong>Salvar</strong>.</li>
+            <li>Em “Selecionar assinaturas padrão”, escolha a nova assinatura para mensagens novas e respostas.</li>
+          </ol>
+        </details>
+        <details class="install-step">
+          <summary>Outlook clássico (Windows)</summary>
+          <ol class="prose-list prose-list--ordered">
+            <li>Clique em “Copiar assinatura”.</li>
+            <li>Abra <strong>Arquivo</strong> → <strong>Opções</strong> → <strong>Email</strong> → <strong>Assinaturas</strong> → <strong>Novo</strong>.</li>
+            <li>Cole no quadro “Editar assinatura”, escolha a assinatura padrão e clique em <strong>OK</strong>.</li>
+            <li>Se as imagens não aparecerem para quem recebe, peça que libere o download de imagens: o Outlook bloqueia imagens externas por padrão.</li>
+          </ol>
+        </details>
+        <details class="install-step">
+          <summary>Apple Mail (Mac)</summary>
+          <ol class="prose-list prose-list--ordered">
+            <li>Clique em “Copiar assinatura”.</li>
+            <li>No Mail, abra <strong>Mail</strong> → <strong>Ajustes</strong> (ou Preferências) → <strong>Assinaturas</strong> e clique em <strong>+</strong>.</li>
+            <li>Desmarque “Sempre usar a fonte padrão da mensagem” e cole no quadro à direita.</li>
+          </ol>
+        </details>
+        <details class="install-step">
+          <summary>Thunderbird</summary>
+          <ol class="prose-list prose-list--ordered">
+            <li>Clique em “Copiar HTML”.</li>
+            <li>Abra <strong>Configurações de conta</strong> e selecione o endereço de e-mail.</li>
+            <li>Marque <strong>Usar HTML</strong> e cole o código em “Texto da assinatura”.</li>
+          </ol>
+        </details>
       </section>
     </div>
   </div>

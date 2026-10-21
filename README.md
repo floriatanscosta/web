@@ -18,7 +18,7 @@ informações a servidores, e não é preciso instalar nada nem criar conta.
 | Página | Endereço | Script | O que faz |
 |---|---|---|---|
 | Lista de ferramentas | `/web/` | — | Cartões com as ferramentas disponíveis |
-| Gerador de assinatura de e-mail | `/web/assinatura` | `components/gerador/app.js` | Monta uma assinatura padronizada (nome, cargo, vínculos, logotipo e links para site, Lattes e ORCID) pronta para colar no Gmail, Outlook, Thunderbird e outros; confere os links (Lattes com 16 dígitos, ORCID com dígito verificador, site com domínio válido) |
+| Gerador de assinatura de e-mail | `/web/assinatura` | `components/gerador/app.js` | Monta uma assinatura padronizada (nome, cargo, vínculos, e-mail, telefone, logotipo e links para site, Lattes e ORCID), confere os dados, copia como texto formatado ou HTML e exporta em PDF ([descrição](components/gerador/README.md)) |
 | Custom Plate Design XML (Tecan) | `/web/custom-plate` | `components/custom-plate/app.js` | Define os parâmetros de uma placa personalizada, mostra a grade de gotas em escala sobre a lâmina e gera o XML para o Tecan Uno Dispenser ([descrição](components/custom-plate/README.md)) |
 | Calculadora de fluidodinâmica ICP-MS (em teste, fora da lista) | `/web/test-gota` | `components/gota/app.js` | Calcula volume interno, velocidade linear, tempo de residência e número de Reynolds de uma câmara de nebulização e indica o regime de fluxo |
 | Sobre as Ferramentas | `/web/sobre` | — | O que são, como funcionam, privacidade, tecnologia e código |
@@ -27,7 +27,7 @@ informações a servidores, e não é preciso instalar nada nem criar conta.
 
 Todas as páginas têm tema claro, escuro ou "seguir o sistema", layout para celular e o mesmo
 cabeçalho e rodapé do site principal. As Ferramentas não usam Google Analytics nem cookies;
-só a preferência de tema fica salva no navegador.
+ficam salvos no navegador só a preferência de tema e, se a pessoa marcar essa opção, os dados da Assinatura.
 
 ## Tecnologias
 
@@ -71,7 +71,7 @@ web/
 │   └── README.md                # como criar, testar localmente e publicar
 ├── components/                  # lógica e imagens de cada ferramenta publicada
 │   ├── custom-plate/            # app.js, cover.png, slide.svg, README.md (descrição da ferramenta)
-│   ├── gerador/                 # app.js, cover.png e imagens da assinatura (*.png)
+│   ├── gerador/                 # app.js, cover.png, imagens da assinatura (*.png), README.md (descrição)
 │   ├── gota/                    # app.js (calculadora em teste)
 │   └── style.css                # não usado pelas Ferramentas; só por design-meta.html do site principal
 ├── css/
