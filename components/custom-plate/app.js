@@ -11,9 +11,14 @@
   var SCALE = 6;                   // 1 mm = 6 px in the preview
   var SLIDE_WIDTH_MM = 30;         // background SVG size
   var SLIDE_HEIGHT_MM = 80;
-  var OFFSET_LEFT_MM = 4;          // visual position of the first droplet
-  var OFFSET_TOP_MM = 15;
+  // Glass area drawn in slide.svg (26 x 76 mm slide; the frosted label starts at 58 mm)
+  var GLASS = { left: 2, right: 28, top: 2, bottom: 58 };
+  // Where A1 Offset X/Y = (0, 0) falls on the preview. Calibrated so the default
+  // offsets (X -1.35, Y 8) put A1 at 4 mm x 15 mm, centering the default 20 x 12 grid.
+  var ORIGIN_X_MM = 5.35;
+  var ORIGIN_Y_MM = 7;
   var DROP_SIZES = { small: 2, medium: 4, large: 6 };
+  var NUMERIC_FIELDS = ['rows', 'cols', 'rowpitch', 'colpitch', 'a1offsetx', 'a1offsety', 'defaultassayvolume', 'horizontaloffset'];
 
   var $ = function (id) { return document.getElementById(id); };
   var form = $('plateForm');
@@ -24,6 +29,8 @@
   var dropletGrid = $('dropletGrid');
   var glassSlide = $('glassSlide');
   var gridWarning = $('gridWarning');
+  var gridNotice = $('gridNotice');
+  var gridInfo = $('gridInfo');
   var idText = $('idText');
   var displayTotal = $('displayTotalDroplets');
   var modal = $('customModal');
@@ -44,11 +51,18 @@
     return clean || 'HPDDPlate';
   }
 
+  // Formats millimetres for the preview text (up to 2 decimals, no trailing zeros)
+  function mm(value) {
+    return String(Math.round(value * 100) / 100);
+  }
+
   function showWarning(message) {
     hasError = true;
     gridWarning.textContent = message;
     gridWarning.hidden = false;
-    dropletGrid.innerHTML = '';
+    gridNotice.hidden = true;
+    gridInfo.textContent = '';
+    dropletGrid.replaceChildren();
     xmlOutput.value = '<!-- Fix configuration errors to generate XML -->';
   }
 
@@ -90,16 +104,29 @@
       return;
     }
 
-    var data = {};
-    inputs.forEach(function (input) { data[input.id] = escapeXml(input.value.trim()); });
+    var plateId = $('plateId').value.trim();
+    if (!plateId) {
+      showWarning('Warning: "ID / Name" cannot be empty.');
+      return;
+    }
 
-    var rows = parseInt(data.rows, 10);
-    var cols = parseInt(data.cols, 10);
-    var rowPitch = parseFloat(data.rowpitch);
-    var colPitch = parseFloat(data.colpitch);
+    // Numbers are written in plain form ("2.0" -> "2", "1e1" -> "10") so the instrument reads them
+    var data = {};
+    inputs.forEach(function (input) {
+      var value = input.value.trim();
+      if (NUMERIC_FIELDS.indexOf(input.id) !== -1) value = String(Number(value));
+      data[input.id] = escapeXml(value);
+    });
+
+    var rows = Number(data.rows);
+    var cols = Number(data.cols);
+    var rowPitch = Number(data.rowpitch);
+    var colPitch = Number(data.colpitch);
+    var offsetX = Number(data.a1offsetx);
+    var offsetY = Number(data.a1offsety);
     var totalDroplets = rows * cols;
 
-    idText.textContent = $('plateId').value;
+    idText.textContent = plateId;
     displayTotal.textContent = totalDroplets;
 
     // Safety limits: absolute droplet count first, then physical span for the chosen pitch
@@ -141,18 +168,33 @@
       '  <horizontaloffset>' + data.horizontaloffset + '</horizontaloffset>\n' +
       '</HPDDPlate>';
 
-    /* Preview (to scale) */
+    /* Preview (to scale): A1 Offset X/Y move the whole grid on the slide */
     var rowPitchPx = rowPitch * SCALE;
     var colPitchPx = colPitch * SCALE;
+    var a1X = ORIGIN_X_MM + offsetX;            // center of A1 on the slide image (mm)
+    var a1Y = ORIGIN_Y_MM + offsetY;
+    var spanX = (cols - 1) * colPitch;          // distance between the first and last centers
+    var spanY = (rows - 1) * rowPitch;
     glassSlide.style.width = (SLIDE_WIDTH_MM * SCALE) + 'px';
     glassSlide.style.height = (SLIDE_HEIGHT_MM * SCALE) + 'px';
     // Aligned by the center of the first cell
-    dropletGrid.style.left = (OFFSET_LEFT_MM * SCALE - colPitchPx / 2) + 'px';
-    dropletGrid.style.top = (OFFSET_TOP_MM * SCALE - rowPitchPx / 2) + 'px';
+    dropletGrid.style.left = (a1X * SCALE - colPitchPx / 2) + 'px';
+    dropletGrid.style.top = (a1Y * SCALE - rowPitchPx / 2) + 'px';
     dropletGrid.style.gridTemplateRows = 'repeat(' + rows + ', ' + rowPitchPx + 'px)';
     dropletGrid.style.gridTemplateColumns = 'repeat(' + cols + ', ' + colPitchPx + 'px)';
 
-    var dropSizePx = DROP_SIZES[$('dropletsize').value] || DROP_SIZES.medium;
+    gridInfo.textContent = 'A1 at X ' + mm(a1X) + ' mm, Y ' + mm(a1Y) + ' mm on the slide · grid span ' +
+      mm(spanX) + ' x ' + mm(spanY) + ' mm (center to center).';
+
+    // Not an error (the XML is still valid), but the droplets would miss the glass
+    var outside = a1X < GLASS.left || a1X + spanX > GLASS.right || a1Y < GLASS.top || a1Y + spanY > GLASS.bottom;
+    gridNotice.textContent = outside
+      ? 'Notice: part of the grid falls outside the glass slide. Check A1 Offset X/Y, the pitch and the number of rows/cols.'
+      : '';
+    gridNotice.hidden = !outside;
+
+    // The droplet never grows beyond its cell (small pitches)
+    var dropSizePx = Math.max(1, Math.min(DROP_SIZES[$('dropletsize').value] || DROP_SIZES.medium, colPitchPx - 1, rowPitchPx - 1));
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < totalDroplets; i++) {
       var cell = document.createElement('div');
@@ -160,7 +202,7 @@
       cell.style.width = colPitchPx + 'px';
       cell.style.height = rowPitchPx + 'px';
       var drop = document.createElement('div');
-      drop.className = 'droplet';
+      drop.className = i === 0 ? 'droplet droplet--a1' : 'droplet';
       drop.style.width = dropSizePx + 'px';
       drop.style.height = dropSizePx + 'px';
       cell.appendChild(drop);
@@ -218,10 +260,8 @@
     setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
   });
 
-  inputs.forEach(function (input) {
-    input.addEventListener('input', updateApp);
-    input.addEventListener('change', updateApp);
-  });
+  // "input" also fires for <select> in current browsers; "change" would redraw twice
+  inputs.forEach(function (input) { input.addEventListener('input', updateApp); });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
 
   // Initial render with the default values

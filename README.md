@@ -19,7 +19,7 @@ informações a servidores, e não é preciso instalar nada nem criar conta.
 |---|---|---|---|
 | Lista de ferramentas | `/web/` | — | Cartões com as ferramentas disponíveis |
 | Gerador de assinatura de e-mail | `/web/assinatura` | `components/gerador/app.js` | Monta uma assinatura padronizada (nome, cargo, vínculos, logotipo e links para site, Lattes e ORCID) pronta para colar no Gmail, Outlook, Thunderbird e outros |
-| Custom Plate Design XML (Tecan) | `/web/custom-plate` | `components/custom-plate/app.js` | Define os parâmetros de uma placa personalizada, mostra a grade de gotas em escala sobre a lâmina e gera o XML para o Tecan Uno Dispenser |
+| Custom Plate Design XML (Tecan) | `/web/custom-plate` | `components/custom-plate/app.js` | Define os parâmetros de uma placa personalizada, mostra a grade de gotas em escala sobre a lâmina e gera o XML para o Tecan Uno Dispenser ([descrição](components/custom-plate/README.md)) |
 | Calculadora de fluidodinâmica ICP-MS (em teste, fora da lista) | `/web/test-gota` | `components/gota/app.js` | Calcula volume interno, velocidade linear, tempo de residência e número de Reynolds de uma câmara de nebulização e indica o regime de fluxo |
 | Sobre as Ferramentas | `/web/sobre` | — | O que são, como funcionam, privacidade, tecnologia e código |
 | Aviso de uso (disclaimer) | `/web/aviso` | — | Condições de uso e conferência dos resultados |
@@ -70,7 +70,7 @@ web/
 │   ├── _modelo/                 # página e script de partida (copie para começar)
 │   └── README.md                # como criar, testar localmente e publicar
 ├── components/                  # lógica e imagens de cada ferramenta publicada
-│   ├── custom-plate/            # app.js, cover.png, slide.svg
+│   ├── custom-plate/            # app.js, cover.png, slide.svg, README.md (descrição da ferramenta)
 │   ├── gerador/                 # app.js, cover.png e imagens da assinatura (*.png)
 │   ├── gota/                    # app.js (calculadora em teste)
 │   └── style.css                # não usado pelas Ferramentas; só por design-meta.html do site principal

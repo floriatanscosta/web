@@ -1,5 +1,17 @@
 # Histórico de alterações — Ferramentas (/web)
 
+## 2026-10-21 — Custom Plate
+- **A1 Offset X e A1 Offset Y passam a mover a grade na pré-visualização** (X = 5,35 + offset; Y = 7 + offset, em mm na imagem da lâmina). A referência foi calibrada para que os valores padrão mantenham a posição anterior.
+- Gota A1 destacada em laranja, com legenda; a pré-visualização mostra a posição de A1 e a extensão da grade.
+- Novo aviso (não bloqueia) quando parte da grade sai do vidro da lâmina; o que passa da borda da imagem é cortado.
+- Correção: o pitch só aceitava múltiplos de 0,1 mm (2,25 mm, por exemplo, era recusado); agora aceita 0,01 mm.
+- Correção: um ID só com espaços gerava `<id></id>`; agora é recusado.
+- Correção: os números vão para o XML na forma simples (`2.0` → `2`, `1e1` → `10`).
+- "Default volume" não aceita mais valores negativos.
+- A gota desenhada não fica maior que a célula quando o pitch é pequeno; a grade não é mais redesenhada duas vezes a cada alteração.
+- O ID da placa aparece abaixo da pré-visualização; o botão de fechar do aviso foi traduzido para inglês ("Close"), como o resto da página.
+- Descrição da ferramenta em `components/custom-plate/README.md` (não publicada).
+
 ## 2026-10-21 — Organização do repositório
 - **Nova pasta `_dev/`** (não publicada) para desenvolver ferramentas novas, com um modelo em `_dev/_modelo/` (página com cabeçalho, rodapé e tema, e script de partida) e um guia em `_dev/README.md` (criar, testar localmente, publicar).
 - **Limpeza (item I34 do site principal)**: `assets/`, `js/` e `robots.txt`, que nenhuma página usava, foram movidos para `_arquivo/` (não publicada). Saem do site: `/web/assets/…`, `/web/js/app.js` e `/web/robots.txt`.

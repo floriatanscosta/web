@@ -51,12 +51,18 @@ input[type="url"]:focus { outline: none; border-color: var(--heading-color); bac
 /* 5. Gerador de XML (custom-plate.html) */
 /*****************************************************************/
 .glass-slide-wrapper { overflow: auto; background: #eef2f5; border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
-.glass-slide { position: relative; flex-shrink: 0; background: url("/web/components/custom-plate/slide.svg") no-repeat center / 100% 100%; }
+.glass-slide { position: relative; flex-shrink: 0; overflow: hidden; background: url("/web/components/custom-plate/slide.svg") no-repeat center / 100% 100%; }
 .droplet-grid { position: absolute; display: grid; }
 .droplet-cell { display: flex; justify-content: center; align-items: center; }
 .droplet { background-color: #4a90e2; border-radius: 50%; box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.3); transition: width 0.3s, height 0.3s; }
 .grid-warning { margin: 20px 0 0; padding: 10px 14px; font-size: 0.9rem; font-weight: 600; word-wrap: break-word; color: #b42318; background: rgba(220, 38, 38, 0.08); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: var(--radius-sm); }
 [data-theme="dark"] .grid-warning { color: #fca5a5; }
+.droplet--a1 { background-color: #e8590c; box-shadow: 0 0 0 2px rgba(232, 89, 12, 0.35); }
+.grid-notice { margin: 20px 0 0; padding: 10px 14px; font-size: 0.9rem; font-weight: 600; color: #854d0e; background: rgba(234, 179, 8, 0.12); border: 1px solid rgba(202, 138, 4, 0.4); border-radius: var(--radius-sm); }
+[data-theme="dark"] .grid-notice { color: #fde68a; }
+.grid-info { margin: 14px 0 0; font-size: 0.85rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.grid-legend { display: flex; align-items: center; gap: 6px; margin: 6px 0 0; font-size: 0.85rem; color: var(--text-muted); }
+.grid-legend__a1 { width: 10px; height: 10px; border-radius: 50%; background: #e8590c; }
 .plate-id-display { margin-top: 18px; color: var(--text-main); }
 .plate-id-display strong { color: var(--heading-strong); }
 .plate-total { font-weight: 700; color: var(--link-color); font-variant-numeric: tabular-nums; }
