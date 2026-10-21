@@ -1,5 +1,6 @@
 /* Nome da ferramenta (/web/nome-da-ferramenta)
-   Descreva em uma ou duas linhas o que o script calcula ou gera. */
+   Descreva em uma ou duas linhas o que o script calcula ou gera.
+   © 2026 Floriatan Santos Costa. Todos os direitos reservados. Ver LICENSE. */
 (function () {
   'use strict';
 

@@ -1,6 +1,7 @@
 /* Custom Plate Design XML Generator (/web/custom-plate)
    Generates the HPDDPlate XML for the Tecan Uno Dispenser and draws a
-   to-scale preview of the droplet grid on the glass slide. */
+   to-scale preview of the droplet grid on the glass slide.
+   © 2026 Floriatan Santos Costa. Todos os direitos reservados. Ver LICENSE. */
 (function () {
   'use strict';
 

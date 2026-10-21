@@ -124,11 +124,18 @@ O histórico de alterações está em [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Licença
 
-O **código** das ferramentas (HTML, CSS e JavaScript deste repositório) está sob a [licença MIT](LICENSE).
+**Todos os direitos reservados.** O código (HTML, CSS e JavaScript), os textos, as imagens, o
+logotipo e a documentação deste repositório são de Floriatan Santos Costa e **não podem ser
+copiados, modificados, redistribuídos, republicados ou usados comercialmente sem autorização
+prévia e por escrito**. Os termos estão em [`LICENSE`](LICENSE).
 
-Ficam **fora** da licença MIT, com todos os direitos reservados: os textos das páginas, as imagens de capa e
-o logotipo Fc. As imagens usadas pelo gerador de assinatura (`components/gerador/*.png`) e os nomes de
-produtos e instituições citados (como Tecan) pertencem aos respectivos titulares.
+Sem autorização, é permitido apenas: usar as ferramentas em `floriatan.com.br/web/`, usar os
+resultados gerados por você (XML, assinatura etc.), ver e fazer *fork* no GitHub nos limites dos
+Termos de Serviço do GitHub e citar trechos curtos com indicação da fonte.
 
-A base visual compartilhada (`/css`, `/js`, fontes e ícones) vem do repositório do site principal
-(`floriatanscosta.github.io`), que tem as próprias informações de licença.
+Nomes e logotipos de instituições e fabricantes (como UFPR e Tecan) e a base visual carregada do
+site principal (`floriatanscosta.github.io`) pertencem aos respectivos titulares.
+
+> Até 20/10/2026 o código deste repositório esteve sob a licença MIT. Quem obteve uma cópia
+> naquele período mantém, para aquela versão, as permissões da MIT; a nova licença vale para
+> as versões publicadas a partir de 21/10/2026.

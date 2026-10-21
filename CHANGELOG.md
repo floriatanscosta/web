@@ -1,5 +1,11 @@
 # Histórico de alterações — Ferramentas (/web)
 
+## 2026-10-21 — Licença: todos os direitos reservados
+- `LICENSE`: a licença MIT foi substituída por uma licença proprietária (todos os direitos reservados, Leis nº 9.610/1998 e nº 9.609/1998). Copiar, modificar, redistribuir, republicar ou usar comercialmente depende de autorização por escrito; continuam permitidos o uso das ferramentas no site, o uso dos resultados gerados e o que os Termos de Serviço do GitHub exigem.
+- Aviso de copyright no cabeçalho dos scripts (`components/*/app.js`) e das folhas de estilo.
+- "Aviso de uso" ganhou a seção "Direitos autorais"; "Sobre" deixou de dizer que o código está sob a MIT.
+- README: seção de licença reescrita, com a observação sobre as cópias obtidas enquanto valia a MIT.
+
 ## 2026-10-21 — Custom Plate
 - **A1 Offset X e A1 Offset Y passam a mover a grade na pré-visualização** (X = 5,35 + offset; Y = 7 + offset, em mm na imagem da lâmina). A referência foi calibrada para que os valores padrão mantenham a posição anterior.
 - Gota A1 destacada em laranja, com legenda; a pré-visualização mostra a posição de A1 e a extensão da grade.

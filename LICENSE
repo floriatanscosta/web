@@ -1,21 +1,53 @@
-MIT License
+Copyright (c) 2026 Floriatan Santos Costa. Todos os direitos reservados.
+All rights reserved.
 
-Copyright (c) 2026 Floriatan Santos Costa
+LICENÇA DE USO — FERRAMENTAS (floriatan.com.br/web/)
+Vigente a partir de 21/10/2026. Substitui a licença MIT antes adotada neste
+repositório.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. Titularidade
+   Todo o conteúdo deste repositório e do site floriatan.com.br/web/ — código
+   (HTML, CSS, JavaScript), textos, imagens, desenhos, logotipo, documentação e
+   a organização do conjunto — é obra protegida de Floriatan Santos Costa, nos
+   termos da Lei nº 9.610/1998 (direitos autorais), da Lei nº 9.609/1998
+   (programas de computador) e da Convenção de Berna.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+2. O que é proibido sem autorização prévia e por escrito do autor
+   Copiar, reproduzir, modificar, adaptar, traduzir, criar obras derivadas,
+   distribuir, publicar, hospedar em outro endereço, sublicenciar, vender ou
+   usar comercialmente, no todo ou em parte, qualquer conteúdo deste
+   repositório ou do site, por qualquer meio. Nenhuma licença ou direito é
+   concedido de forma implícita.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+3. O que é permitido
+   a) Usar as ferramentas pelo endereço oficial (floriatan.com.br/web/), pelo
+      navegador, conforme o Aviso de uso (floriatan.com.br/web/aviso).
+   b) Usar livremente os resultados que você mesmo gerar com as ferramentas
+      (por exemplo, o arquivo XML ou a assinatura de e-mail com os seus dados).
+   c) Ver o código e criar uma cópia (fork) no próprio GitHub, apenas na medida
+      exigida pelos Termos de Serviço do GitHub. Isso não autoriza nenhum dos
+      usos do item 2 fora dessa plataforma.
+   d) Citar trechos curtos com indicação de autoria e da fonte, nos limites do
+      art. 46 da Lei nº 9.610/1998.
+
+4. Conteúdo de terceiros
+   Nomes, marcas e logotipos de instituições e fabricantes (como UFPR e Tecan)
+   e a base visual carregada do site principal pertencem aos respectivos
+   titulares e não são licenciados aqui.
+
+5. Ausência de garantias
+   As ferramentas são oferecidas no estado em que se encontram, sem garantia de
+   qualquer tipo. O autor não responde por danos decorrentes do uso.
+
+6. Pedidos de autorização
+   https://floriatan.com.br/contato
+
+---
+
+English summary: Copyright (c) 2026 Floriatan Santos Costa. All rights reserved.
+No part of this repository or of floriatan.com.br/web/ (code, text, images,
+documentation) may be copied, modified, distributed, republished or used
+commercially without the author's prior written permission. You may use the
+tools at the official address, freely use the results you generate, view and
+fork the code on GitHub only as required by GitHub's Terms of Service, and quote
+short excerpts with attribution. The Portuguese text above prevails.

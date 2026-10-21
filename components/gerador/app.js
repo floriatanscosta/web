@@ -1,6 +1,7 @@
 /* Gerador de assinatura de e-mail (/web/assinatura)
    Monta a assinatura em HTML com estilos inline (compatível com clientes de e-mail)
-   e a copia como texto formatado para colar no Gmail, Outlook, Thunderbird etc. */
+   e a copia como texto formatado para colar no Gmail, Outlook, Thunderbird etc.
+   © 2026 Floriatan Santos Costa. Todos os direitos reservados. Ver LICENSE. */
 (function () {
   'use strict';
 

@@ -1,6 +1,7 @@
 /* Calculadora de fluidodinâmica para ICP-MS (/web/test-gota)
    Volume interno, velocidade linear, tempo de residência e número de Reynolds
-   de uma câmara de nebulização cilíndrica. */
+   de uma câmara de nebulização cilíndrica.
+   © 2026 Floriatan Santos Costa. Todos os direitos reservados. Ver LICENSE. */
 (function () {
   'use strict';
 
