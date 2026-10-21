@@ -57,7 +57,7 @@ input[type="url"]:focus { outline: none; border-color: var(--heading-color); bac
 .droplet { background-color: #4a90e2; border-radius: 50%; box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.3); transition: width 0.3s, height 0.3s; }
 .grid-warning { margin: 20px 0 0; padding: 10px 14px; font-size: 0.9rem; font-weight: 600; word-wrap: break-word; color: #b42318; background: rgba(220, 38, 38, 0.08); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: var(--radius-sm); }
 [data-theme="dark"] .grid-warning { color: #fca5a5; }
-.droplet--a1 { background-color: #e8590c; box-shadow: 0 0 0 2px rgba(232, 89, 12, 0.35); }
+.droplet--a1 { background-color: #B04D9B; box-shadow: 0 0 0 2px rgba(224, 116, 224, 0.35); }
 .grid-notice { margin: 20px 0 0; padding: 10px 14px; font-size: 0.9rem; font-weight: 600; color: #854d0e; background: rgba(234, 179, 8, 0.12); border: 1px solid rgba(202, 138, 4, 0.4); border-radius: var(--radius-sm); }
 [data-theme="dark"] .grid-notice { color: #fde68a; }
 .grid-info { margin: 14px 0 0; font-size: 0.85rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
