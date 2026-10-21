@@ -34,9 +34,9 @@ ul.prose-list, ol.prose-list { list-style: disc; margin: 10px 0 0; padding-left:
 
 /* 3. Layout das ferramentas (formulário + pré-visualização) */
 /*****************************************************************/
-/* Campos de URL com o mesmo visual dos demais campos do site principal */
-input[type="url"] { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem; font-family: inherit; background-color: var(--color-bg-surface-1); color: var(--text-main); transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
-input[type="url"]:focus { outline: none; border-color: var(--heading-color); background-color: var(--box-bg); box-shadow: 0 0 0 3px rgba(102, 111, 228, 0.25); }
+/* Campos de URL e telefone com o mesmo visual dos demais campos (o site principal não estiliza esses tipos) */
+input[type="url"], input[type="tel"] { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem; font-family: inherit; background-color: var(--color-bg-surface-1); color: var(--text-main); transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
+input[type="url"]:focus, input[type="tel"]:focus { outline: none; border-color: var(--heading-color); background-color: var(--box-bg); box-shadow: 0 0 0 3px rgba(102, 111, 228, 0.25); }
 
 /*****************************************************************/
 .app-container { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }

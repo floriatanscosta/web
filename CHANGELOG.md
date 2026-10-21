@@ -10,6 +10,7 @@
 - **Botão "Copiar HTML"** e **botão "Exportar PDF"** (folha A4 com a assinatura e os dados, pela impressão do navegador, sem biblioteca externa).
 - **Como instalar**: passo a passo para Gmail, Outlook na web/novo Outlook, Outlook clássico, Apple Mail e Thunderbird.
 - **Lembrar meus dados neste navegador** (opcional, desmarcado por padrão); textos de privacidade de "Sobre", "Aviso de uso" e README atualizados.
+- Correção: o campo de telefone aparecia sem estilo (o site principal não estiliza `input[type="tel"]`); agora tem o mesmo visual dos demais campos.
 - Correção: as listas com marcadores do "Aviso de uso" apareciam sem marcador (a regra `ul[class]` do site principal se sobrepunha).
 - Descrição da ferramenta em `components/gerador/README.md` (não publicada).
 
