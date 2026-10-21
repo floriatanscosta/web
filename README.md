@@ -19,7 +19,7 @@ informações a servidores, e não é preciso instalar nada nem criar conta.
 |---|---|---|---|
 | Lista de ferramentas | `/web/` | — | Cartões com as ferramentas disponíveis |
 | Gerador de assinatura de e-mail | `/web/assinatura` | `components/gerador/app.js` | Monta uma assinatura padronizada (nome, cargo, vínculos, e-mail, telefone, logotipo e links para site, Lattes e ORCID), confere os dados, copia como texto formatado ou HTML e exporta em PDF ([descrição](components/gerador/README.md)) |
-| Custom Plate Design XML (Tecan) | `/web/custom-plate` | `components/custom-plate/app.js` | Define os parâmetros de uma placa personalizada, mostra a grade de gotas em escala sobre a lâmina e gera o XML para o Tecan Uno Dispenser ([descrição](components/custom-plate/README.md)) |
+| Custom Plate Design XML (Tecan) | `/web/custom-plate` | `components/custom-plate/app.js` | Define os parâmetros de uma placa personalizada, mostra a grade de gotas em escala sobre a lâmina, gera o XML para o Tecan Uno Dispenser e exporta placa, configurações e XML em PDF ([descrição](components/custom-plate/README.md)) |
 | Calculadora de fluidodinâmica ICP-MS (em teste, fora da lista) | `/web/test-gota` | `components/gota/app.js` | Calcula volume interno, velocidade linear, tempo de residência e número de Reynolds de uma câmara de nebulização e indica o regime de fluxo |
 | Sobre as Ferramentas | `/web/sobre` | — | O que são, como funcionam, privacidade, tecnologia e código |
 | Aviso de uso (disclaimer) | `/web/aviso` | — | Condições de uso e conferência dos resultados |

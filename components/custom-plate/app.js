@@ -1,6 +1,7 @@
 /* Custom Plate Design XML Generator (/web/custom-plate)
-   Generates the HPDDPlate XML for the Tecan Uno Dispenser and draws a
-   to-scale preview of the droplet grid on the glass slide.
+   Generates the HPDDPlate XML for the Tecan Uno Dispenser, draws a
+   to-scale preview of the droplet grid on the glass slide and exports
+   both, with the settings, to PDF (through the browser print dialog).
    © 2026 Floriatan Santos Costa. Todos os direitos reservados. Ver LICENSE. */
 (function () {
   'use strict';
@@ -262,6 +263,106 @@
   });
 
   // "input" also fires for <select> in current browsers; "change" would redraw twice
+  /* ---------- export PDF ---------- */
+
+  function el(tag, className, text) {
+    var e = document.createElement(tag);
+    if (className) e.className = className;
+    if (text) e.textContent = text;
+    return e;
+  }
+
+  // Field label without the tooltip icon
+  function labelOf(input) {
+    var label = form.querySelector('label[for="' + input.id + '"]');
+    if (!label) return input.id;
+    var copy = label.cloneNode(true);
+    copy.querySelectorAll('.custom-tooltip').forEach(function (t) { t.remove(); });
+    return copy.textContent.trim();
+  }
+
+  // Builds an A4 sheet with the slide preview, the settings and the XML, then opens
+  // the print dialog ("Save as PDF"). No external library: nothing leaves the browser.
+  function exportPdf() {
+    if (hasError) {
+      showModal('Error', 'Please resolve the matrix configuration limits before exporting.');
+      return;
+    }
+    var old = document.getElementById('print-sheet');
+    if (old) old.remove();
+
+    var plateId = $('plateId').value.trim();
+    var sheet = el('div', 'print-sheet print-sheet--plate');
+    sheet.id = 'print-sheet';
+    sheet.setAttribute('lang', 'en');
+
+    var head = el('div', 'print-sheet__head');
+    head.appendChild(el('p', 'print-sheet__eyebrow', 'Custom Plate Design · Tecan Uno Dispenser'));
+    head.appendChild(el('h1', 'print-sheet__title', plateId));
+    head.appendChild(el('p', 'print-sheet__sub', displayTotal.textContent + ' droplets · ' + $('rows').value + ' rows x ' + $('cols').value + ' cols'));
+    sheet.appendChild(head);
+
+    var grid = el('div', 'print-sheet__plate');
+    // Preview: copy of the slide drawn on screen (same scale, 1 mm = 6 px)
+    var fig = el('div', 'print-sheet__slide');
+    fig.appendChild(el('h2', 'print-sheet__h2', 'Plate preview'));
+    var slide = glassSlide.cloneNode(true);
+    slide.removeAttribute('id');
+    slide.querySelectorAll('[id]').forEach(function (n) { n.removeAttribute('id'); });
+    fig.appendChild(slide);
+    fig.appendChild(el('p', 'print-sheet__note', gridInfo.textContent));
+    if (!gridNotice.hidden) fig.appendChild(el('p', 'print-sheet__warn', gridNotice.textContent));
+    fig.appendChild(el('p', 'print-sheet__note', 'Orange droplet: A1. Scale of the preview: 1 mm = 6 px on screen.'));
+    grid.appendChild(fig);
+
+    // Settings: every field, with the XML element it fills
+    var settings = el('div', 'print-sheet__settings');
+    settings.appendChild(el('h2', 'print-sheet__h2', 'Settings'));
+    var table = el('table', 'print-sheet__table');
+    var thead = el('thead');
+    var hr = el('tr');
+    ['Parameter', 'Value', 'XML element'].forEach(function (t) { hr.appendChild(el('th', '', t)); });
+    thead.appendChild(hr);
+    table.appendChild(thead);
+    var tbody = el('tbody');
+    inputs.forEach(function (input) {
+      var tr = el('tr');
+      var value = input.tagName === 'SELECT' ? input.options[input.selectedIndex].text : input.value.trim();
+      tr.appendChild(el('td', '', labelOf(input)));
+      tr.appendChild(el('td', '', value));
+      var xmlName = input.id === 'plateId' ? '<id>, <name>' : (input.id === 'dropletsize' ? 'preview only' : '<' + input.id + '>');
+      tr.appendChild(el('td', 'print-sheet__mono', xmlName));
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    settings.appendChild(table);
+    // XML under the settings, so everything fits on one A4 page
+    settings.appendChild(el('h2', 'print-sheet__h2', 'XML (' + safeFileName(plateId) + '.xml)'));
+    settings.appendChild(el('pre', 'print-sheet__code', xmlOutput.value));
+    grid.appendChild(settings);
+    sheet.appendChild(grid);
+
+    var today = new Date().toLocaleDateString('en-GB');
+    sheet.appendChild(el('p', 'print-sheet__foot',
+      'Generated on ' + today + ' at floriatan.com.br/web/custom-plate. Always check the plate in the instrument software before dispensing.'));
+    document.body.appendChild(sheet);
+
+    // The page title becomes the suggested PDF file name
+    var originalTitle = document.title;
+    document.title = 'Custom Plate - ' + safeFileName(plateId);
+    document.body.classList.add('print-plate');
+    var cleanup = function () {
+      document.body.classList.remove('print-plate');
+      document.title = originalTitle;
+      sheet.remove();
+      window.removeEventListener('afterprint', cleanup);
+    };
+    window.addEventListener('afterprint', cleanup);
+    window.print();
+  }
+
+  $('pdfBtn').addEventListener('click', exportPdf);
+
   inputs.forEach(function (input) { input.addEventListener('input', updateApp); });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
 

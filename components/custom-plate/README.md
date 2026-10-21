@@ -1,7 +1,7 @@
 # Custom Plate Design XML Generator
 
 Página: **https://floriatan.com.br/web/custom-plate** (`custom-plate.html`)
-Script: `components/custom-plate/app.js` · Estilos: seção 5 de `css/style.css`
+Script: `components/custom-plate/app.js` · Estilos: seção 5 de `css/style.css` (a folha do PDF fica no bloco "Exportar PDF")
 
 Gera o arquivo XML de uma placa personalizada (`<HPDDPlate>`) para o **Tecan Uno Dispenser**
 e mostra, em escala, a grade de gotas sobre uma lâmina de vidro. Tudo roda no navegador:
@@ -13,7 +13,24 @@ nada é enviado a servidores. A interface é em inglês, como o software do equi
 2. Confira a grade na lâmina. A gota **A1** aparece em laranja; abaixo da imagem ficam a
    posição de A1 na lâmina e a extensão da grade (de centro a centro).
 3. Clique em **Copy code** ou **Download** (o arquivo recebe o nome do ID, como `1A_240.xml`).
-4. Importe o arquivo no software do equipamento e **confira a placa lá** antes de dispensar.
+4. Para registrar a configuração, clique em **Export PDF** (veja abaixo).
+5. Importe o arquivo no software do equipamento e **confira a placa lá** antes de dispensar.
+
+## Exportar em PDF
+
+O botão **Export PDF** monta uma folha A4, em inglês como a interface, e abre a impressão do
+navegador; escolha **Salvar como PDF** (o nome sugerido é `Custom Plate - <ID>`). A folha traz:
+
+- **cabeçalho**: ID da placa, total de gotas e matriz (linhas × colunas);
+- **Plate preview**: a mesma lâmina da tela, em escala, com A1 em laranja, a posição de A1,
+  a extensão da grade e, se houver, o aviso de grade fora do vidro;
+- **Settings**: tabela com todos os campos, o valor usado e o elemento XML correspondente;
+- **XML**: o código completo, com o nome do arquivo;
+- **rodapé**: data de geração e o lembrete de conferir a placa no software do equipamento.
+
+Tudo cabe em uma página. A exportação é bloqueada enquanto houver erro de configuração,
+como acontece com a cópia e o download. Não há biblioteca externa: o PDF é gerado pelo
+próprio navegador e nada é enviado a servidores.
 
 ## Parâmetros
 
@@ -93,7 +110,7 @@ Revise os offsets, o pitch e o número de linhas e colunas.
 | Arquivo | Uso |
 |---|---|
 | `custom-plate.html` (raiz) | Página e formulário |
-| `components/custom-plate/app.js` | Validação, geração do XML, pré-visualização, cópia e download |
+| `components/custom-plate/app.js` | Validação, geração do XML, pré-visualização, cópia, download e exportação em PDF |
 | `components/custom-plate/slide.svg` | Desenho da lâmina (fundo da pré-visualização; também usado por `components/style.css`) |
 | `components/custom-plate/cover.png` | Imagem do cartão em `/web/` e de compartilhamento (`og:image`) |
 | `components/custom-plate/README.md` | Este arquivo (não publicado: está em `exclude` no `_config.yml`) |

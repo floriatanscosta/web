@@ -63,11 +63,11 @@ input[aria-invalid="true"] { border-color: #dc2626; }
 .install-step .prose-list { margin-top: 10px; }
 ol.prose-list--ordered { list-style: decimal; }
 
-/* Exportar PDF (assinatura): só a folha montada pelo script vai para a impressão */
+/* Exportar PDF (assinatura e Custom Plate): só a folha montada pelo script vai para a impressão */
 .print-sheet { display: none; }
 @media print {
-    body.print-signature > *:not(.print-sheet) { display: none !important; }
-    body.print-signature .print-sheet { display: block; color: #1f2937; font-family: 'Roboto', Helvetica, Arial, sans-serif; }
+    body.print-signature > *:not(.print-sheet), body.print-plate > *:not(.print-sheet) { display: none !important; }
+    body.print-signature .print-sheet, body.print-plate .print-sheet { display: block; color: #1f2937; font-family: 'Roboto', Helvetica, Arial, sans-serif; }
     .print-sheet, .print-sheet * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .print-sheet__head { padding-bottom: 14px; margin-bottom: 22px; border-bottom: 2px solid #dfe5f1; }
     .print-sheet__eyebrow { margin: 0 0 4px; font-size: 9pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5a729e; }
@@ -80,6 +80,21 @@ ol.prose-list--ordered { list-style: decimal; }
     .print-sheet__list dd { margin: 0; word-break: break-all; }
     .print-sheet a { color: #3a4d74 !important; }
     .print-sheet__foot { margin-top: 28px; padding-top: 10px; border-top: 1px solid #dfe5f1; font-size: 9pt; color: #6b7280; }
+    /* Custom Plate: lâmina à esquerda; configurações e XML à direita (cabe em uma página A4) */
+    .print-sheet--plate .print-sheet__head { margin-bottom: 14px; }
+    .print-sheet--plate .print-sheet__h2 { margin: 14px 0 8px; }
+    .print-sheet__plate { display: flex; gap: 24px; align-items: flex-start; }
+    .print-sheet__slide { flex: 0 0 auto; width: 190px; break-inside: avoid; }
+    .print-sheet__slide .glass-slide { width: 180px !important; height: 480px !important; overflow: hidden; border: 1px solid #dfe5f1; }
+    .print-sheet__settings { flex: 1 1 auto; min-width: 0; }
+    .print-sheet__note { margin: 8px 0 0; font-size: 8.5pt; color: #4b5563; }
+    .print-sheet__warn { margin: 8px 0 0; font-size: 8.5pt; font-weight: 700; color: #854d0e; }
+    .print-sheet__table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+    .print-sheet__table th, .print-sheet__table td { padding: 3px 8px; text-align: left; border-bottom: 1px solid #dfe5f1; vertical-align: top; }
+    .print-sheet__table th { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.05em; color: #5a729e; }
+    .print-sheet__mono, .print-sheet__code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .print-sheet__mono { font-size: 8.5pt; color: #4b5563; }
+    .print-sheet__code { margin: 0; padding: 10px 12px; font-size: 8pt; line-height: 1.35; white-space: pre-wrap; word-break: break-all; color: #1f2937; background: #f3f5f9; border: 1px solid #dfe5f1; border-radius: 6px; break-inside: auto; }
 }
 
 /* 5. Gerador de XML (custom-plate.html) */

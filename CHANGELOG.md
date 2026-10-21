@@ -4,6 +4,12 @@
 > no Git; o histórico resumido está em [`components/gerador/README.md`](components/gerador/README.md#histórico-de-versões).
 > Os títulos abaixo indicam a versão quando a mudança é da Assinatura.
 
+## 2026-10-21 — Custom Plate: exportar em PDF
+- **Botão "Export PDF"**: folha A4 (em inglês, como a interface) com a lâmina em escala (A1 destacado, posição de A1, extensão da grade e aviso de grade fora do vidro), a tabela de configurações com o elemento XML de cada campo, o XML completo e a data de geração. Tudo em uma página.
+- Gerado pela impressão do navegador ("Salvar como PDF"), sem biblioteca externa; nome sugerido `Custom Plate - <ID>`. Bloqueado enquanto houver erro de configuração.
+- Script carregado com `?v=20261021`, para o navegador não usar a versão antiga em cache.
+- `components/custom-plate/README.md`, `README.md` e "Sobre" atualizados.
+
 ## 2026-10-21 — Assinatura 2.0.1: versionamento e correção
 - **Versionamento** da Assinatura: versão semântica (`MAIOR.MENOR.CORREÇÃO`), exibida no rodapé da página (com link para o histórico), no rodapé do PDF e num comentário no início do código de "Copiar HTML".
 - Histórico reconstruído a partir dos commits, com tags no Git: `assinatura-v1.0.0` (27/09/2026), `v1.1.0` (18/10), `v1.2.0`, `v1.3.0`, `v2.0.0` e `v2.0.1` (21/10).
