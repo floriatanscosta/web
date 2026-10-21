@@ -43,6 +43,7 @@ input[type="url"]:focus, input[type="tel"]:focus { outline: none; border-color: 
 .preview-panel { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .app-container .card-title { margin-bottom: 18px; }
 .tool-note { margin-top: 28px; }
+.tool-version { margin: 12px 0 0; font-size: 0.8rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 
 /* 4. Gerador de assinatura (assinatura.html) */
 /*****************************************************************/

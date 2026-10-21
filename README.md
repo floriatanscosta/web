@@ -121,6 +121,7 @@ O seletor de tema do cabeçalho (`<details class="lang-menu theme-menu">`) é o 
 - `components/style.css` continua publicado porque o `design-meta.html` do site principal depende dele.
 
 O histórico de alterações está em [`CHANGELOG.md`](CHANGELOG.md).
+A Assinatura tem versão própria (SemVer, tags `assinatura-vX.Y.Z`); veja [`components/gerador/README.md`](components/gerador/README.md#versionamento).
 
 ## Licença
 

@@ -2,6 +2,7 @@
 
 Página: **https://floriatan.com.br/web/assinatura** (`assinatura.html`)
 Script: `components/gerador/app.js` · Estilos: seções 3 e 4 de `css/style.css`
+Versão atual: **2.0.1** (21/10/2026)
 
 Monta uma assinatura de e-mail institucional padronizada, confere os dados e a entrega
 pronta para colar no cliente de e-mail, como código HTML ou em PDF. Tudo roda no
@@ -64,3 +65,37 @@ assinaturas mais antigas usam `https://floriatan.com.br/web/components/gerador/�
 - Clientes que invertem as cores no modo escuro podem alterar as cores do texto; o logo continua legível por ter fundo branco próprio.
 - A fonte Roboto só aparece onde estiver instalada; nos demais casos, Helvetica ou Arial.
 - O Lattes não tem dígito verificador público: a verificação é só de formato.
+
+## Versionamento
+
+A ferramenta segue o [versionamento semântico](https://semver.org/lang/pt-BR/) (`MAIOR.MENOR.CORREÇÃO`):
+
+- **MAIOR**: muda o que é gerado ou como a ferramenta é usada de um jeito que exige atenção de
+  quem já a usava (por exemplo, campo novo obrigatório ou troca dos arquivos de imagem);
+- **MENOR**: função nova que não altera o uso anterior;
+- **CORREÇÃO**: correção de erro, sem função nova.
+
+A versão aparece no rodapé da página, no rodapé do PDF e num comentário no início do código
+copiado por "Copiar HTML", o que permite identificar com que versão uma assinatura foi gerada.
+Cada versão tem uma tag no Git: `assinatura-vX.Y.Z`.
+
+Ao lançar uma versão:
+
+1. atualize `VERSAO` em `app.js` e o `?v=` do `<script>` em `assinatura.html` (força o navegador a baixar o script novo);
+2. atualize o número fixo de `#versao-ferramenta` em `assinatura.html` e a "Versão atual" acima;
+3. acrescente a versão na tabela abaixo e no `CHANGELOG.md`;
+4. depois do commit, crie e envie a tag: `git tag -a assinatura-vX.Y.Z -m "Assinatura X.Y.Z" && git push origin assinatura-vX.Y.Z`.
+
+## Histórico de versões
+
+| Versão | Data | Tag | Principais mudanças |
+|---|---|---|---|
+| **2.0.1** | 21/10/2026 | `assinatura-v2.0.1` | Campo de telefone com o mesmo estilo dos demais; versão exibida na página, no PDF e no HTML copiado |
+| **2.0.0** | 21/10/2026 | `assinatura-v2.0.0` | Logos com fundo branco (modo escuro) e Logo 4; nome obrigatório; e-mail e telefone; texto simples com links; "Copiar HTML"; "Exportar PDF"; "Como instalar"; opção de lembrar os dados |
+| 1.3.0 | 21/10/2026 | `assinatura-v1.3.0` | Verificação dos links: Lattes (16 dígitos), ORCID (dígito verificador) e site (domínio válido) |
+| 1.2.0 | 21/10/2026 | `assinatura-v1.2.0` | Imagens servidas pelo GitHub; compressão das imagens; só logos da lista; `rel="noopener"` |
+| 1.1.0 | 18/10/2026 | `assinatura-v1.1.0` | Novo visual do site; escape contra injeção de HTML; cópia com formatação; tema claro/escuro |
+| 1.0.0 | 27/09/2026 | `assinatura-v1.0.0` | Primeira versão publicada |
+
+A 2.0.0 é uma versão maior porque o nome passou a ser obrigatório e a assinatura passou a usar
+outros arquivos de logo (`logo-N-branco.png`). Assinaturas antigas continuam funcionando.

@@ -6,6 +6,10 @@
 (function () {
   'use strict';
 
+  // Versão da ferramenta (SemVer). Ao mudar: atualize também o ?v= do <script> em assinatura.html,
+  // o "Histórico de versões" em components/gerador/README.md e o CHANGELOG.md, e crie a tag assinatura-vX.Y.Z.
+  var VERSAO = '2.0.1';
+
   // As imagens da assinatura precisam de URL absoluta para aparecer nos e-mails enviados.
   // Vêm direto do GitHub (raw.githubusercontent.com), que não depende do domínio do site.
   // Não renomeie nem mova os arquivos de components/gerador/ e mantenha o repositório público.
@@ -394,7 +398,7 @@
   // Copia o código HTML como texto (Thunderbird, Apple Mail e outros que aceitam colar HTML)
   function copiarHTML() {
     if (!prontoParaUsar()) return;
-    var codigo = montarHTML(dados);
+    var codigo = '<!-- Assinatura gerada em floriatan.com.br/web/assinatura (v' + VERSAO + ') -->\n' + montarHTML(dados);
     var ok = function () { sucesso('O código HTML da assinatura foi copiado. Cole-o no campo de assinatura em HTML do seu cliente de e-mail; veja "Como instalar" abaixo.'); };
     var fallback = function (err) {
       var t = document.createElement('textarea');
@@ -472,7 +476,7 @@
 
     var hoje = new Date().toLocaleDateString('pt-BR');
     folha.appendChild(el('p', 'print-sheet__foot',
-      'Gerada em ' + hoje + ' em floriatan.com.br/web/assinatura. Para usar no e-mail, abra a página, preencha os dados e use “Copiar assinatura”.'));
+      'Gerada em ' + hoje + ' em floriatan.com.br/web/assinatura (versão ' + VERSAO + '). Para usar no e-mail, abra a página, preencha os dados e use “Copiar assinatura”.'));
     document.body.appendChild(folha);
 
     // O título da página vira o nome sugerido do arquivo PDF
@@ -508,6 +512,9 @@
   // Compatibilidade com chamadas antigas (ex.: onclick="copiarAssinatura()")
   window.copiarAssinatura = copiarAssinatura;
   window.closeModal = closeModal;
+
+  var versaoEl = $('versao-ferramenta');
+  if (versaoEl) versaoEl.textContent = VERSAO;
 
   carregarDados();
   atualizarAssinatura();
