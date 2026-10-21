@@ -18,7 +18,7 @@ informações a servidores, e não é preciso instalar nada nem criar conta.
 | Página | Endereço | Script | O que faz |
 |---|---|---|---|
 | Lista de ferramentas | `/web/` | — | Cartões com as ferramentas disponíveis |
-| Gerador de assinatura de e-mail | `/web/assinatura` | `components/gerador/app.js` | Monta uma assinatura padronizada (nome, cargo, vínculos, logotipo e links para site, Lattes e ORCID) pronta para colar no Gmail, Outlook, Thunderbird e outros |
+| Gerador de assinatura de e-mail | `/web/assinatura` | `components/gerador/app.js` | Monta uma assinatura padronizada (nome, cargo, vínculos, logotipo e links para site, Lattes e ORCID) pronta para colar no Gmail, Outlook, Thunderbird e outros; confere os links (Lattes com 16 dígitos, ORCID com dígito verificador, site com domínio válido) |
 | Custom Plate Design XML (Tecan) | `/web/custom-plate` | `components/custom-plate/app.js` | Define os parâmetros de uma placa personalizada, mostra a grade de gotas em escala sobre a lâmina e gera o XML para o Tecan Uno Dispenser ([descrição](components/custom-plate/README.md)) |
 | Calculadora de fluidodinâmica ICP-MS (em teste, fora da lista) | `/web/test-gota` | `components/gota/app.js` | Calcula volume interno, velocidade linear, tempo de residência e número de Reynolds de uma câmara de nebulização e indica o regime de fluxo |
 | Sobre as Ferramentas | `/web/sobre` | — | O que são, como funcionam, privacidade, tecnologia e código |

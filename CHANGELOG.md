@@ -1,5 +1,12 @@
 # Histórico de alterações — Ferramentas (/web)
 
+## 2026-10-21 — Assinatura: verificação dos links
+- **Lattes**: aceita `http://lattes.cnpq.br/` + 16 dígitos (com ou sem `https`, `www` e barra final), só os 16 dígitos ou o link do buscatextual com identificador K (`visualizacv.do?id=K0000000A0`). O link é gravado na forma padrão `http://lattes.cnpq.br/0000000000000000`.
+- **ORCID**: aceita `https://orcid.org/0000-0000-0000-0000` ou só o identificador (com ou sem hífens) e confere o **dígito verificador** (ISO 7064 MOD 11-2, o mesmo cálculo do ORCID). O link é gravado como `https://orcid.org/…`, com `X` maiúsculo.
+- **Site pessoal**: só links `http`/`https` com domínio válido (ex.: `exemplo.com.br`); recusa espaços, outros protocolos (`mailto:`, `javascript:`), endereços sem domínio (`localhost`, IP) e links com usuário/senha (`https://banco.com@outro.site`).
+- O erro aparece abaixo do campo quando você sai dele; o link inválido fica fora da pré-visualização, e a cópia só é feita depois de corrigir ou apagar o campo.
+- Lattes e ORCID passam a vir vazios, com o formato como exemplo (antes vinham com `XXXX`, que não é um link válido).
+
 ## 2026-10-21 — Assinatura: imagens pelo GitHub, revisão e compressão
 - **Imagens da assinatura** (logo e ícones) passam a vir de `raw.githubusercontent.com/floriatanscosta/web/main/components/gerador/`, que não depende do domínio. Os arquivos continuam no mesmo lugar, e as assinaturas antigas, que apontam para `floriatan.com.br/web/…`, seguem funcionando.
 - **Compressão das imagens** (de 284 KB para 43 KB no total): ícones reduzidos de 200 × 200 para 60 × 60 px (são exibidos com 20 px; 3x para telas de alta densidade), logos e capas convertidos para paleta de 256 cores e otimizados com oxipng, sem diferença visível.

@@ -48,6 +48,9 @@ input[type="url"]:focus { outline: none; border-color: var(--heading-color); bac
 /*****************************************************************/
 /* Fundo branco fixo (também no modo escuro): é como a assinatura aparece nos clientes de e-mail */
 .preview-box { border: 1px dashed var(--border-color); padding: 20px; background: #ffffff; color: #333333; border-radius: var(--radius-md); min-height: 200px; overflow-x: auto; margin-bottom: 20px; }
+.field-error { margin: 6px 0 0; font-size: 0.85rem; font-weight: 600; color: #b42318; }
+[data-theme="dark"] .field-error { color: #fca5a5; }
+input[aria-invalid="true"] { border-color: #dc2626; }
 
 /* 5. Gerador de XML (custom-plate.html) */
 /*****************************************************************/

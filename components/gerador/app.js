@@ -27,17 +27,116 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  // Completa o protocolo (ex.: "lattes.cnpq.br/123" → "https://lattes.cnpq.br/123")
-  // e aceita apenas links http/https
-  function formatarURL(url) {
-    if (!url) return '';
-    var u = /^https?:\/\//i.test(url) ? url : 'https://' + url.replace(/^\/+/, '');
+  /* ---------- verificação dos links ---------- */
+  // Cada função devolve { url: link normalizado } ou { erro: mensagem }. Campo vazio: { url: '' }.
+
+  // Completa o protocolo e interpreta o endereço; null se não for um link http/https
+  function lerURL(texto, protocolo) {
+    var u = /^https?:\/\//i.test(texto) ? texto : protocolo + texto.replace(/^\/+/, '');
     try {
       var parsed = new URL(u);
-      return (parsed.protocol === 'http:' || parsed.protocol === 'https:') ? escaparHTML(u) : '';
+      return (parsed.protocol === 'http:' || parsed.protocol === 'https:') ? parsed : null;
     } catch (e) {
-      return '';
+      return null;
     }
+  }
+
+  // Site: link http/https com domínio de verdade (ex.: exemplo.com.br)
+  function verificarSite(texto) {
+    if (!texto) return { url: '' };
+    if (/\s/.test(texto)) return { erro: 'O link não pode ter espaços.' };
+    // Outro protocolo (mailto:, javascript:, ftp: …); "site.com:8080" não conta
+    if (/^[a-z][a-z0-9+.-]*:(?!\d)/i.test(texto) && !/^https?:\/\//i.test(texto)) {
+      return { erro: 'Use um link que comece com https:// ou http://.' };
+    }
+    var u = lerURL(texto, 'https://');
+    if (!u) return { erro: 'Isto não é um link válido. Exemplo: https://www.exemplo.com.br' };
+    // Usuário/senha no link disfarçam o destino real (ex.: https://banco.com@outro.site)
+    if (u.username || u.password) return { erro: 'O link não pode conter usuário ou senha (@).' };
+    var partes = u.hostname.split('.');
+    var tld = partes[partes.length - 1];
+    var rotulosOk = partes.every(function (r) { return /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(r); });
+    if (partes.length < 2 || !rotulosOk || !/^(?:[a-z]{2,63}|xn--[a-z0-9-]{1,59})$/.test(tld)) {
+      return { erro: 'O endereço precisa de um domínio válido. Exemplo: https://www.exemplo.com.br' };
+    }
+    return { url: u.href };
+  }
+
+  // Lattes: http://lattes.cnpq.br/ + 16 dígitos (ou só os 16 dígitos), ou o link
+  // do buscatextual com o identificador K (ex.: visualizacv.do?id=K1234567A8)
+  function verificarLattes(texto) {
+    if (!texto) return { url: '' };
+    var padrao = 'Use o formato http://lattes.cnpq.br/0000000000000000.';
+    var id = texto.replace(/\s+/g, '');
+    if (/^\d{16}$/.test(id)) return { url: 'http://lattes.cnpq.br/' + id };
+    var u = lerURL(id, 'http://');
+    if (!u) return { erro: padrao };
+    var host = u.hostname.replace(/^www\./, '');
+    if (host === 'lattes.cnpq.br') {
+      var m = u.pathname.match(/^\/(\d{16})\/?$/);
+      if (!m) return { erro: 'O identificador Lattes tem 16 dígitos. ' + padrao };
+      return { url: 'http://lattes.cnpq.br/' + m[1] };
+    }
+    if (host === 'buscatextual.cnpq.br' && /^\/buscatextual\/visualizacv\.do$/i.test(u.pathname)) {
+      var k = (u.searchParams.get('id') || '').toUpperCase();
+      if (/^K\d{7}[A-Z]\d$/.test(k)) return { url: 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=' + k };
+      return { erro: 'Identificador K inválido no link do buscatextual. ' + padrao };
+    }
+    return { erro: 'O link não é do Lattes. ' + padrao };
+  }
+
+  // Dígito verificador do ORCID (ISO 7064 MOD 11-2), calculado sobre os 15 primeiros dígitos
+  function digitoOrcid(digitos) {
+    var total = 0;
+    for (var i = 0; i < digitos.length; i++) total = (total + Number(digitos[i])) * 2;
+    var resultado = (12 - (total % 11)) % 11;
+    return resultado === 10 ? 'X' : String(resultado);
+  }
+
+  // ORCID: https://orcid.org/0000-0000-0000-0000 (ou só o identificador), com dígito verificador
+  function verificarOrcid(texto) {
+    if (!texto) return { url: '' };
+    var padrao = 'Use o formato https://orcid.org/0000-0000-0000-0000.';
+    var id = texto.replace(/\s+/g, '');
+    if (!/^\d{4}-?\d{4}-?\d{4}-?\d{3}[\dXx]$/.test(id)) {
+      var u = lerURL(id, 'https://');
+      if (!u) return { erro: padrao };
+      if (u.hostname.replace(/^www\./, '') !== 'orcid.org') return { erro: 'O link não é do ORCID. ' + padrao };
+      id = u.pathname.replace(/^\/+|\/+$/g, '');
+      if (!/^\d{4}-?\d{4}-?\d{4}-?\d{3}[\dXx]$/.test(id)) return { erro: 'O identificador ORCID tem 16 caracteres. ' + padrao };
+    }
+    var limpo = id.replace(/-/g, '').toUpperCase();
+    if (digitoOrcid(limpo.slice(0, 15)) !== limpo[15]) {
+      return { erro: 'Identificador ORCID inválido: o dígito verificador não confere. Confira o número no seu perfil.' };
+    }
+    return { url: 'https://orcid.org/' + limpo.replace(/(.{4})(?!$)/g, '$1-') };
+  }
+
+  var VERIFICADORES = {
+    'input-url-web': verificarSite,
+    'input-url-lattes': verificarLattes,
+    'input-url-orcid': verificarOrcid
+  };
+  // Campos que o usuário já deixou (o erro só aparece depois disso, para não incomodar durante a digitação)
+  var tocados = {};
+
+  // Verifica os três links e mostra (ou esconde) a mensagem de erro de cada campo
+  function verificarLinks() {
+    var resultado = { erros: 0 };
+    Object.keys(VERIFICADORES).forEach(function (id) {
+      var campo = $(id);
+      var r = VERIFICADORES[id](valor(id));
+      var msg = $('erro-' + id.replace('input-', ''));
+      var mostrar = Boolean(r.erro) && tocados[id];
+      if (r.erro) resultado.erros++;
+      campo.setAttribute('aria-invalid', mostrar ? 'true' : 'false');
+      if (msg) {
+        msg.textContent = mostrar ? r.erro : '';
+        msg.hidden = !mostrar;
+      }
+      resultado[id] = r.url ? escaparHTML(r.url) : '';
+    });
+    return resultado;
   }
 
   function valor(id) { var el = $(id); return el ? el.value.trim() : ''; }
@@ -54,9 +153,11 @@
     var inst1 = escaparHTML(valor('input-inst1'));
     var lab2 = escaparHTML(valor('input-lab2'));
     var inst2 = escaparHTML(valor('input-inst2'));
-    var urlWeb = formatarURL(valor('input-url-web'));
-    var urlLattes = formatarURL(valor('input-url-lattes'));
-    var urlOrcid = formatarURL(valor('input-url-orcid'));
+    // Links inválidos ficam fora da assinatura
+    var links = verificarLinks();
+    var urlWeb = links['input-url-web'];
+    var urlLattes = links['input-url-lattes'];
+    var urlOrcid = links['input-url-orcid'];
 
     var temLinks = urlWeb || urlLattes || urlOrcid;
 
@@ -147,6 +248,13 @@
   }
 
   function copiarAssinatura() {
+    // Mostra todos os erros antes de copiar; com link inválido, não copia
+    Object.keys(VERIFICADORES).forEach(function (id) { tocados[id] = true; });
+    atualizarAssinatura();
+    if (verificarLinks().erros) {
+      showModal('Confira os links', 'Há links inválidos, destacados no formulário. Corrija ou apague esses campos antes de copiar a assinatura.');
+      return;
+    }
     var tabela = preview.querySelector('table');
     if (!tabela) return;
     // Preferência: API moderna, copiando como HTML (formatação) + texto simples
@@ -169,6 +277,13 @@
 
   // "input" também dispara em <select>; "change" redesenharia duas vezes
   form.addEventListener('input', atualizarAssinatura);
+  // Ao sair de um campo de link, passa a mostrar o erro dele
+  form.addEventListener('focusout', function (e) {
+    if (VERIFICADORES[e.target.id]) {
+      tocados[e.target.id] = true;
+      verificarLinks();
+    }
+  });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
   if (copyBtn) copyBtn.addEventListener('click', copiarAssinatura);
 
