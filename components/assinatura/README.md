@@ -2,7 +2,7 @@
 
 Página: **https://floriatan.com.br/web/assinatura** (`assinatura.html`)
 Pasta: `components/assinatura/` (`app.js`, `cover.png`, `README.md` e imagens em `assets/`)
-Estilos: seções 3 e 4 de `css/style.css`
+Estilos: `css/tools.css`, seções 2 (campos), 4 (Assinatura) e 7.3 (PDF)
 Versão atual: **2.1.0** (21/10/2026)
 
 Monta uma assinatura de e-mail institucional padronizada, confere os dados e a entrega

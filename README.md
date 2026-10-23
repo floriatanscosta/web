@@ -45,11 +45,18 @@ As páginas usam a **mesma base do site principal**, carregada do próprio domí
 - `/js/theme-init.js` e `/js/app.js` — tema (claro, escuro ou seguir o sistema), menu do celular e ano do rodapé;
 - `/assets/…` — logotipo, favicon, ícones e fontes.
 
-Assim, qualquer ajuste visual feito no site principal vale também aqui. O que é exclusivo das ferramentas fica em **`css/style.css`** (este repositório).
+Assim, qualquer ajuste visual feito no site principal vale também aqui. O que é próprio do `/web/` fica em dois arquivos deste repositório:
+
+| Arquivo | Carregado em | Conteúdo |
+|---|---|---|
+| **`css/base.css`** | todas as páginas | variáveis `--web-*` (cores de erro, aviso, foco e código, com versão para o modo escuro), subtítulo do cabeçalho, cartões da lista de ferramentas, listas de texto, avisos de rodapé |
+| **`css/tools.css`** | só nas ferramentas (depois de `base.css`) | layout formulário + pré-visualização, campos e mensagens, avisos, uma seção por ferramenta, folhas de impressão (PDF) e responsividade |
+
+Cada arquivo abre com um sumário numerado das seções. `css/style.css` ficou só como compatibilidade (importa os dois) para o `design-meta.html` do site principal; não acrescente regras nele.
 
 ```text
 floriatan.com.br/                    floriatan.com.br/web/  (este repositório)
-├── css/global.css, css/main.css ◀── todas as páginas HTML ──▶ web/css/style.css
+├── css/global.css, css/main.css ◀── todas as páginas HTML ──▶ web/css/base.css (+ web/css/tools.css nas ferramentas)
 ├── js/theme-init.js, js/app.js  ◀──        │
 └── assets/…                     ◀──        └──▶ web/components/<ferramenta>/app.js
 ```
@@ -87,7 +94,9 @@ web/
 │   ├── gerador/                 # LEGADO: imagens das assinaturas geradas até a versão 2.0.1 (não mover)
 │   └── style.css                # LEGADO: só para o design-meta.html do site principal
 ├── css/
-│   └── style.css                # estilos exclusivos das ferramentas
+│   ├── base.css                 # estilos-base do /web (todas as páginas)
+│   ├── tools.css                # estilos das ferramentas (uma seção por ferramenta)
+│   └── style.css                # LEGADO: importa os dois, só para o design-meta.html do site principal
 ├── 404.html                     # páginas publicadas (endereços /web/<nome>, sem .html)
 ├── assinatura.html
 ├── aviso.html
@@ -113,7 +122,7 @@ web/
 | Capa (940 × 470 px) | `components/<ferramenta>/cover.png` |
 | Descrição | `components/<ferramenta>/README.md` (não publicada) |
 | Imagens e outros arquivos | `components/<ferramenta>/assets/` |
-| Estilos | seção própria em `css/style.css` |
+| Estilos | seção própria em `css/tools.css` (o que vale para todas as páginas vai em `css/base.css`) |
 
 O nome da pasta em `components/` é o mesmo do endereço da página.
 

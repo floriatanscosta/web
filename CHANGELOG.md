@@ -4,6 +4,14 @@
 > no Git; o histórico resumido está em [`components/assinatura/README.md`](components/assinatura/README.md#histórico-de-versões).
 > Os títulos abaixo indicam a versão quando a mudança é da Assinatura.
 
+## 2026-10-23 — Organização do CSS
+- **`css/style.css` dividido em dois arquivos**: `css/base.css` (todas as páginas: variáveis, cabeçalho, cartões da lista, listas de texto, avisos de rodapé) e `css/tools.css` (só nas ferramentas: layout, formulários, avisos, uma seção por ferramenta, impressão em PDF e responsividade). A lista, "Sobre", "Aviso de uso" e a 404 carregam só `base.css`.
+- Seletores agrupados por função e por ferramenta, com sumário numerado no início de cada arquivo.
+- **Variáveis de cor**: `--web-*` (erro, aviso, foco, código; com valores próprios no modo escuro), `--plate-*` (gotas, A1 e fundo da lâmina) e `--print-*` (paleta fixa das folhas de PDF), no lugar das cores repetidas.
+- `css/style.css` fica só como compatibilidade (importa os dois arquivos) para o `design-meta.html` do site principal.
+- Verificado: o estilo calculado de 6.751 elementos (todas as páginas, claro e escuro, computador e celular, e as folhas de PDF) é o mesmo de antes.
+- Custom Plate: textos que ainda diziam que o A1 aparece em laranja ajustados para a cor atual (destaque magenta, alterada pelo autor).
+
 ## 2026-10-23 — Custom Plate: Horizontal offset
 - "Horizontal offset" documentado como parâmetro do equipamento: vai para o XML e não altera a pré-visualização (dica do campo e `components/custom-plate/README.md`).
 

@@ -1,7 +1,7 @@
 # Calculadora de fluidodinâmica para ICP-MS (em teste)
 
 Página: **https://floriatan.com.br/web/fluidodinamica** (`fluidodinamica.html`)
-Script: `components/fluidodinamica/app.js` · Estilos: seção 6 de `css/style.css`
+Script: `components/fluidodinamica/app.js` · Estilos: `css/tools.css`, seção 6
 Endereço antigo: `/web/test-gota` (redireciona para o novo)
 
 Ferramenta em teste, fora da lista de ferramentas e sem indexação nos buscadores

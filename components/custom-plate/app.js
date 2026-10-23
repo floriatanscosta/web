@@ -312,7 +312,7 @@
     fig.appendChild(slide);
     fig.appendChild(el('p', 'print-sheet__note', gridInfo.textContent));
     if (!gridNotice.hidden) fig.appendChild(el('p', 'print-sheet__warn', gridNotice.textContent));
-    fig.appendChild(el('p', 'print-sheet__note', 'Orange droplet: A1. Scale of the preview: 1 mm = 6 px on screen.'));
+    fig.appendChild(el('p', 'print-sheet__note', 'Highlighted droplet: A1. Scale of the preview: 1 mm = 6 px on screen.'));
     grid.appendChild(fig);
 
     // Settings: every field, with the XML element it fills

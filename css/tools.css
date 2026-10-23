@@ -1,0 +1,157 @@
+/* ==================================================================
+// © 2026 Floriatan Santos Costa. Todos os direitos reservados. Ver LICENSE.
+// /web/css/tools.css
+// Estilos das ferramentas. Carregado depois de /web/css/base.css, só nas
+// páginas das ferramentas (assinatura, custom-plate, fluidodinamica).
+//
+// Sumário
+//   1. Layout comum: formulário + pré-visualização
+//   2. Formulários: campos, mensagens e opções
+//   3. Avisos e informações
+//   4. Assinatura (assinatura.html)
+//   5. Custom Plate (custom-plate.html)
+//   6. Calculadora de fluidodinâmica (fluidodinamica.html)
+//   7. Exportar PDF (impressão)
+//   8. Responsividade
+================================================================== */
+
+/* 1. Layout comum: formulário + pré-visualização */
+/*****************************************************************/
+.app-container { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.app-container .card-title { margin-bottom: 18px; }
+.preview-panel { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.tool-version { margin: 12px 0 0; font-size: 0.8rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+/* 2. Formulários: campos, mensagens e opções */
+/*****************************************************************/
+/* URL e telefone com o mesmo visual dos demais campos (o site principal não estiliza esses tipos) */
+input[type="url"], input[type="tel"] { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem; font-family: inherit; background-color: var(--color-bg-surface-1); color: var(--text-main); transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
+input[type="url"]:focus, input[type="tel"]:focus { outline: none; border-color: var(--heading-color); background-color: var(--box-bg); box-shadow: 0 0 0 3px var(--web-focus-ring); }
+input[aria-invalid="true"] { border-color: var(--web-danger-strong); }
+
+.field-required { font-weight: 400; color: var(--text-muted); }
+.field-error { margin: 6px 0 0; font-size: 0.85rem; font-weight: 600; color: var(--web-danger-text); }
+.field-hint { margin: 6px 0 0; font-size: 0.85rem; color: var(--text-muted); }
+.btn-group + .field-hint { margin-top: 12px; }
+
+.check-field { display: flex !important; align-items: center; gap: 8px; cursor: pointer; }
+.check-field input { width: 18px; height: 18px; margin: 0; accent-color: var(--heading-color); }
+
+/* 3. Avisos e informações (abaixo da pré-visualização) */
+/*****************************************************************/
+.grid-warning { margin: 20px 0 0; padding: 10px 14px; font-size: 0.9rem; font-weight: 600; word-wrap: break-word; color: var(--web-danger-text); background: var(--web-danger-bg); border: 1px solid var(--web-danger-border); border-radius: var(--radius-sm); }
+.grid-notice { margin: 20px 0 0; padding: 10px 14px; font-size: 0.9rem; font-weight: 600; color: var(--web-warning-text); background: var(--web-warning-bg); border: 1px solid var(--web-warning-border); border-radius: var(--radius-sm); }
+.grid-info { margin: 14px 0 0; font-size: 0.85rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+/* 4. Assinatura (assinatura.html) */
+/*****************************************************************/
+/* Fundo branco fixo (também no modo escuro): é como a assinatura aparece nos clientes de e-mail */
+.preview-box { border: 1px dashed var(--border-color); padding: 20px; background: #ffffff; color: #333333; border-radius: var(--radius-md); min-height: 200px; overflow-x: auto; margin-bottom: 20px; }
+
+/* "Como instalar": um quadro expansível por cliente de e-mail */
+.install-step { border-top: 1px solid var(--border-color); padding: 10px 0; }
+.install-step:last-child { padding-bottom: 0; }
+.install-step summary { cursor: pointer; font-weight: 600; color: var(--heading-strong); }
+.install-step .prose-list { margin-top: 10px; }
+
+/* 5. Custom Plate (custom-plate.html) */
+/*****************************************************************/
+:root {
+    --plate-droplet: #4a90e2;
+    --plate-a1: #B04D9B;
+    --plate-a1-ring: rgba(224, 116, 224, 0.35);
+    --plate-slide-bg: #eef2f5;
+}
+
+/* Lâmina e grade de gotas (escala definida pelo script: 1 mm = 6 px) */
+.glass-slide-wrapper { overflow: auto; background: var(--plate-slide-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; justify-content: center; align-items: flex-start; min-height: 250px; }
+.glass-slide { position: relative; flex-shrink: 0; overflow: hidden; background: url("/web/components/custom-plate/assets/slide.svg") no-repeat center / 100% 100%; }
+.droplet-grid { position: absolute; display: grid; }
+.droplet-cell { display: flex; justify-content: center; align-items: center; }
+.droplet { background-color: var(--plate-droplet); border-radius: 50%; box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.3); transition: width 0.3s, height 0.3s; }
+.droplet--a1 { background-color: var(--plate-a1); box-shadow: 0 0 0 2px var(--plate-a1-ring); }
+
+/* Legenda, ID e total */
+.grid-legend { display: flex; align-items: center; gap: 6px; margin: 6px 0 0; font-size: 0.85rem; color: var(--text-muted); }
+.grid-legend__a1 { width: 10px; height: 10px; border-radius: 50%; background: var(--plate-a1); }
+.plate-id-display { margin-top: 18px; color: var(--text-main); }
+.plate-id-display strong { color: var(--heading-strong); }
+.plate-total { font-weight: 700; color: var(--link-color); font-variant-numeric: tabular-nums; }
+
+/* Código XML gerado */
+.xml-output { width: 100%; height: 260px; padding: 18px; margin-bottom: 15px; font-family: var(--font-mono); font-size: 0.85em; line-height: 1.5; background: var(--web-code-bg); color: var(--web-code-text); border: none; border-radius: var(--radius-sm); resize: vertical; white-space: pre; overflow-x: auto; }
+.xml-output:focus { background: var(--web-code-bg); }
+
+/* 6. Calculadora de fluidodinâmica (fluidodinamica.html) */
+/*****************************************************************/
+.calc-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 20px; }
+.calc-inputs .form-group { margin-bottom: 0; }
+
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.result-card { display: flex; flex-direction: column; gap: 6px; padding: 18px 14px; text-align: center; background: var(--surface-2); border: 1px solid var(--border-color); border-radius: var(--radius-md); }
+.result-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+.result-value { font-family: var(--font-mono); font-size: 1.45rem; font-weight: 700; color: var(--heading-strong); font-variant-numeric: tabular-nums; }
+
+/* Regime de fluxo */
+.status-container { margin-top: 22px; text-align: center; }
+.status-badge { display: inline-block; padding: 10px 26px; border-radius: 999px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; border: 2px solid transparent; transition: background-color var(--transition-normal), color var(--transition-normal); }
+.status-badge.laminar { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+.status-badge.transicao { background: #fef08a; color: #854d0e; border-color: #fde047; }
+.status-badge.turbulento { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+
+/* 7. Exportar PDF (impressão)
+   O script monta a folha (.print-sheet) e marca o <body> com print-signature ou
+   print-plate; só a folha vai para o papel. Cores fixas: a impressão é sempre clara. */
+/*****************************************************************/
+.print-sheet { display: none; }
+@media print {
+    /* 7.1 Exibição: só a folha */
+    body.print-signature > *:not(.print-sheet), body.print-plate > *:not(.print-sheet) { display: none !important; }
+    body.print-signature .print-sheet, body.print-plate .print-sheet { display: block; color: var(--print-ink); font-family: 'Roboto', Helvetica, Arial, sans-serif; }
+    .print-sheet { --print-ink: #1f2937; --print-heading: #3a4d74; --print-accent: #5a729e; --print-muted: #4b5563; --print-faint: #6b7280; --print-line: #dfe5f1; --print-code-bg: #f3f5f9; --print-warning: #854d0e; }
+    .print-sheet, .print-sheet * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    /* 7.2 Partes comuns */
+    .print-sheet__head { padding-bottom: 14px; margin-bottom: 22px; border-bottom: 2px solid var(--print-line); }
+    .print-sheet__eyebrow { margin: 0 0 4px; font-size: 9pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--print-accent); }
+    .print-sheet__title { margin: 0; font-size: 20pt; color: var(--print-heading) !important; }
+    .print-sheet__sub { margin: 2px 0 0; font-size: 11pt; color: var(--print-muted); }
+    .print-sheet__h2 { margin: 22px 0 10px; font-size: 12pt; color: var(--print-heading) !important; }
+    .print-sheet a { color: var(--print-heading) !important; }
+    .print-sheet__foot { margin-top: 28px; padding-top: 10px; border-top: 1px solid var(--print-line); font-size: 9pt; color: var(--print-faint); }
+
+    /* 7.3 Assinatura: moldura e lista de dados */
+    .print-sheet__box { padding: 18px; border: 1px solid var(--print-line); border-radius: 6px; }
+    .print-sheet__list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 0; font-size: 10.5pt; }
+    .print-sheet__list dt { font-weight: 700; color: var(--print-muted); }
+    .print-sheet__list dd { margin: 0; word-break: break-all; }
+
+    /* 7.4 Custom Plate: lâmina à esquerda; configurações e XML à direita (cabe em uma página A4) */
+    .print-sheet--plate .print-sheet__head { margin-bottom: 14px; }
+    .print-sheet--plate .print-sheet__h2 { margin: 14px 0 8px; }
+    .print-sheet__plate { display: flex; gap: 24px; align-items: flex-start; }
+    .print-sheet__slide { flex: 0 0 auto; width: 190px; break-inside: avoid; }
+    .print-sheet__slide .glass-slide { width: 180px !important; height: 480px !important; overflow: hidden; border: 1px solid var(--print-line); }
+    .print-sheet__settings { flex: 1 1 auto; min-width: 0; }
+    .print-sheet__note { margin: 8px 0 0; font-size: 8.5pt; color: var(--print-muted); }
+    .print-sheet__warn { margin: 8px 0 0; font-size: 8.5pt; font-weight: 700; color: var(--print-warning); }
+    .print-sheet__table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+    .print-sheet__table th, .print-sheet__table td { padding: 3px 8px; text-align: left; border-bottom: 1px solid var(--print-line); vertical-align: top; }
+    .print-sheet__table th { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.05em; color: var(--print-accent); }
+    .print-sheet__mono, .print-sheet__code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .print-sheet__mono { font-size: 8.5pt; color: var(--print-muted); }
+    .print-sheet__code { margin: 0; padding: 10px 12px; font-size: 8pt; line-height: 1.35; white-space: pre-wrap; word-break: break-all; color: var(--print-ink); background: var(--print-code-bg); border: 1px solid var(--print-line); border-radius: 6px; break-inside: auto; }
+}
+
+/* 8. Responsividade */
+/*****************************************************************/
+@media (max-width: 1024px) {
+    .app-container { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .form-grid { grid-template-columns: minmax(0, 1fr); }
+    .form-group.full-width { grid-column: auto; }
+    .btn-group { flex-direction: column; }
+    .btn-group .btn { width: 100%; }
+}

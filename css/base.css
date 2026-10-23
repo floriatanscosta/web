@@ -1,0 +1,73 @@
+/* ==================================================================
+// © 2026 Floriatan Santos Costa. Todos os direitos reservados. Ver LICENSE.
+// /web/css/base.css
+// Estilos-base do diretório /web/, carregados em TODAS as páginas.
+//
+// Ordem de carregamento:
+//   1. /css/global.css e /css/main.css  (site principal: cores, fontes,
+//      cabeçalho, rodapé, botões, cartões, formulários, modal)
+//   2. /web/css/base.css                (este arquivo)
+//   3. /web/css/tools.css               (só nas páginas das ferramentas)
+//
+// Sumário
+//   1. Variáveis do /web
+//   2. Cabeçalho
+//   3. Página inicial: cartões das ferramentas
+//   4. Páginas de texto: listas
+//   5. Avisos de rodapé das páginas
+//   6. Responsividade
+================================================================== */
+
+/* 1. Variáveis do /web (prefixo --web-, para não colidir com o site principal) */
+/*****************************************************************/
+:root {
+    --web-danger-text: #b42318;
+    --web-danger-strong: #dc2626;
+    --web-danger-bg: rgba(220, 38, 38, 0.08);
+    --web-danger-border: rgba(220, 38, 38, 0.3);
+    --web-warning-text: #854d0e;
+    --web-warning-bg: rgba(234, 179, 8, 0.12);
+    --web-warning-border: rgba(202, 138, 4, 0.4);
+    --web-focus-ring: rgba(102, 111, 228, 0.25);
+    --web-code-bg: #282c34;
+    --web-code-text: #abb2bf;
+}
+[data-theme="dark"] {
+    --web-danger-text: #fca5a5;
+    --web-warning-text: #fde68a;
+}
+
+/* 2. Cabeçalho: subtítulo "Ferramentas" ao lado do nome */
+/*****************************************************************/
+.site-subtitle { font-weight: 500; color: var(--text-muted); }
+
+/* 3. Página inicial: cartões das ferramentas (index.html) */
+/*****************************************************************/
+.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.tool-card { height: stretch; display: flex; flex-direction: column; overflow: hidden; background: var(--box-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast); }
+.tool-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--heading-color); }
+.tool-card__cover { aspect-ratio: 2 / 1; overflow: hidden; background: var(--surface-2); border-bottom: 1px solid var(--border-color); }
+.tool-card__cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transition-normal); }
+.tool-card:hover .tool-card__cover img { transform: scale(1.04); }
+.tool-card__body { display: flex; flex-direction: column; gap: 10px; flex: 1; padding: 20px 22px 22px; }
+.tool-card__title { font-size: 1.15rem; margin-bottom: 0; color: var(--heading-strong); }
+.tool-card__body p { font-size: 0.95rem; color: var(--text-muted); flex: 1; }
+.tool-card__body .btn { align-self: flex-start; }
+
+/* 4. Páginas de texto: listas (Sobre, Aviso de uso e instruções das ferramentas) */
+/*****************************************************************/
+/* "ul.", "ol.": o site principal zera os marcadores com ul[class], ol[class] */
+ul.prose-list, ol.prose-list { list-style: disc; margin: 10px 0 0; padding-left: 1.3em; }
+ol.prose-list--ordered { list-style: decimal; }
+.prose-list li + li { margin-top: 6px; }
+.prose-list li::marker { color: var(--heading-color); }
+
+/* 5. Avisos de rodapé das páginas (lista de ferramentas e ferramentas) */
+/*****************************************************************/
+.tool-note { margin-top: 28px; }
+
+/* 6. Responsividade */
+/*****************************************************************/
+@media (max-width: 768px) {
+    .site-subtitle { display: none; }
+}

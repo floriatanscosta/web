@@ -1,7 +1,7 @@
 # Custom Plate Design XML Generator
 
 Página: **https://floriatan.com.br/web/custom-plate** (`custom-plate.html`)
-Script: `components/custom-plate/app.js` · Estilos: seção 5 de `css/style.css` (a folha do PDF fica no bloco "Exportar PDF")
+Script: `components/custom-plate/app.js` · Estilos: `css/tools.css`, seções 5 (Custom Plate) e 7.4 (PDF)
 
 Gera o arquivo XML de uma placa personalizada (`<HPDDPlate>`) para o **Tecan Uno Dispenser**
 e mostra, em escala, a grade de gotas sobre uma lâmina de vidro. Tudo roda no navegador:
@@ -10,7 +10,7 @@ nada é enviado a servidores. A interface é em inglês, como o software do equi
 ## Como usar
 
 1. Preencha os parâmetros. O XML e a pré-visualização são atualizados a cada alteração.
-2. Confira a grade na lâmina. A gota **A1** aparece em laranja; abaixo da imagem ficam a
+2. Confira a grade na lâmina. A gota **A1** aparece destacada (magenta); abaixo da imagem ficam a
    posição de A1 na lâmina e a extensão da grade (de centro a centro).
 3. Clique em **Copy code** ou **Download** (o arquivo recebe o nome do ID, como `1A_240.xml`).
 4. Para registrar a configuração, clique em **Export PDF** (veja abaixo).
@@ -22,7 +22,7 @@ O botão **Export PDF** monta uma folha A4, em inglês como a interface, e abre 
 navegador; escolha **Salvar como PDF** (o nome sugerido é `Custom Plate - <ID>`). A folha traz:
 
 - **cabeçalho**: ID da placa, total de gotas e matriz (linhas × colunas);
-- **Plate preview**: a mesma lâmina da tela, em escala, com A1 em laranja, a posição de A1,
+- **Plate preview**: a mesma lâmina da tela, em escala, com A1 destacado, a posição de A1,
   a extensão da grade e, se houver, o aviso de grade fora do vidro;
 - **Settings**: tabela com todos os campos, o valor usado e o elemento XML correspondente;
 - **XML**: o código completo, com o nome do arquivo;
