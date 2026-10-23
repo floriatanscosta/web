@@ -4,6 +4,9 @@
 > no Git; o histórico resumido está em [`components/assinatura/README.md`](components/assinatura/README.md#histórico-de-versões).
 > Os títulos abaixo indicam a versão quando a mudança é da Assinatura.
 
+## 2026-10-23 — Custom Plate: Horizontal offset
+- "Horizontal offset" documentado como parâmetro do equipamento: vai para o XML e não altera a pré-visualização (dica do campo e `components/custom-plate/README.md`).
+
 ## 2026-10-21 — Organização das ferramentas (Assinatura 2.1.0)
 - **Uma pasta por ferramenta em `components/`**, com o mesmo nome do endereço da página: `app.js`, `cover.png`, `README.md` e as imagens e outros arquivos em `assets/`.
 - **Assinatura**: `components/gerador/` → `components/assinatura/`. Imagens com nomes descritivos em `assets/` (`logo-ufpr.png`, `logo-ufpr-quimica.png`, `logo-ufpr-laesb.png`, `logo-ufpr-zaragoza.png`, `icone-site.png`, `icone-lattes.png`, `icone-orcid.png`); as assinaturas novas usam esses endereços. Logos salvos no navegador com os nomes antigos são convertidos. Versão **2.1.0**.

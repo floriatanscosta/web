@@ -49,7 +49,7 @@ próprio navegador e nada é enviado a servidores.
 | Move acceleration | `<moveaccel>` | `Slow` ou `Fast` | — |
 | Custom A1 | `<customa1>` | Usa deslocamento personalizado para A1 (`True`/`False`) | — |
 | Nozzle mask | `<nozzlemask>` | `One`, `Small` ou `Large` | — |
-| Horizontal offset | `<horizontaloffset>` | Deslocamento horizontal global da placa | — |
+| Horizontal offset | `<horizontaloffset>` | Parâmetro do equipamento: deslocamento horizontal global aplicado pelo dispensador | Nenhum (só vai para o XML) |
 | Preview droplet size | — | Tamanho das gotas desenhadas (não entra no XML) | Tamanho das gotas |
 
 Os números são gravados na forma simples (`2.0` vira `2`, `1e1` vira `10`), e o texto do ID
