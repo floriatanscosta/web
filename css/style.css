@@ -1,9 +1,0 @@
-/* ==================================================================
-// © 2026 Todos os direitos reservados. Ver LICENSE.
-// /web/css/style.css — LEGADO (compatibilidade)
-// As páginas do /web/ não usam mais este arquivo: carregam base.css e,
-// nas ferramentas, tools.css. Ele continua aqui só porque o design-meta.html
-// do site principal carrega /web/css/style.css. Não acrescente regras aqui.
-================================================================== */
-@import url("base.css");
-@import url("tools.css");
