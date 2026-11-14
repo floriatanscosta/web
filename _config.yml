@@ -1,19 +1,13 @@
 # Configuração do Jekyll usada pelo GitHub Pages (projeto publicado em floriatan.com.br/web/).
-# As páginas são HTML estático; o Jekyll apenas as copia.
+# O repositório é só legado: a publicação existe para manter no ar as imagens das assinaturas
+# de e-mail já enviadas (floriatan.com.br/web/components/gerador/…) e o redirecionamento de
+# /web/assinatura para /ferramentas/assinatura/.
 url: "https://floriatan.com.br"
 baseurl: "/web"
-title: "Ferramentas · Floriatan Santos Costa"
+title: "Floriatan Santos Costa"
 lang: "pt-BR"
 
-# Não publicados. Pastas que começam com "_" já são ignoradas pelo Jekyll;
-# _dev/ e _arquivo/ ficam listadas também aqui para deixar a regra explícita.
 exclude:
-  - _dev/
-  - _arquivo/
-  - docs/
-  - components/*/README.md
   - README.md
   - LICENSE
-  - CHANGELOG.md
   - .gitignore
-  - .editorconfig

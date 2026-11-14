@@ -1,48 +1,39 @@
-# Ferramentas — floriatan.com.br/web
+# web — arquivos legados da Assinatura de e-mail
 
-**Pequenas aplicações web para o laboratório e a comunicação acadêmica, que rodam inteiramente no navegador.**
+**Repositório legado. Não mova, não renomeie e não apague os arquivos daqui.**
 
-Ferramentas e aplicações web simples, publicadas em **https://floriatan.com.br/web/** (GitHub Pages do repositório `floriatanscosta/web`).
+As Ferramentas (Gerador de assinatura de e-mail, Custom Plate e fluidodinâmica) agora ficam no
+repositório principal, [`floriatanscosta/floriatanscosta.github.io`](https://github.com/floriatanscosta/floriatanscosta.github.io),
+pasta `ferramentas/`, publicadas em **[floriatan.com.br/ferramentas/](https://floriatan.com.br/ferramentas/)**.
+O código, a documentação e o histórico de versões estão lá.
 
----
+Este repositório guarda **somente** o que as assinaturas de e-mail já geradas e enviadas ainda usam.
 
-## Sobre o projeto
+## O que fica aqui e por quê
 
-Tarefas pequenas e repetidas, como montar uma assinatura de e-mail institucional ou gerar o
-arquivo de configuração de uma placa para um dispensador, ganham aqui uma página própria.
-Os dados digitados são processados no próprio dispositivo: nenhuma ferramenta envia
-informações a servidores, e não é preciso instalar nada nem criar conta.
+| Arquivos | Quem usa | Endereço |
+|---|---|---|
+| `components/assinatura/assets/*.png` | Assinaturas a partir da versão 2.1.0 e o gerador atual (`/ferramentas/assinatura/`) | `https://raw.githubusercontent.com/floriatanscosta/web/main/components/assinatura/assets/…` |
+| `components/gerador/logo-1.png` … `logo-4.png`, `link.png`, `lattes.png`, `orcid.png` | Assinaturas até a versão 1.1.0 | `https://floriatan.com.br/web/components/gerador/…` |
+| `components/gerador/link.png`, `lattes.png`, `orcid.png`, `logo-1.png` … `logo-3.png` | Versões 1.2.0 a 1.3.0 | `https://raw.githubusercontent.com/floriatanscosta/web/main/components/gerador/…` |
+| `components/gerador/logo-1-branco.png` … `logo-4-branco.png`, `link.png`, `lattes.png`, `orcid.png` | Versões 2.0.0 a 2.0.1 | `https://raw.githubusercontent.com/floriatanscosta/web/main/components/gerador/…` |
+| `assinatura.html` | Endereço antigo `floriatan.com.br/web/assinatura`, citado nas assinaturas geradas | Redireciona para `/ferramentas/assinatura/` |
+| `_config.yml` | GitHub Pages deste repositório (`floriatan.com.br/web/`) | — |
 
-## Funcionalidades
+## Regras
 
-- **[Gerador de assinatura de e-mail](https://floriatan.com.br/web/assinatura)** — monta uma assinatura padronizada (nome, cargo, vínculos, e-mail, telefone, logotipo e links para site, Lattes e ORCID), confere os dados, copia como texto formatado ou HTML e exporta em PDF ([descrição](components/assinatura/README.md)).
-- **[Custom Plate Design XML (Tecan)](https://floriatan.com.br/web/custom-plate)** — define os parâmetros de uma placa personalizada, mostra a grade de gotas em escala sobre a lâmina, gera o XML para o Tecan Uno Dispenser e exporta placa, configurações e XML em PDF ([descrição](components/custom-plate/README.md)).
-- **Calculadora de fluidodinâmica ICP-MS** (em teste, fora da lista) — calcula volume interno, velocidade linear, tempo de residência e número de Reynolds de uma câmara de nebulização e indica o regime de fluxo ([descrição](components/fluidodinamica/README.md)).
-- **Páginas de apoio:** lista de ferramentas, [Sobre](https://floriatan.com.br/web/sobre) e [Aviso de uso](https://floriatan.com.br/web/aviso).
-- **Privacidade:** tudo roda no navegador; nenhum dado é enviado a servidores, sem Google Analytics nem cookies. Ficam salvos no aparelho só a preferência de tema e, se a pessoa marcar essa opção, os dados da Assinatura.
-- **Mesma identidade do site principal:** tema claro, escuro ou "seguir o sistema", layout para celular e o mesmo cabeçalho e rodapé.
-
-## Documentação adicional
-
-- [`docs/arquitetura.md`](docs/arquitetura.md) — tecnologias, base visual compartilhada, estrutura do repositório e padrão de cada ferramenta.
-- [`docs/manutencao.md`](docs/manutencao.md) — como desenvolver, editar e publicar ferramentas; caminhos que não podem mudar.
-- [`_dev/README.md`](_dev/README.md) — passo a passo para criar uma ferramenta nova.
-- [`CHANGELOG.md`](CHANGELOG.md) — histórico de alterações. A Assinatura tem versão própria (SemVer, tags `assinatura-vX.Y.Z`); veja [`components/assinatura/README.md`](components/assinatura/README.md#versionamento).
+- Mantenha o repositório **público**, o branch **`main`** com esse nome e o **GitHub Pages ativo**:
+  sem isso, as imagens somem das assinaturas que já estão em uso.
+- Não acrescente ferramentas nem páginas novas aqui; tudo novo vai para `ferramentas/` no repositório principal.
+- Imagens novas da Assinatura também ficam em `components/assinatura/assets/` deste repositório,
+  porque o gerador atual as carrega daqui.
 
 ## Licença
 
-**Todos os direitos reservados.** O código (HTML, CSS e JavaScript), os textos, as imagens, o
-logotipo e a documentação deste repositório são de Floriatan Santos Costa e **não podem ser
-copiados, modificados, redistribuídos, republicados ou usados comercialmente sem autorização
-prévia e por escrito**. Os termos estão em [`LICENSE`](LICENSE).
+**Todos os direitos reservados.** As imagens, o código e os textos deste repositório são de
+Floriatan Santos Costa. Copiar, modificar, redistribuir, republicar, usar em outros softwares ou
+em outros materiais, ou usar comercialmente depende de **autorização prévia e por escrito**.
+Os termos estão em [`LICENSE`](LICENSE), iguais aos do repositório principal.
 
-Sem autorização, é permitido apenas: usar as ferramentas em `floriatan.com.br/web/`, usar os
-resultados gerados por você (XML, assinatura etc.), ver e fazer *fork* no GitHub nos limites dos
-Termos de Serviço do GitHub e citar trechos curtos com indicação da fonte.
-
-Nomes e logotipos de instituições e fabricantes (como UFPR e Tecan) e a base visual carregada do
-site principal (`floriatanscosta.github.io`) pertencem aos respectivos titulares.
-
-> Até 20/10/2026 o código deste repositório esteve sob a licença MIT. Quem obteve uma cópia
-> naquele período mantém, para aquela versão, as permissões da MIT; a nova licença vale para
-> as versões publicadas a partir de 21/10/2026.
+Os logotipos da UFPR e de outras instituições pertencem aos respectivos titulares e aparecem
+apenas para identificar vínculos. Pedidos de autorização: [floriatan.com.br/contato](https://floriatan.com.br/contato).
