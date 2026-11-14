@@ -4,6 +4,10 @@
 > no Git; o histórico resumido está em [`components/assinatura/README.md`](components/assinatura/README.md#histórico-de-versões).
 > Os títulos abaixo indicam a versão quando a mudança é da Assinatura.
 
+## 2026-11-14 — Documentação reorganizada
+- `README.md` resumido: sobre o projeto, principais funcionalidades, documentação adicional e licença.
+- Detalhes técnicos movidos para a nova pasta `docs/`: `docs/arquitetura.md` (tecnologias, base visual, estrutura e padrão de cada ferramenta) e `docs/manutencao.md` (desenvolvimento, edição e caminhos que não podem mudar). A pasta não é publicada no site (`exclude` no `_config.yml`).
+
 ## 2026-10-23 — Organização do CSS
 - **`css/style.css` dividido em dois arquivos**: `css/base.css` (todas as páginas: variáveis, cabeçalho, cartões da lista, listas de texto, avisos de rodapé) e `css/tools.css` (só nas ferramentas: layout, formulários, avisos, uma seção por ferramenta, impressão em PDF e responsividade). A lista, "Sobre", "Aviso de uso" e a 404 carregam só `base.css`.
 - Seletores agrupados por função e por ferramenta, com sumário numerado no início de cada arquivo.

@@ -48,4 +48,4 @@ cd site && python3 -m http.server 8000
    `https://floriatan.com.br/web/<ferramenta>` em `canonical` e `og:url`.
 3. Adicione o link no menu (`<nav>`) de todas as páginas, um cartão em `index.html` e
    uma descrição em `sobre.html`.
-4. Atualize o `README.md` e o `CHANGELOG.md` e apague a pasta de `_dev/`.
+4. Atualize o `README.md` (funcionalidades), o `docs/arquitetura.md` (estrutura) e o `CHANGELOG.md` e apague a pasta de `_dev/`.
